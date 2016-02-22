@@ -5,11 +5,13 @@ module.exports = {
     filename: "app.js",
     path: __dirname + "/dist",
   },
-  loaders: [
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loaders: ["babel-loader"],
+   module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loaders: ["babel-loader"],
+        }
+      ],
     }
-  ],
-};
+    };
