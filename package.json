@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-loader": "^6.2.3",
+    "babel-preset-react": "^6.5.0",
     "webpack": "^1.12.13"
   }
 }
