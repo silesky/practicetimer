@@ -56,6 +56,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	console.log("TEST");
 	_react2.default.render(_react2.default.createElement(_greeting2.default, { name: "World" }), document.body);
 
 /***/ },
