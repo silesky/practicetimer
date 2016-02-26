@@ -1,21 +1,17 @@
-body {
-    background-color: black;
-    color: white;
-    width: 25%;
-    font-family: 'arial';
-}
-
 
 .timerBox {
     background-color: red;
-    height: 800px;
-
+    height: 400px;
+    position: relative;
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    color: white;
+    border-radius: 20px;
 }
 
-.topBar {
-     display: flex; 
+.topBarContainer {
+     display: flex;
      flex-direction: row;
-     position: relative;
+
 }
 
 
@@ -31,25 +27,61 @@ body {
     margin: 1%;
 
 
-  
+
 }
 
-.btn {
 
-    margin: 2%;
+.btnComp {
+
+    font-size: 2em;
     border: 3px dotted grey;
-    height: 40px;
+    text-align: center;
+    vertical-align: middle;
     background-color: yellow;
      color: black;
 
 }
 
-.btnAddTimer {
+.btnAddTimerComp {
 
 
 }
 
-.btnCloseTimer {
+.btnCloseTimerComp {
+
+
+}
+
+.titleContainer {
+        color: white;
+        background-color: green;
+        font-size: 3em;
+        position: absolute;
+        top: 30%;
+        width: 100%;
+        text-align: center;
+}
+
+
+.titleComp {
+
+}
+
+.countDownContainer {
+    font-size: 10em;
+    background-color: inherit;
+    position: absolute;
+    border: 1px dotted white;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+    border-radius: inherit;
+}
+
+
+
+.countDownComp {
+
 
 
 }
