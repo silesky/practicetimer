@@ -2,45 +2,47 @@ import React from "react";
 console.log("app.js...")
 
 var BtnAddTimer = React.createClass({
-  render: function() {
-    return(
-      <div className="btn btnAddTimer">[+]</div>
-      );
+    render: function() {
+        return(
+            <div className="btn btnAddTimer">[+]</div>
+        );
 
-  }
+    }
 });
 
 var BtnCloseTimer = React.createClass({
-  render: function() {
-    return(
-      <div className="btn btnCloseTimer">[-]</div>
-      );
+    render: function() {
+        return(
+            <div className="btn btnCloseTimer">[-]</div>
+        );
 
-  }
+    }
 });
 
 
 //BtnCloseTimer, BtnCopyTimer, BtnAddTimer, CountDown, StartTimer
 
 var TimerBox = React.createClass({
-  render: function() {
-    return(
-      <div className="timerBox">
-          <div className="topBar">
-          <div className="topBarLeft">
-                    <BtnCloseTimer />
+    render: function() {
+        return(
+            <div className="timerBox">
+                <div className="topBar">
+
+                    <div className="topBarLeft">
+                        <BtnCloseTimer />
+                    </div>
+                    <div className="topBarRight">
+                        <BtnAddTimer />
+                    </div>
+
+                </div>
             </div>
-            <div className="topBarRight">
-                    <BtnAddTimer />
-            </div>
-             </div>
-         </div>
 
 
 
 
-      );
-  }
+        );
+    }
 });
 
 
@@ -51,8 +53,8 @@ var TimerBox = React.createClass({
 /* drum roll */
 React.render(
 
-  <TimerBox />,
+    <TimerBox />,
 
-  document.getElementById('timer')//where u want it
+    document.getElementById('timer')//where u want it
 );
 4
