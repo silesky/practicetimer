@@ -1,5 +1,4 @@
 import React from "react";
-// import Greeting from "./greeting";
 console.log("app.js...")
 
 var BtnAddTimer = React.createClass({
@@ -7,9 +6,19 @@ var BtnAddTimer = React.createClass({
     return(
       <div className="btnAddTimer">ADD</div>
       );
-    
+
   }
 });
+
+var BtnCloseTimer = React.createClass({
+  render: function() {
+    return(
+      <div className="btnCloseTimer">X</div>
+      );
+
+  }
+});
+
 
 //BtnCloseTimer, BtnCopyTimer, BtnAddTimer, CountDown, StartTimer
 
@@ -20,7 +29,7 @@ var TimerBox = React.createClass({
         <BtnAddTimer />
       </div>
       );
-  }     
+  }
 });
 
 
@@ -32,7 +41,6 @@ var TimerBox = React.createClass({
 React.render(
 
   <TimerBox />,
-  
+
   document.getElementById('timer')//where u want it
 );
-
