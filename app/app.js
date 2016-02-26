@@ -4,7 +4,7 @@ console.log("app.js...")
 var BtnAddTimer = React.createClass({
   render: function() {
     return(
-      <div className="btnAddTimer">ADD</div>
+      <div className="btn btnAddTimer">[+]</div>
       );
 
   }
@@ -13,7 +13,7 @@ var BtnAddTimer = React.createClass({
 var BtnCloseTimer = React.createClass({
   render: function() {
     return(
-      <div className="btnCloseTimer">X</div>
+      <div className="btn btnCloseTimer">[-]</div>
       );
 
   }
@@ -26,8 +26,19 @@ var TimerBox = React.createClass({
   render: function() {
     return(
       <div className="timerBox">
-        <BtnAddTimer />
-      </div>
+          <div className="topBar">
+          <div className="topBarLeft">
+                    <BtnCloseTimer />
+            </div>
+            <div className="topBarRight">
+                    <BtnAddTimer />
+            </div>
+             </div>
+         </div>
+
+
+
+
       );
   }
 });
@@ -44,3 +55,4 @@ React.render(
 
   document.getElementById('timer')//where u want it
 );
+4
