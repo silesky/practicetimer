@@ -33,10 +33,18 @@ var Title = React.createClass({
 
 
 var CountDown = React.createClass({
+    getInitialState: function() {
+      return { elapsed: 666 }
+    },
+    componentDidMount: function() {
+      //for debouncing or we... called right after 'render'
+      this.timer = setInverval(this.tick, 50);
+    },
     render: function() {
         return(
 
-                <div className="countDownComp">30:00</div>
+                <div className="countDownComp">{this.state.elapsed}</div>
+
 
         );
     }
