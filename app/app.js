@@ -37,29 +37,32 @@ var Title = React.createClass({
 var CountDown = React.createClass({
     getInitialState: function() {
 
-      // saved time...
-      return { elapsed: 0 }
+      var dateObj = new Date();
+      var seconds = dateObj.getSeconds();
+      console.log(seconds);
+      return {ogSeconds: seconds}
+    },
+    tick: function() {
+      // grab the Date() every 50 secs. Then subtr that value from the og date to get the actual secs diff
+      this.setState( {elapsed: new Date()} )
     },
     componentDidMount: function() {
-      // (???) called right after render. call tick every 50ms...
+      // (???) called right after render. setInterval takes calls this.tick every 50ms...
 
-      this.timer = setInverval(this.tick, 50);
+      this.timer = setInterval(this.tick, 100);
     },
     componentWillUnmount: function() {
       // (???) called at the end, right before the component is destroyed/deleted...
-
-      clearInterwval(this.timer);
+      //
+      clearInterval(this.timer);
     },
 
-    tick: function() {
-      // grab the Date() every 50 secs. Then subtr that value from the og date to get the actual secs diff
-      this.setState( {elapsed: new Date() - this.props.start} )
-    },
+
     render: function() {
-        var elapsed = this.state.elapsed;
+
         return(
 
-                <div className="countDownComp">{elapsed}</div>
+                <div className="countDownComp">{ this.state.ogSeconds }</div>
 
 
         );
