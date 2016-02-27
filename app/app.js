@@ -1,7 +1,9 @@
 /* jshint esversion: 6 */
 /* http://localhost:9080/app */
 import React from "react";
+import ReactDOM from 'react-dom';
 console.log("app.js...");
+
 //BtnCloseTimer, BtnAddTimer, BtnCopyTimer,  CountDown, StartTimer, setTimerUp, setTimerDn
 
 var BtnAddTimer = React.createClass({
@@ -34,16 +36,30 @@ var Title = React.createClass({
 
 var CountDown = React.createClass({
     getInitialState: function() {
-      return { elapsed: 666 }
+
+      // saved time...
+      return { elapsed: 0 }
     },
     componentDidMount: function() {
-      //for debouncing or we... called right after 'render'
+      // (???) called right after render. call tick every 50ms...
+
       this.timer = setInverval(this.tick, 50);
     },
+    componentWillUnmount: function() {
+      // (???) called at the end, right before the component is destroyed/deleted...
+
+      clearInterwval(this.timer);
+    },
+
+    tick: function() {
+      // grab the Date() every 50 secs. Then subtr that value from the og date to get the actual secs diff
+      this.setState( {elapsed: new Date() - this.props.start} )
+    },
     render: function() {
+        var elapsed = this.state.elapsed;
         return(
 
-                <div className="countDownComp">{this.state.elapsed}</div>
+                <div className="countDownComp">{elapsed}</div>
 
 
         );
@@ -97,7 +113,7 @@ var TimerBox = React.createClass({
 
 
 /* drum roll */
-React.render(
+ReactDOM.render(
   <TimerBox />,
   document.getElementById('timer')
 );
