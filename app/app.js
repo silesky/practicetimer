@@ -36,12 +36,12 @@ var Title = React.createClass({
 var CountDown = React.createClass({
 
   getInitialState: function() {
-    return {secondsElapsed: 0};
+    return {secondsElapsed: 300};
   },
 
   tick: function() {
 
-    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+    this.setState({secondsElapsed: this.state.secondsElapsed - 1});
   },
   componentDidMount: function() {
     // (???) called right after render. setInterval takes calls this.tick every 50ms...
