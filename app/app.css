@@ -64,10 +64,11 @@
 
 
 .titleComp {
-
 }
 
 .countDownContainer {
+    display: flex;
+    justify-content: center;
     font-size: 10em;
     background-color: inherit;
     position: absolute;
@@ -79,9 +80,7 @@
 }
 
 
-
-.countDownComp {
-
-
-
+.setTimerUpDnContainer {
+    font-size: 0.5em;
+    line-height: 1em;
 }
