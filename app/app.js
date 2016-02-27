@@ -1,10 +1,9 @@
-/* jshint esversion: 6 */
+/* jshint  */
 /* http://localhost:9080/app */
-import React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
 console.log("app.js...");
 
-//BtnCloseTimer, BtnAddTimer, BtnCopyTimer,  CountDown, StartTimer, setTimerUp, setTimerDn
 
 var BtnAddTimer = React.createClass({
     render: function() {
@@ -36,31 +35,28 @@ var Title = React.createClass({
 
 var CountDown = React.createClass({
 
-
+  getCurrentTime: function() {
+        var dateObj = new Date();
+        return dateObj.getTime();
+  },
     getInitialState: function() {
-        return {time: 0}
+          return {secondsElapsed: 0};
     },
 
     tick: function() {
 
       // grab the Date() every 50 secs. Then subtr that value from the og date to get the actual secs diff
-      var getCurrentTime =  function() {
-            var dateObj = new Date();
-            return dateObj.getTime();
-      };
-      var ogTime = getCurrentTime();
-      this.setState({
-        time:  getCurrentTime()});
+
+          this.setState({secondsElapsed: this.state.secondsElapsed + 1});
     },
     componentDidMount: function() {
       // (???) called right after render. setInterval takes calls this.tick every 50ms...
 
-      this.timer = setInterval(this.tick, 1000);
+  this.interval = setInterval(this.tick, 1000);
     },
     componentWillUnmount: function() {
       // (???) called at the end, right before the component is destroyed/deleted...
-      //
-      clearInterval(this.timer);
+   clearInterval(this.interval);
     },
 
 
@@ -68,7 +64,8 @@ var CountDown = React.createClass({
 
         return(
 
-                <div className="countDownComp">{ this.state.time }</div>
+                <div className="countDownComp">{this.state.secondsElapsed}</div>
+
 
 
         );
