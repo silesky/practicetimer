@@ -6,70 +6,64 @@ console.log("app.js...");
 
 
 var BtnAddTimer = React.createClass({
-    render: function() {
-        return(
-            <div className="btnComp btnAddTimerComp">[+]</div>
-        );
+  render: function() {
+    return(
+      <div className="btnComp btnAddTimerComp">[+]</div>
+    );
 
-    }
+  }
 });
 
 var BtnCloseTimer = React.createClass({
-    render: function() {
-        return(
-            <div className="btnComp btnCloseTimerComp">[-]</div>
-        );
+  render: function() {
+    return(
+      <div className="btnComp btnCloseTimerComp">[-]</div>
+    );
 
-    }
+  }
 });
 
 var Title = React.createClass({
-    render: function() {
-        return(
-            <div className="titleComp">Practicing Guitar</div>
-        );
+  render: function() {
+    return(
+      <div className="titleComp">Practicing Guitar</div>
+    );
 
-    }
+  }
 });
 
 
 var CountDown = React.createClass({
 
-  getCurrentTime: function() {
-        var dateObj = new Date();
-        return dateObj.getTime();
+  getInitialState: function() {
+    return {secondsElapsed: 0};
   },
-    getInitialState: function() {
-          return {secondsElapsed: 0};
-    },
 
-    tick: function() {
+  tick: function() {
 
-      // grab the Date() every 50 secs. Then subtr that value from the og date to get the actual secs diff
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+  },
+  componentDidMount: function() {
+    // (???) called right after render. setInterval takes calls this.tick every 50ms...
 
-          this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-    },
-    componentDidMount: function() {
-      // (???) called right after render. setInterval takes calls this.tick every 50ms...
-
-  this.interval = setInterval(this.tick, 1000);
-    },
-    componentWillUnmount: function() {
-      // (???) called at the end, right before the component is destroyed/deleted...
-   clearInterval(this.interval);
-    },
+    this.interval = setInterval(this.tick, 1000);
+  },
+  componentWillUnmount: function() {
+    // (???) called at the end, right before the component is destroyed/deleted...
+    clearInterval(this.interval);
+  },
 
 
-    render: function() {
+  render: function() {
 
-        return(
+    return(
 
-                <div className="countDownComp">{this.state.secondsElapsed}</div>
+      <div className="countDownComp">{this.state.secondsElapsed}</div>
 
 
 
-        );
-    }
+    );
+  }
 });
 
 
@@ -85,34 +79,34 @@ var SetTimerUpDn = React.createClass({
 });
 
 var TimerBox = React.createClass({
-    render: function() {
-        return(
-            <div className="timerBox">
+  render: function() {
+    return(
+      <div className="timerBox">
 
-                <div className="topBarContainer">
-                    <div className="topBarLeft">
-                        <BtnCloseTimer />
-                    </div>
-                    <div className="topBarRight">
-                        <BtnAddTimer />
-                    </div>
+        <div className="topBarContainer">
+          <div className="topBarLeft">
+            <BtnCloseTimer />
+          </div>
+          <div className="topBarRight">
+            <BtnAddTimer />
+          </div>
 
-                </div>
-                <div className="titleContainer">
-                    <Title />
-                </div>
+        </div>
+        <div className="titleContainer">
+          <Title />
+        </div>
 
 
-                <div className="countDownContainer">
+        <div className="countDownContainer">
 
-                    <CountDown />
-                      <SetTimerUpDn />
-                </div>
+          <CountDown />
+          <SetTimerUpDn />
+        </div>
 
-              </div>
+      </div>
 
-        );
-    }
+    );
+  }
 });
 
 
