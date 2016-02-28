@@ -1,4 +1,5 @@
-/* jshint  */
+/* jshint
+esversion: 6  */
 /* http://localhost:9080/app */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -15,6 +16,7 @@ var BtnAddTimer = React.createClass({
 });
 
 var BtnCloseTimer = React.createClass({
+
   render: function() {
     return(
       <div className="btnComp btnCloseTimerComp">[-]</div>
@@ -70,9 +72,14 @@ var SetTimerUpDn = React.createClass({
   }
 });
 var SetTimerPause = React.createClass({
+  handleClick: function() {
+      console.log("click")
+  },
   render: function() {
+
     return(
-      <div id="pause" className="setTimerPauseContainer">
+        <div onClick= {this.handleClick}
+          id="pause" className="setTimerPauseContainer">
         <div className="setTimerPauseComp">[=>]</div>
       </div>
     );
