@@ -34,33 +34,6 @@ var Title = React.createClass({
   }
 });
 
-
-var CountDown = React.createClass({
-
-  getInitialState: function() {
-    return {secondsElapsed: 300};
-  },
-
-  tick: function() {
-    // every time this is called, counter goes down by 1
-    this.setState({secondsElapsed: this.state.secondsElapsed - 1});
-  },
-  componentDidMount: function() {
-    // (???) called right after render. setInterval takes calls this.tick every 10000ms...
-    this.interval = setInterval(this.tick, 1000);
-  },
-  componentWillUnmount: function() {
-    // (???) called at the end, right before the component is destroyed/deleted...
-    clearInterval(this.interval);
-  },
-  render: function() {
-    return(
-      <div className="countDownComp">{this.state.secondsElapsed}</div>
-    );
-  }
-});
-
-
 var SetTimerUpDn = React.createClass({
   render: function() {
     return(
@@ -73,7 +46,8 @@ var SetTimerUpDn = React.createClass({
 });
 var SetTimerPause = React.createClass({
   handleClick: function() {
-      console.log("click")
+      console.log("click");
+      this.countDownStart();
   },
   render: function() {
 
@@ -85,6 +59,53 @@ var SetTimerPause = React.createClass({
     );
   }
 });
+
+/*** CountDown ***/
+var CountDown = React.createClass({
+
+countDownStart: function() {
+      this.interval = setInterval(this.tick, 1000);
+},
+
+reset: function() {
+    this.setState({
+      secondsElapsed: 300
+    });
+},
+
+  getInitialState: function() {
+    return {secondsElapsed: 300};
+  },
+
+  tick: function() {
+    // every time this is called, counter goes down by 1
+    this.setState({secondsElapsed: this.state.secondsElapsed - 1});
+  },
+  componentDidMount: function() {
+    // (???) called right after render. setInterval takes calls this.tick every 10000ms...
+    this.countDownStart();
+  },
+  componentWillUnmount: function() {
+    // (???) called at the end, right before the component is destroyed/deleted...
+    clearInterval(this.interval);
+  },
+  render: function() {
+    return(
+      <div className="countDownComp">
+        {this.state.secondsElapsed}
+      <SetTimerUpDn />
+      <div onClick={this.reset}
+          id="pause" className="setTimerPauseContainer">
+        <div className="setTimerPauseComp">[=>]</div>
+      </div>
+      </div>
+    );
+  }
+});
+
+/***/
+
+
 
 var TimerBox = React.createClass({
   render: function() {
@@ -107,8 +128,7 @@ var TimerBox = React.createClass({
 
         <div className="countDownContainer">
           <CountDown />
-          <SetTimerUpDn />
-          <SetTimerPause />
+
         </div>
 
       </div>
