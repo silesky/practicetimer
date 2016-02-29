@@ -42,8 +42,12 @@ var CountDown = React.createClass({
         this.interval = setInterval(this.tick, 1000);
   },
   reset: function() {
-      this.setState({
-        secondsElapsed: 300
+
+    var stateObj = this.getInitialState();
+    var newNum = stateObj.secondsElapsed;
+
+    this.setState({
+        secondsElapsed: newNum
       });
   },
   pausePlay: function() {
@@ -56,7 +60,7 @@ var CountDown = React.createClass({
     console.log("decrement");
   },
   getInitialState: function() {
-    return {secondsElapsed: 300};
+    return {secondsElapsed: 2700};
   },
   tick: function() {
     // every time this is called, counter goes down by 1
