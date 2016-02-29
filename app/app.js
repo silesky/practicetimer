@@ -92,15 +92,12 @@ var CountDown = React.createClass({
   render: function() {
     return(
       <div className="countDownContainer">
-      <div className="countDownComp">
         {this.state.secondsElapsed}
-      <SetTimerUpDn />
-      <div onClick={this.reset}
-          id="pause" className="setTimerPauseContainer">
-        <div className="setTimerPauseComp">[=>]</div>
+        <SetTimerUpDn />
+          <div className="countDownBtnReset"
+            onClick={this.reset}>[r]</div>
       </div>
-      </div>
-    </div>
+
     );
   }
 });
@@ -127,7 +124,7 @@ var TimerBox = React.createClass({
           <Title />
         </div>
 
-        <CountDown  />
+        <CountDown />
 
 
 
