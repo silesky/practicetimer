@@ -73,7 +73,7 @@ var CountDown = React.createClass({
   render: function() {
     return(
       <div className="countDownContainer">
-        {this.state.secondsElapsed}
+        <input type="number" value={this.state.secondsElapsed} />
 
           <div className="setTimerUpDnContainer">
             <div className="setTimerUpComp"
@@ -85,7 +85,9 @@ var CountDown = React.createClass({
             onClick={this.reset}>[r]</div>
           <div className="countDownBtnPausePlay"
             onClick={this.pausePlay}>[=>]</div>
+
       </div>
+
 
     );
   }
@@ -117,6 +119,7 @@ var TimerBox = React.createClass({
 
 
 
+
       </div>
 
     );
@@ -131,3 +134,4 @@ ReactDOM.render(
   <TimerBox />,
   document.getElementById('timer')
 );
+//start static server
