@@ -34,31 +34,6 @@ var Title = React.createClass({
   }
 });
 
-var SetTimerUpDn = React.createClass({
-  render: function() {
-    return(
-      <div className="setTimerUpDnContainer">
-        <div className="setTimerUpComp">[up]</div>
-        <div className="setTimerDnComp">[dn]</div>
-      </div>
-    );
-  }
-});
-var SetTimerPause = React.createClass({
-  handleClick: function() {
-      console.log("click");
-      this.countDownStart();
-  },
-  render: function() {
-
-    return(
-        <div onClick= {this.handleClick}
-          id="pause" className="setTimerPauseContainer">
-        <div className="setTimerPauseComp">[=>]</div>
-      </div>
-    );
-  }
-});
 
 /*** CountDown ***/
 var CountDown = React.createClass({
@@ -66,17 +41,23 @@ var CountDown = React.createClass({
   countDownStart: function() {
         this.interval = setInterval(this.tick, 1000);
   },
-
   reset: function() {
       this.setState({
         secondsElapsed: 300
       });
   },
-
+  pausePlay: function() {
+    console.log("pause-play");
+  },
+  incrementTime: function() {
+    console.log("increment");
+  },
+  decrementTime: function() {
+    console.log("decrement");
+  },
   getInitialState: function() {
     return {secondsElapsed: 300};
   },
-
   tick: function() {
     // every time this is called, counter goes down by 1
     this.setState({secondsElapsed: this.state.secondsElapsed - 1});
@@ -93,9 +74,17 @@ var CountDown = React.createClass({
     return(
       <div className="countDownContainer">
         {this.state.secondsElapsed}
-        <SetTimerUpDn />
+
+          <div className="setTimerUpDnContainer">
+            <div className="setTimerUpComp"
+              onClick={this.incrementTime}>[up]</div>
+            <div className="setTimerDnComp"
+              onClick={this.decrementTime}>[dn]</div>
+          </div>
           <div className="countDownBtnReset"
             onClick={this.reset}>[r]</div>
+          <div className="countDownBtnPausePlay"
+            onClick={this.pausePlay}>[=>]</div>
       </div>
 
     );
