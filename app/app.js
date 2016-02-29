@@ -63,15 +63,15 @@ var SetTimerPause = React.createClass({
 /*** CountDown ***/
 var CountDown = React.createClass({
 
-countDownStart: function() {
-      this.interval = setInterval(this.tick, 1000);
-},
+  countDownStart: function() {
+        this.interval = setInterval(this.tick, 1000);
+  },
 
-reset: function() {
-    this.setState({
-      secondsElapsed: 300
-    });
-},
+  reset: function() {
+      this.setState({
+        secondsElapsed: 300
+      });
+  },
 
   getInitialState: function() {
     return {secondsElapsed: 300};
@@ -91,6 +91,7 @@ reset: function() {
   },
   render: function() {
     return(
+      <div className="countDownContainer">
       <div className="countDownComp">
         {this.state.secondsElapsed}
       <SetTimerUpDn />
@@ -99,6 +100,7 @@ reset: function() {
         <div className="setTimerPauseComp">[=>]</div>
       </div>
       </div>
+    </div>
     );
   }
 });
@@ -125,11 +127,9 @@ var TimerBox = React.createClass({
           <Title />
         </div>
 
+        <CountDown  />
 
-        <div className="countDownContainer">
-          <CountDown />
 
-        </div>
 
       </div>
 
