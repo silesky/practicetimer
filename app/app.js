@@ -13,7 +13,7 @@ console.log("app.js...");
 var BtnAddTimer = React.createClass({
   render: function() {
     return(
-      <div className="btnComp btnAddTimerComp">[+]</div>
+      <div className="btn btnComp btnAddTimerComp">[+]</div>
     );
 
   }
@@ -23,7 +23,7 @@ var BtnCloseTimer = React.createClass({
 
   render: function() {
     return(
-      <div className="btnComp btnCloseTimerComp">[-]</div>
+      <div className="btn btnComp btnCloseTimerComp">[-]</div>
     );
 
   }
@@ -107,15 +107,14 @@ var CountDown = React.createClass({
       timerText = "done.";
     }
     return (
+      <div>
+      <div className="countDownSettingsContainer">
 
-      <div className="countDownContainer">
 
         <input type="number" placeholder="new time" ref="editNum" />
-        <button label="stuff" type="button" onClick={this.edit, this.countDownStart}>OK</button>
+        <button label="stuff" type="button" onClick={this.edit}>OK</button>
         <div className="countDownBtnPausePlay btn"
             onClick={this.pausePlay}>[=>]</div>
-
-        <div>{timerText}</div>
 
         <div className="setTimerUpDnContainer btn">
           <div className="setTimerUpComp"
@@ -123,11 +122,14 @@ var CountDown = React.createClass({
           <div className="setTimerDnComp"
             onClick={this.decrementTime}>[dn]</div>
         </div>
-         <div className="countDownBtnReset btn"
+        <div className="countDownBtnReset btn"
           onClick={this.reset}>[r]</div>
 
-
       </div>
+      <div className="countDownText">
+        {timerText}
+      </div>
+</div>
 
 
     );
@@ -174,6 +176,7 @@ var Board = React.createClass({
     <div className="board">
       <TimerBox />
       <TimerBox />
+          <TimerBox />
     </div>
   );
   }
