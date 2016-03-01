@@ -3,7 +3,7 @@
     background-color: red;
     height: 400px;
     position: relative;
-    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-family: Arial;
     color: white;
     border-radius: 20px;
 }
@@ -42,6 +42,9 @@
 
 }
 
+.btn {
+  cursor: pointer;
+}
 .btnAddTimerComp {
 
 
@@ -51,6 +54,7 @@
 
 
 }
+
 
 .titleContainer {
         color: white;
@@ -82,14 +86,16 @@
 
 .setTimerUpDnContainer {
     font-size: 0.5em;
-    line-height: 1em;
+
 }
 
 .countDownBtnReset {
 }
 
 input[type="number"] {
-  font-size: inherit;
-  width: 21%;
+  font-size: 0.7em;
+  width: 25%;
   text-align: center;
+}
+align: center;
 }
