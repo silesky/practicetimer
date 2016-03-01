@@ -51,9 +51,11 @@ var CountDown = React.createClass({
 
   },
   countDownStop: function() {
+        this.setState({ticking: false});
         clearInterval(this.interval);
   },
   reset: function() {
+    this.countDownStop();
     var stateObj = this.getInitialState();
     var newNum = stateObj.secondsElapsed;
     this.setState({
@@ -73,7 +75,6 @@ var CountDown = React.createClass({
       console.log("pause-play");
       this.countDownStart();
     } else {
-      this.state.ticking = false;
       this.countDownStop();
     }
   },
