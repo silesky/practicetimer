@@ -41,18 +41,30 @@ var Title = React.createClass({
 
 /*** CountDown ***/
 var CountDown = React.createClass({
+  getInitialState: function() {
+    return {secondsElapsed: 10,
+                  ticking: false,
+                  paused: true};
+  },
+  componentDidMount: function() {
+    // (???) called right after render. setInterval takes calls this.tick every 10000ms...
+  },
+  componentWillUnmount: function() {
+    // (???) called at the end, right before the component is destroyed/deleted...
+    this.countDownStop();
+  },
   tick: function() {
     // every time this is called, counter goes down by 1
     this.setState({secondsElapsed: this.state.secondsElapsed - 1});
   },
   countDownStart: function() {
-        this.setState({ticking: true});
-        this.interval = setInterval(this.tick, 1000);
-
+      clearInterval(this.interval);
+      this.interval = setInterval(this.tick, 1000);
+      this.setState({ticking: true});
   },
   countDownStop: function() {
-        this.setState({ticking: false});
         clearInterval(this.interval);
+        this.setState({ticking: false});
   },
   reset: function() {
     this.countDownStop();
@@ -74,7 +86,9 @@ var CountDown = React.createClass({
      if (!this.state.ticking) {
       console.log("pause-play");
       this.countDownStart();
+      this.setState({ paused: false});
     } else {
+      this.setState({ paused: true});
       this.countDownStop();
     }
   },
@@ -84,31 +98,20 @@ var CountDown = React.createClass({
   decrementTime: function() {
     console.log("decrement");
   },
-  getInitialState: function() {
-    return {secondsElapsed: 2700,
-                  ticking: false};
-  },
-  componentDidMount: function() {
-    // (???) called right after render. setInterval takes calls this.tick every 10000ms...
-  },
-  componentWillUnmount: function() {
-    // (???) called at the end, right before the component is destroyed/deleted...
-    this.countDownStop();
-  },
+
   render: function() {
     var timerText;
     if (this.state.secondsElapsed > 0) {
       timerText = this.state.secondsElapsed;
     } else {
       timerText = "done.";
-      this.countDownStop();
     }
     return (
 
       <div className="countDownContainer">
 
         <input type="number" placeholder="new time" ref="editNum" />
-        <button label="stuff" type="button" onClick={this.edit}>OK</button>
+        <button label="stuff" type="button" onClick={this.edit, this.countDownStart}>OK</button>
         <div className="countDownBtnPausePlay btn"
             onClick={this.pausePlay}>[=>]</div>
 
@@ -165,11 +168,21 @@ var TimerBox = React.createClass({
 });
 
 
-
+var Board = React.createClass({
+  render: function() {
+    return (
+    <div className="board">
+      <TimerBox />
+      <TimerBox />
+    </div>
+  );
+  }
+});
 
 /* drum roll */
 ReactDOM.render(
-  <TimerBox />,
-  document.getElementById('timer')
+  <Board />,
+  document.body
 );
+
 //start static server
