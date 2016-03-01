@@ -50,6 +50,12 @@ var CountDown = React.createClass({
         secondsElapsed: newNum
       });
   },
+  edit: function() {
+    var newNum =  this.refs.editNum.getDOMNode().value;
+    this.setState({
+        secondsElapsed: newNum
+      });
+  },
   pausePlay: function() {
     console.log("pause-play");
   },
@@ -77,8 +83,11 @@ var CountDown = React.createClass({
   render: function() {
     return(
       <div className="countDownContainer">
-        <input type="number" value={this.state.secondsElapsed} />
 
+        <input type="number" placeholder="new time" ref="editNum" />
+        <input type="submit" onClick={this.edit}/>
+
+        <div>{this.state.secondsElapsed}</div>
           <div className="setTimerUpDnContainer">
             <div className="setTimerUpComp"
               onClick={this.incrementTime}>[up]</div>
