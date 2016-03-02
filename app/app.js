@@ -118,7 +118,9 @@ var TimerBox = React.createClass({
 
   remove: function(i) {
     console.log("removing");
-    this.props.onRemove();  //so this.remove calls onRemove() is just a roundabout way of calling literally this.onRemoveHandler (which decrements the state by one
+    console.log(this.props.boxcount + " boxes left.");
+    console.log("you removed index " + this.props.index);
+    this.props.onRemove(this.props.index);  //so this.remove calls onRemove() is just a roundabout way of calling literally this.onRemoveHandler (which decrements the state by one
   },
   render: function() {
     return(
@@ -156,11 +158,10 @@ var Board = React.createClass({
     };
   },
   add: function() {
-
     var n = this.state.boxcount + 1;
     this.setState({boxcount: n});
   },
-  onRemoveHandler: function() {
+  onRemoveHandler: function(index) {
     console.log('parent: removing...');
       var n = this.state.boxcount -1;
       this.setState({boxcount: n});
@@ -169,7 +170,7 @@ var Board = React.createClass({
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
-          timerBoxesArr.push(<TimerBox onRemove={this.onRemoveHandler}/>);
+          timerBoxesArr.push(<TimerBox boxcount={this.state.boxcount} index={i} onRemove={this.onRemoveHandler}/>);
       }
 
 
