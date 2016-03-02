@@ -10,18 +10,6 @@ import ReactDOM from 'react-dom';
 console.log("app.js...");
 
 
-var BtnAddTimer = React.createClass({
-  handleClick: function() {
-    console.log("add");
-  },
-  render: function() {
-    return(
-      <div onClick={this.handleClick} className="btn btnComp btnAddTimerComp">[+]</div>
-    );
-
-  }
-});
-
 var BtnCloseTimer = React.createClass({
 
   render: function() {
@@ -155,7 +143,7 @@ var TimerBox = React.createClass({
             <BtnCloseTimer />
           </div>
           <div className="topBarRight">
-            <BtnAddTimer />
+
           </div>
 
         </div>
@@ -174,24 +162,32 @@ var TimerBox = React.createClass({
   }
 });
 
-
+/** Parent **/
 var Board = React.createClass({
   getInitialState: function() {
     return {
-      boxcount: 3
+      boxcount: 1
     };
-
-
   },
+  add: function() {
+    console.log('add...');
+    var n = this.state.boxcount + 1;
+    this.setState({boxcount: n});
+  },
+
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
           timerBoxesArr.push(<TimerBox />);
-      };
+      }
+
+
     return (
     <div className="board">
       {timerBoxesArr}
-    </div>
+      <div onClick={this.add} className="btn btnComp btnAddTimerComp">[+]</div>
+      </div>
+
   );
   }
 });
