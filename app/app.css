@@ -40,18 +40,17 @@
     text-align: center;
     vertical-align: middle;
     background-color: yellow;
-     color: black;width: 30%;}
+    color: black;
+     }
 
 .btn {
   cursor: pointer;
 }
 .btnAddTimerComp {
-
-
+  width: 30%;
 }
 
 .btnCloseTimerComp {
-
 
 }
 

@@ -115,13 +115,18 @@ var CountDown = React.createClass({
 
 
 var TimerBox = React.createClass({
+
+  remove: function(i) {
+    console.log("removing");
+    this.props.onRemove();  //so this.remove calls onRemove() is just a roundabout way of calling literally this.onRemoveHandler (which decrements the state by one
+  },
   render: function() {
     return(
-      <div className="timerBox">
+      <div className="timerBox" onRemove={this.remove}>
 
         <div className="topBarContainer">
           <div className="topBarLeft">
-            <div className="btn btnComp btnCloseTimerComp">[-]</div>
+            <div onClick={this.remove} className="btn btnComp btnCloseTimerComp">[-]</div>
           </div>
           <div className="topBarRight">
 
@@ -151,20 +156,26 @@ var Board = React.createClass({
     };
   },
   add: function() {
-    console.log('add...');
+
     var n = this.state.boxcount + 1;
     this.setState({boxcount: n});
+  },
+  onRemoveHandler: function() {
+    console.log('parent: removing...');
+      var n = this.state.boxcount -1;
+      this.setState({boxcount: n});
   },
 
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
-          timerBoxesArr.push(<TimerBox />);
+          timerBoxesArr.push(<TimerBox onRemove={this.onRemoveHandler}/>);
       }
 
 
     return (
-    <div className="board">
+    <div className="board" >
+
       {timerBoxesArr}
       <div onClick={this.add} className="btn btnComp btnAddTimerComp">[+]</div>
       </div>
