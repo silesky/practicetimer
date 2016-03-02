@@ -10,25 +10,6 @@ import ReactDOM from 'react-dom';
 console.log("app.js...");
 
 
-var BtnCloseTimer = React.createClass({
-
-  render: function() {
-    return(
-      <div className="btn btnComp btnCloseTimerComp">[-]</div>
-    );
-
-  }
-});
-
-var Title = React.createClass({
-  render: function() {
-    return(
-      <div className="titleComp">Practicing Guitar</div>
-    );
-
-  }
-});
-
 
 /*** CountDown ***/
 var CountDown = React.createClass({
@@ -140,7 +121,7 @@ var TimerBox = React.createClass({
 
         <div className="topBarContainer">
           <div className="topBarLeft">
-            <BtnCloseTimer />
+            <div className="btn btnComp btnCloseTimerComp">[-]</div>
           </div>
           <div className="topBarRight">
 
@@ -148,7 +129,7 @@ var TimerBox = React.createClass({
 
         </div>
         <div className="titleContainer">
-          <Title />
+            <div className="titleComp">Practicing Guitar</div>
         </div>
 
         <CountDown />
