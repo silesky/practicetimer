@@ -113,7 +113,7 @@ var CountDown = React.createClass({
 /***/
 
 
-
+/* Child inherits props */
 var TimerBox = React.createClass({
 
   remove: function(i) {
@@ -166,7 +166,7 @@ var Board = React.createClass({
       var n = this.state.boxcount -1;
       this.setState({boxcount: n});
   },
-
+/* parent gives props as attributes */
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
