@@ -11,9 +11,12 @@ console.log("app.js...");
 
 
 var BtnAddTimer = React.createClass({
+  handleClick: function() {
+    console.log("add");
+  },
   render: function() {
     return(
-      <div className="btn btnComp btnAddTimerComp">[+]</div>
+      <div onClick={this.handleClick} className="btn btnComp btnAddTimerComp">[+]</div>
     );
 
   }
@@ -94,12 +97,14 @@ var CountDown = React.createClass({
   },
   incrementTime: function() {
     console.log("increment");
+
   },
   decrementTime: function() {
     console.log("decrement");
   },
 
   render: function() {
+
     var timerText;
     if (this.state.secondsElapsed > 0) {
       timerText = this.state.secondsElapsed;
@@ -171,12 +176,21 @@ var TimerBox = React.createClass({
 
 
 var Board = React.createClass({
+  getInitialState: function() {
+    return {
+      boxcount: 3
+    };
+
+
+  },
   render: function() {
+    var timerBoxesArr = [];
+      for (var i = 0; i < this.state.boxcount; i++) {
+          timerBoxesArr.push(<TimerBox />);
+      };
     return (
     <div className="board">
-      <TimerBox />
-      <TimerBox />
-          <TimerBox />
+      {timerBoxesArr}
     </div>
   );
   }
