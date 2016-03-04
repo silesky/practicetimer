@@ -42,7 +42,7 @@ var Title = React.createClass({
   render: function() {
     return (
       <div>
-      <input style={this.state.style} type="text" onBlur={this.handleTitleBlur} onFocus={this.handleTitleInput}/>
+      <input style={this.state.style} type="text" onBlur={this.handleTitleBlur} onChange={this.handleTitleInput}/>
       <div>{this.state.titletext}</div>
       </div>
     );
