@@ -3,16 +3,50 @@ esversion: 6  */
 /* TODO
 . add an edit button (when you click the number, it should change to a form)
 . find a way to pause the timer... create a "ticking 'state'"
-*/
+
 /* webpack --progress --colors --watch */
 import React from 'react';
 import ReactDOM from 'react-dom';
 console.log("app.js...");
-
-
+//todo-- change from refs to class
+//created a Title component, and added an input box. right now it just inherits the props... input box should use an onchange e ent
 
 /*** CountDown ***/
+
+
+var Title = React.createClass({
+
+  getInitialState: function() {
+      return {
+        titletext: "default state",
+      };
+  },
+
+  handleTitleInput: function(e) {
+    console.log("handleTitleInput: " + e.target.value);
+    this.setState({titletext: e.target.value});
+
+  },
+
+  handleTitleBlur: function() {
+    this.style = {
+      background: 'red'
+    };
+  },
+
+  render: function() {
+    return (
+      <div>
+      <input type="text" onBlur={this.handleTitleBlur} onChange={this.handleTitleInput}/>
+      <div>{this.state.titletext}</div>
+      </div>
+    );
+  }
+
+});
+
 var CountDown = React.createClass({
+
   getInitialState: function() {
     return {secondsElapsed: 10,
                   ticking: false,
@@ -131,12 +165,11 @@ var TimerBox = React.createClass({
             <div onClick={this.remove} className="btn btnComp btnCloseTimerComp">[-]</div>
           </div>
           <div className="topBarRight">
-
           </div>
 
         </div>
         <div className="titleContainer">
-            <div className="titleComp">Practicing Guitar</div>
+            <div className="titleComp"><Title /></div>
         </div>
 
         <CountDown />
