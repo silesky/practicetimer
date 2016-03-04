@@ -4,12 +4,15 @@ esversion: 6  */
 . add an edit button (when you click the number, it should change to a form)
 . find a way to pause the timer... create a "ticking 'state'"
 
-/* webpack --progress --colors --watch */
+/*
+webpack --progress --colors --watch
+*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 console.log("app.js...");
-//todo-- change from refs to class
+//todo-- change from refs to props
 //created a Title component, and added an input box. right now it just inherits the props... input box should use an onchange e ent
+// make up down work
 
 /*** CountDown ***/
 
@@ -104,11 +107,15 @@ var CountDown = React.createClass({
     }
   },
   incrementTime: function() {
-    console.log("increment");
+    this.setState({
+      secondsElapsed: this.state.secondsElapsed + 1
+    });
 
   },
   decrementTime: function() {
-    console.log("decrement");
+    this.setState({
+      secondsElapsed: this.state.secondsElapsed - 1
+    });
   },
 
   render: function() {
