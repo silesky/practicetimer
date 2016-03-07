@@ -88,14 +88,13 @@ var CountDown = React.createClass({
         secondsElapsed: newNum
       });
   },
-
-
-  edit: function() {
-    var v =  this.refs.editNum.getDOMNode().value;
-    this.setState({
-        secondsElapsed: v
+  handleNumInput: function(e) {
+      console.log(e.target.value);
+      this.setState({
+        secondsElapsed: e.target.value
       });
   },
+
   pausePlay: function() {
      if (!this.state.ticking) {
       console.log("pause-play");
@@ -131,7 +130,7 @@ var CountDown = React.createClass({
       <div className="countDownSettingsContainer">
 
 
-        <input type="number" placeholder="new time" ref="editNum" />
+        <input type="number" placeholder="new time" onChange={this.handleNumInput} />
         <button label="stuff" type="button" onClick={this.edit}>OK</button>
         <div className="countDownBtnPausePlay btn"
             onClick={this.pausePlay}>[=>]</div>
