@@ -1,5 +1,6 @@
 //mocha test
 
+
 var assert = require('assert');
 describe('Array', function() {
   describe('#indexOf()', function () {
@@ -9,3 +10,5 @@ describe('Array', function() {
     });
   });
 });
+console.log("nice");
+var app = require('../app/app');
