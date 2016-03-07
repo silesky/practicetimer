@@ -232,7 +232,7 @@ var Board = React.createClass({
 /* drum roll */
 ReactDOM.render(
   <Board />,
-  document.body
+  document.getElementById('timer')
 );
 
 //start static server
