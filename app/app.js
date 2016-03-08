@@ -12,6 +12,9 @@ import ReactDOM from 'react-dom';
 //var CountDownTotal = require('./CountDownTotal');
 import CountDownTotal from './CountDownTotal';
 console.log("app.js...");
+//todo-- change from refs to props
+//created a Title component, and added an input box. right now it just inherits the props... input box should use an onchange e ent
+// make up down work
 
 /*** CountDown ***/
 
@@ -55,7 +58,6 @@ var Title = React.createClass({
 
 });
 
-/* C O U N T D O W N */
 var CountDown = React.createClass({
 
   getInitialState: function() {
@@ -72,10 +74,7 @@ var CountDown = React.createClass({
   },
   tick: function() {
     // every time this is called, counter goes down by 1
-    var currentCountDown = this.state.secondsElapsed - 1;
-    this.setState({secondsElapsed: currentCountDown});
-    this.handleAddToTotalTime(currentCountDown);
-    return currentCountDown;
+    this.setState({secondsElapsed: this.state.secondsElapsed - 1});
   },
   countDownStart: function() {
       clearInterval(this.interval);
@@ -100,13 +99,7 @@ var CountDown = React.createClass({
         secondsElapsed: e.target.value
       });
   },
-  handleAddToTotalTime: function(newTime) {
 
-        this.props.handleSetTotalTimeInState(newTime);
-        console.log("calling CountDown.handleAddToTotalTime..");
-
-
-  },
   pausePlay: function() {
      if (!this.state.ticking) {
       console.log("pause-play");
@@ -129,16 +122,9 @@ var CountDown = React.createClass({
     });
   },
 
-
   render: function() {
 
     var timerText;
-
- //123
-
-
-
-
     if (this.state.secondsElapsed > 0) {
       timerText = this.state.secondsElapsed;
     } else {
@@ -148,6 +134,8 @@ var CountDown = React.createClass({
     return (
       <div>
       <div className="countDownSettingsContainer">
+
+
         <input type="number" placeholder="new time" onChange={this.handleNumInput} />
         <button label="stuff" type="button" onClick={this.edit}>OK</button>
         <div className="countDownBtnPausePlay btn"
@@ -176,10 +164,8 @@ var CountDown = React.createClass({
 /***/
 
 
-
-/* T I M E R B O X */
+/* Child inherits props */
 var TimerBox = React.createClass({
-
 
   remove: function(i) {
     console.log("removing");
@@ -203,7 +189,7 @@ var TimerBox = React.createClass({
             <div className="titleComp"><Title /></div>
         </div>
 
-        <CountDown  handleSetTotalTimeInState={this.props.handleSetTotalTimeInState} />
+        <CountDown />
 
 
 
@@ -214,23 +200,12 @@ var TimerBox = React.createClass({
   }
 });
 
-/* B O A R D */
+/** Parent **/
 var Board = React.createClass({
   getInitialState: function() {
     return {
-      boxcount: 1,
-      totaltime: 0
+      boxcount: 1
     };
-  },
-
-  handleSetTotalTimeInState: function(newCountDown) { //123
-    var oldTime = 0;
-    var newTime = newCountDown;
-    this.setState({
-      totaltime: newCountDown
-    });
-
-    console.log("calling Board.handleSetTotalTimeInState...");
   },
   add: function() {
     var n = this.state.boxcount + 1;
@@ -241,19 +216,20 @@ var Board = React.createClass({
       var n = this.state.boxcount -1;
       this.setState({boxcount: n});
   },
-
+/* parent gives props as attributes */
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
-          timerBoxesArr.push(<TimerBox handleSetTotalTimeInState={this.handleSetTotalTimeInState} boxcount={this.state.boxcount} index={i} onRemove={this.onRemoveHandler}/>);
+          timerBoxesArr.push(<TimerBox boxcount={this.state.boxcount} index={i} onRemove={this.onRemoveHandler}/>);
       }
 
-// 123
+
     return (
-    <div className="board">
-      <CountDownTotal totalTime={this.state.totaltime}  />
+    <div className="board" >
+      <CountDownTotal />
+
       {timerBoxesArr}
-      <div onClick={this.add}  className="btn btnComp btnAddTimerComp">[+]</div>
+      <div onClick={this.add} className="btn btnComp btnAddTimerComp">[+]</div>
       </div>
 
   );
