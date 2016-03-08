@@ -8,7 +8,6 @@ var CountDownTotal = React.createClass({
                   paused: true};
   },
   componentDidMount: function() {
-    this.countDownStart();
     // (???) called right after render. setInterval takes calls this.tick every 10000ms...
   },
   componentWillUnmount: function() {
@@ -19,7 +18,6 @@ var CountDownTotal = React.createClass({
     // every time this is called, counter goes down by 1
     var currentCountDown = this.state.totalSeconds - 1;
     this.setState({totalSeconds: currentCountDown});
-    return currentCountDown;
   },
   countDownStart: function() {
       clearInterval(this.interval);
@@ -31,7 +29,7 @@ var CountDownTotal = React.createClass({
         this.setState({ticking: false});
   },
   handle: function(e) {
-    console.log(e.target.value);
+    console.log(e);
   },
 
 
@@ -43,12 +41,15 @@ var CountDownTotal = React.createClass({
 
     if (this.state.totalSeconds > 0) {
       timerText = this.state.totalSeconds + " s";
+
     } else {
+     clearInterval(this.interval);
       timerText = "done.";
+
     }
     return (
-      <div className="countDownTotalContainer">
-        <div className="countDownTotalNum">
+      <div className="countDownTotalContainer" onClick={this.countDownStart} onChange={this.handle(inheritedTime)}>
+        <div className="countDownTotalNum" >
           {timerText}
         </div>
       </div>
