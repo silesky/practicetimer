@@ -144,6 +144,7 @@ var CountDown = React.createClass({
       timerText = this.state.secondsElapsed;
     } else {
       timerText = "done.";
+      clearInterval(this.interval);
     }
     return (
       <div>
