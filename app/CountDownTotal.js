@@ -6,7 +6,8 @@ var CountDownTotal = React.createClass({
   render: function() {
     return (
       <div className="countDownTotalContainer">
-        <div className="countDownTotalNum">5:00
+        <div className="countDownTotalNum">
+          {this.props.totalTime} s
         </div>
       </div>
     );
