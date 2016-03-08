@@ -5,7 +5,10 @@ var CountDownTotal = React.createClass({
 
   render: function() {
     return (
-      <div className="CountDownTotal">I'm a countDown Total BITCH</div>
+      <div className="countDownTotalContainer">
+        <div className="countDownTotalNum">5:00
+        </div>
+      </div>
     );
   }
 

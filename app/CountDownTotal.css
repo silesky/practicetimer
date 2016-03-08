@@ -1,4 +1,15 @@
-.CountDownTotal {
+.countDownTotalContainer {
   height: 100px;
   background-color: red;
+
+}
+.countDownTotalNum {
+  font-family: Arial;
+  color: white;
+  font-size: 3em;
+  width: 25%;
+  margin: auto;
+  vertical-align: middle;
+  line-height: 100px;
+
 }
