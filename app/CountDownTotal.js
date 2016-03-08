@@ -37,12 +37,9 @@ var CountDownTotal = React.createClass({
 
 // {this.props.totalTime} is what I set up, but I really need something else
   render: function() {
-
+    var inheritedTime = this.props.totalTime;
+    console.log("inheritedTime:" + inheritedTime);
     var timerText;
-
- //123
-
-
 
     if (this.state.totalSeconds > 0) {
       timerText = this.state.totalSeconds + " s";
