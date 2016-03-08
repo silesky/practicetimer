@@ -11,6 +11,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //var CountDownTotal = require('./CountDownTotal');
 import CountDownTotal from './CountDownTotal';
+import CountDownTotal2 from './CountDownTotal';
 console.log("app.js...");
 
 /*** CountDown ***/
