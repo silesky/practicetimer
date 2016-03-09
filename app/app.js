@@ -11,6 +11,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //var CountDownTotal = require('./CountDownTotal');
 import CountDownTotal from './CountDownTotal';
+import CountDownTotal2 from './CountDownTotal';
 console.log("app.js...");
 
 /*** CountDown ***/
@@ -181,8 +182,6 @@ var TimerBox = React.createClass({
     this.props.onRemove(this.props.index);  //so this.remove calls onRemove() is just a roundabout way of calling literally this.onRemoveHandler (which decrements the state by one
   },
   render: function() {
-
-    //this.props.handleSetTotalTimeinState is just passing through
     return(
       <div className="timerBox" onRemove={this.remove}>
 
@@ -219,8 +218,8 @@ var Board = React.createClass({
   },
 
   handleSetTotalTimeInState: function(newCountDown) { //123
-
-    var newTime = this.state.totaltime + newCountDown;
+    var oldTime = 0;
+    var newTime = newCountDown;
     this.setState({
       totaltime: newCountDown
     });
@@ -237,15 +236,13 @@ var Board = React.createClass({
       this.setState({boxcount: n});
   },
 
-// setting up handleSetTotalTimeinState so we can set the totalTime propery from child modules
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
           timerBoxesArr.push(<TimerBox handleSetTotalTimeInState={this.handleSetTotalTimeInState} boxcount={this.state.boxcount} index={i} onRemove={this.onRemoveHandler}/>);
       }
 
-//passing {this.state.totaltime} as the totalTime property to CountDownTotal.js
-
+// 123
     return (
     <div className="board">
       <CountDownTotal totalTime={this.state.totaltime}  />
