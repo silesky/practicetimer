@@ -75,7 +75,7 @@ var CountDown = React.createClass({
     // every time this is called, counter goes down by 1
     var currentCountDown = this.state.secondsElapsed - 1;
     this.setState({secondsElapsed: currentCountDown});
-    this.handleAddToTotalTime(currentCountDown);
+    this.props.handleSetTotalTimeInState(currentCountDown);
     return currentCountDown;
   },
   countDownStart: function() {
@@ -100,13 +100,6 @@ var CountDown = React.createClass({
       this.setState({
         secondsElapsed: e.target.value
       });
-  },
-  handleAddToTotalTime: function(newTime) {
-
-        this.props.handleSetTotalTimeInState(newTime);
-        console.log("calling CountDown.handleAddToTotalTime..");
-
-
   },
   pausePlay: function() {
      if (!this.state.ticking) {
