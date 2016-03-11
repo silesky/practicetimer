@@ -57,7 +57,7 @@ var Title = React.createClass({
   }
 
 });
-
+/* C o u n t D o w n: timerbox and board's kid */
 var CountDown = React.createClass({
 
   getInitialState: function() {
@@ -99,7 +99,6 @@ var CountDown = React.createClass({
         secondsElapsed: e.target.value
       });
   },
-
   pausePlay: function() {
      if (!this.state.ticking) {
       console.log("pause-play");
@@ -121,7 +120,9 @@ var CountDown = React.createClass({
       secondsElapsed: this.state.secondsElapsed - 1
     });
   },
-
+  handleRefTotalTime: function() {
+    return "CountDown.handleRefTotalTime called...";
+  },
   render: function() {
 
     var timerText;
@@ -161,12 +162,19 @@ var CountDown = React.createClass({
   }
 });
 
-/***/
 
 
-/* Child inherits props */
+/* T i m e r B o x: board's kid */
 var TimerBox = React.createClass({
 
+componentDidMount: function() {
+     try {
+      console.log("TimerBox.componentDidMount calling reference...");
+       this.refs.countDownRef.handleRefTotalTime(); //works
+     } catch(err) {
+        console.log('Error from TimerBox.componentDidMount(): reference not called');
+    }
+  },
   remove: function(i) {
     console.log("removing");
     console.log(this.props.boxcount + " boxes left.");
@@ -189,7 +197,7 @@ var TimerBox = React.createClass({
             <div className="titleComp"><Title /></div>
         </div>
 
-        <CountDown />
+        <CountDown ref="countDownRef" />
 
 
 
@@ -200,8 +208,25 @@ var TimerBox = React.createClass({
   }
 });
 
-/** Parent **/
+/** B o a r d * */
+
 var Board = React.createClass({
+  componentDidMount: function() {
+
+      console.log("Board.componentDidMount calling reference...");
+      try {
+         //it's weird, but the interface for the previous component (TimerBox)  is named (refTimerBox) below,
+         // i.e. <TimerBox ref=...
+         // so we can both name the interface and call methods on it without really even looking at it!
+        //this.refs.myRef.handleRefTotalTime(); //fail
+        this.refs.refTimerBox.componentDidMount();
+      }
+      catch(err) {
+        console.log("Board.componentDidMount: ERROR, reference not called");
+        console.log(err);
+      }
+
+    },
   getInitialState: function() {
     return {
       boxcount: 1
@@ -220,17 +245,18 @@ var Board = React.createClass({
   render: function() {
     var timerBoxesArr = [];
       for (var i = 0; i < this.state.boxcount; i++) {
-          timerBoxesArr.push(<TimerBox boxcount={this.state.boxcount} index={i} onRemove={this.onRemoveHandler}/>);
+          timerBoxesArr.push(<TimerBox ref="refTimerBox" boxcount={this.state.boxcount} index={i} onRemove={this.onRemoveHandler}/>);
       }
 
 
     return (
     <div className="board" >
       <CountDownTotal />
-
-      {timerBoxesArr}
-      <div onClick={this.add} className="btn btnComp btnAddTimerComp">[+]</div>
-      </div>
+        {timerBoxesArr}
+        <div onClick={this.add} className="btn btnComp btnAddTimerComp">
+          [+]
+        </div>
+    </div>
 
   );
   }
