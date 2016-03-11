@@ -1,7 +1,6 @@
 .countDownTotalContainer {
   height: 100px;
-  background-color: red;
-
+  background-color: grey;
 }
 .countDownTotalNum {
   font-family: Arial;
