@@ -10,7 +10,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // var CountDownTotal = require('./CountDownTotal');
 import CountDownTotal from './CountDownTotal';
-console.log('app.js...');
+import $ from 'jquery';
+import draggable from 'jquery-ui';
+
+
 // todo-- change from refs to props
 // created a Title component, and added an input box. right now it just inherits the props... input box should use an onchange e ent
 // make up down work
@@ -174,7 +177,8 @@ var CountDown = React.createClass({
     /* T i m e r B o x: board's kid */
 var TimerBox = React.createClass({
 
-  componentDidMount: function () {
+  componentDidMount: function() {
+    $(this.getDOMNode()).draggable();
     try {
           console.log('TimerBox.componentDidMount calling reference...');
           this.refs.countDownRef.handleRefTotalTime(); // works
