@@ -1,8 +1,11 @@
+body {
+    background-color: #2c2c2c;
+    color: white;
+    font-family: Arial;
+}
 
 .timerBox {
-  font-family: Arial;
   background-color: green;
-  color: white;
   height: 250px;
   position: relative;
   width: 30%;
@@ -98,7 +101,7 @@ input[type="number"] {
 .board {
   width: 100vw;
   height: 100vh;
-  background-color: black;
+
 }
 
 .countDownText {
