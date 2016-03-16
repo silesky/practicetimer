@@ -1,47 +1,42 @@
 
 .timerBox {
-    font-family: Arial;
-    background-color: green;
-    color: white;
-    height: 250px;
-    position: relative;
-    width: 30%;
-    border-radius: 20px;
-    border: 3px solid;
+  font-family: Arial;
+  background-color: green;
+  color: white;
+  height: 250px;
+  position: relative;
+  width: 30%;
+  border-radius: 20px;
+  border: 3px solid;
 }
 
 .topBarContainer {
-     display: flex;
-     flex-direction: row;
-
+ display: flex;
+ flex-direction: row;
 }
 
 
 .topBarLeft {
-   position: absolute;
-   left: 1%;
-   margin: 1%;
+ position: absolute;
+ left: 1%;
+ margin: 1%;
 }
 
 .topBarRight {
-    position: absolute;
-    right: 1%;
-    margin: 1%;
-
-
-
+  position: absolute;
+  right: 1%;
+  margin: 1%;
 }
 
 
 .btnComp {
-
-    font-size: 2em;
-    border: 3px dotted grey;
-    text-align: center;
-    vertical-align: middle;
-    background-color: yellow;
-    color: black;
-     }
+  font-size: 2em;
+  border: 3px dotted grey;
+  text-align: center;
+  vertical-align: middle;
+  background-color: yellow;
+  color: black;
+}
 
 .btn {
   cursor: pointer;
@@ -60,13 +55,13 @@
 
 
 .titleContainer {
-        color: white;
-        background-color: green;
-        font-size: 1em;
-        position: absolute;
-        top: 30%;
-        width: 100%;
-        text-align: center;
+  color: white;
+  background-color: green;
+  font-size: 1em;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
 }
 
 
@@ -74,22 +69,21 @@
 }
 
 .countDownSettingsContainer {
-    display: flex;
-    justify-content: center;
-    font-size: 2em;
-    background-color: inherit;
-    position: absolute;
-    //border: 1px dotted white;
-    width: 100%;
-    top: 50%;
-    text-align: center;
-    /* border-radius: inherit; */
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  background-color: inherit;
+  position: absolute;
+  //border: 1px dotted white;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  /* border-radius: inherit; */
 }
 
 
 .setTimerUpDnContainer {
-    font-size: 0.5em;
-
+  font-size: 0.5em;
 }
 
 .countDownBtnReset {
@@ -106,10 +100,10 @@ input[type="number"] {
   height: 100vh;
   background-color: black;
 }
+
 .countDownText {
   font-size: 3em;
   position: absolute;
   top: 70%;
   left: 30%;
-
 }
