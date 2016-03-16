@@ -46,8 +46,12 @@
 .btn {
   cursor: pointer;
 }
+
 .btnAddTimerComp {
-  width: 30%;
+  width: 10%;
+  position: absolute;
+  top: 0;
+  left: 90%;
 }
 
 .btnCloseTimerComp {

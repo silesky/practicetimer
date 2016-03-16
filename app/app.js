@@ -275,12 +275,13 @@ var Board = React.createClass({
     return (
             <div className="board" >
               <CountDownTotal />
-              {timerBoxesArr}
               <div
                 onClick={this.add}
                 className="btn btnComp btnAddTimerComp">
                 [+]
               </div>
+              {timerBoxesArr}
+              
             </div>
           );
   },
