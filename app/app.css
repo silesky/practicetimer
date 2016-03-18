@@ -104,9 +104,20 @@ input[type="number"] {
 
 }
 
-.countDownText {
-  font-size: 3em;
+.countDownTextContainer {
+  border: 3px solid white;
+  border-radius: 0.5em;
+  padding: 1%;
   position: absolute;
   top: 70%;
-  left: 40%;
+  left: 20%;
+  right: 20%;
+  
 }
+
+.countDownText {
+  font-size: 3em;
+  text-align: center;
+  margin: auto;
+}
+

@@ -162,8 +162,8 @@ var CountDown = React.createClass({
                 onClick={this.reset}>[r]</div>
 
             </div>
-            <div className="countDownText">
-              {timerText}
+            <div className="countDownTextContainer">
+              <div className="countDownText">{timerText}</div>
             </div>
           </div>
 
