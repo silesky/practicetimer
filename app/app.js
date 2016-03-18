@@ -60,7 +60,7 @@ var Title = React.createClass({
   }
 
 });
-  /* C o u n t D o w n: timerbox and board's kid */
+  /* C o u n t D o w n: timerbox and boards kid */
 var CountDown = React.createClass({
 
   getInitialState: function () {
@@ -174,7 +174,7 @@ var CountDown = React.createClass({
 
 
 
-    /* T i m e r B o x: board's kid */
+    /* T i m e r B o x: boards kid */
 var TimerBox = React.createClass({
 
   componentDidMount: function() {
@@ -272,16 +272,15 @@ var Board = React.createClass({
                 onRemove={this.onRemoveHandler} />
             );
           }
-    return (
-            <div className="board" >
+    return(
+            <div className="board">
               <CountDownTotal />
-              <div
-                onClick={this.add}
-                className="btn btnComp btnAddTimerComp">
+              <div 
+              className="btn btnComp btnAddTimerComp"
+                onClick={this.add}>
                 [+]
               </div>
               {timerBoxesArr}
-              
             </div>
           );
   },
