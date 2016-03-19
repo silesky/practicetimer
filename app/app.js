@@ -1,8 +1,4 @@
 
-/* TODO
-. add an edit button (when you click the number, it should change to a form)
-. find a way to pause the timer... create a "ticking 'state'"
-
 /*
 webpack --progress --colors --watch
 */
@@ -13,10 +9,6 @@ import CountDownTotal from './CountDownTotal';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
 
-
-// todo-- change from refs to props
-// created a Title component, and added an input box. right now it just inherits the props... input box should use an onchange e ent
-// make up down work
 
 /** * CountDown ***/
 
@@ -123,9 +115,7 @@ var CountDown = React.createClass({
         secondsElapsed: this.state.secondsElapsed - 1
       });
   },
-  handleRefTotalTime: function () {
-    return 'CountDown.handleRefTotalTime called...';
-  },
+ 
   render: function () {
 
     var timerText;
@@ -179,12 +169,6 @@ var TimerBox = React.createClass({
 
   componentDidMount: function() {
     $(this.getDOMNode()).draggable();
-    try {
-          console.log('TimerBox.componentDidMount calling reference...');
-          this.refs.countDownRef.handleRefTotalTime(); // works
-        } catch (err) {
-          console.log('Error from TimerBox.componentDidMount(): reference not called');
-        }
   },
   remove: function (i) {
     console.log('removing');
@@ -214,7 +198,7 @@ var TimerBox = React.createClass({
                 </div>
               </div>
 
-              <CountDown ref="countDownRef" />
+              <CountDown />
 
 
 
@@ -228,24 +212,7 @@ var TimerBox = React.createClass({
       /** B o a r d * */
 
 var Board = React.createClass({
-  componentDidMount: function () {
-
-    console.log('Board.componentDidMount calling reference...');
-    try {
-            /* it's weird, but the interface for the previous component (TimerBox)
-             is named (refTimerBox) below,
-            i.e. <TimerBox ref=...
-             so we can both name the interface and call methods on it without really
-            even looking at it!
-            this.refs.myRef.handleRefTotalTime(); //fail */
-            this.refs.refTimerBox.componentDidMount();
-          }
-          catch (err) {
-            console.log('Board.componentDidMount: ERROR, reference not called');
-            console.log(err);
-          }
-
-  },
+  
   getInitialState: function () {
     return {
             boxcount: 1
@@ -266,7 +233,6 @@ var Board = React.createClass({
     for (var i = 0; i < this.state.boxcount; i++) {
       timerBoxesArr.push(
               <TimerBox
-                ref="refTimerBox"
                 boxcount={this.state.boxcount}
                 index={i}
                 onRemove={this.onRemoveHandler} />
