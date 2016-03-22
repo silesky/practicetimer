@@ -1,7 +1,7 @@
 body {
-    background-color: #2c2c2c;
-    color: white;
-    font-family: Arial;
+  background-color: #2c2c2c;
+  color: white;
+  font-family: Arial;
 }
 
 .timerBox {
@@ -48,7 +48,7 @@ body {
 .btnAddTimerComp {
   width: 10%;
   position: fixed;
- 
+  
   left: 90%;
 }
 

@@ -20,26 +20,26 @@ var Title = React.createClass({
   handleTitleBlur: function () {
     this.setState({
       style: { background: 'red',
-        color: 'white' }
+      color: 'white' }
     });
 
   },
 
   render: function () {
     return (
-        <div>
-          <input
-            style={this.state.style}
-            type="text"
-            onBlur={this.handleTitleBlur}
-            onChange={this.handleTitleInput} />
-          <div>
-            {this.state.titletext}
-          </div>
-        </div>
+      <div>
+      <input
+      style={this.state.style}
+      type="text"
+      onBlur={this.handleTitleBlur}
+      onChange={this.handleTitleInput} />
+      <div>
+      {this.state.titletext}
+      </div>
+      </div>
       );
-  }
+    }
 
-});
+  });
 
-module.exports = Title;
+  module.exports = Title;

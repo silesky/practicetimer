@@ -12,10 +12,6 @@ import $ from 'jquery';
 import draggable from 'jquery-ui';
 
 
-/** * CountDown ***/
-
-
-
     /* T i m e r B o x: boards kid */
 var TimerBox = React.createClass({
 
