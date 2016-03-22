@@ -1,0 +1,13 @@
+.titleContainer {
+  color: white;
+  background-color: green;
+  font-size: 1em;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+}
+
+
+.titleComp {
+}
