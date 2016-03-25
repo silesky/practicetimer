@@ -7,10 +7,41 @@ import ReactDOM from 'react-dom';
 import CountDownTotal from './CountDownTotal';
 import CountDown from './CountDown';
 import Title from './Title';
-
 import $ from 'jquery';
 import draggable from 'jquery-ui';
+import { connect } from 'react-redux';
+import { createStore } from 'redux';
 
+
+/* 
+TimerUp
+TimerDn
+*/
+function reducer(state, action) {
+  console.log("reducer called");
+        if (typeof state === 'undefined') {
+          return 0
+        }
+        switch (action.type) {
+          case 'INCREMENT':
+            console.log(state + 1);
+            return state + 1
+          case 'DECREMENT':
+            return state - 1
+            console.log(state - 1);
+          default:
+            return state
+            console.log(state);
+
+        }
+      }
+
+
+ document.getElementById('timer').addEventListener('click', function() {
+  store.dispatch({ type: 'INCREMENT' });
+ })     
+
+let store = createStore(reducer);
 
     /* T i m e r B o x: boards kid */
 var TimerBox = React.createClass({
