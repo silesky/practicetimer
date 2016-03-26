@@ -1,8 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import { createStore } from 'redux';
 
+/* put this in reducer.js eventually */
+function reducer(state, action) {
+        if (typeof state === 'undefined') {
+          return 0
+        }
+        switch (action.type) {
+          case 'INCREMENT':
+            console.log('INCREMENT');
+            console.log("state:" + (state + 1));
+            return state + 1;
+            break;
+          case 'PAUSEPLAY':
+            console.log('PAUSEPLAY');
+            console.log("state:" + 0);
+            return 0;
+            break;
+          case 'DECREMENT':
+            console.log('DECREMENT');
+            console.log("state:" + (state - 1));
+            return state - 1;
+            break;
+          
+            break;
+          default:
+            return state
+            console.log(state);
+
+        }
+      }
+    
+
+let store = createStore(reducer);
   /* C o u n t D o w n: timerbox and boards kid */
 var CountDown = React.createClass({
+
 
   getInitialState: function () {
     return { secondsElapsed: 10,
@@ -44,8 +79,8 @@ var CountDown = React.createClass({
       });
   },
   pausePlay: function () {
+    store.dispatch({ type: 'PAUSEPLAY' });
     if (!this.state.ticking) {
-        console.log('pause-play');
         this.countDownStart();
         this.setState({ paused: false });
       } else {
@@ -53,13 +88,15 @@ var CountDown = React.createClass({
         this.countDownStop();
       }
   },
-  incrementTime: function () {
+  handleTimerUp: function () {
+    store.dispatch({ type: 'INCREMENT' });
     this.setState({
         secondsElapsed: this.state.secondsElapsed + 1
       });
-
   },
-  decrementTime: function () {
+  handleTimerDown: function () {
+    console.log('decrement');
+    store.dispatch({ type: 'DECREMENT' });
     this.setState({
         secondsElapsed: this.state.secondsElapsed - 1
       });
@@ -91,10 +128,10 @@ var CountDown = React.createClass({
               <div className="setTimerUpDnContainer btn">
                 <div
                   className="setTimerUpComp"
-                  onClick={this.incrementTime}>[up]</div>
+                  onClick={ this.handleTimerUp }>[up]</div>
                 <div
                   className="setTimerDnComp"
-                  onClick={this.decrementTime}>[dn]</div>
+                  onClick={ this.handleTimerDown }>[dn]</div>
               </div>
               <div
                 className="countDownBtnReset btn"
