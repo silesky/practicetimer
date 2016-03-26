@@ -13,26 +13,19 @@ function reducer(state, action) {
             console.log('INCREMENT');
             console.log("state:" + (state + 1));
             return state + 1;
-            break;
           case 'PAUSEPLAY':
             console.log('PAUSEPLAY');
             console.log("state:" + 0);
             return 0;
-            break;
           case 'DECREMENT':
             console.log('DECREMENT');
             console.log("state:" + (state - 1));
             return state - 1;
-            break;
-          
-            break;
           default:
             return state
-            console.log(state);
-
         }
       }
-    
+
 
 let store = createStore(reducer);
   /* C o u n t D o w n: timerbox and boards kid */
@@ -63,6 +56,7 @@ var CountDown = React.createClass({
   countDownStop: function () {
     clearInterval(this.interval);
     this.setState({ ticking: false });
+
   },
   reset: function () {
     this.countDownStop();
@@ -101,7 +95,7 @@ var CountDown = React.createClass({
         secondsElapsed: this.state.secondsElapsed - 1
       });
   },
- 
+
   render: function () {
 
     var timerText;
