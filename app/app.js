@@ -28,8 +28,8 @@ let store = createStore(reducer);
     /* T i m e r B o x: boards kid */
 var TimerBox = React.createClass({
 
-  componentDidMount: function() {
-    $(this.getDOMNode()).draggable();
+componentDidMount: function() {
+    $(ReactDOM.findDOMNode(this)).draggable();
   },
   remove: function (i) {
     console.log('removing');
