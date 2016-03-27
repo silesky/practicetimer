@@ -34,8 +34,8 @@ componentDidMount: function() {
   remove: function (i) {
     console.log('removing');
     console.log(this.props.boxcount + ' boxes left.');
-    console.log('you removed index ' + this.props.index);
-    this.props.onRemove(this.props.index);
+    console.log('you removed key ' + this.props.key);
+    this.props.onRemove(this.props.key);
          /* so this.remove calls onRemove() is just a roundabout
          way of calling literally this.onRemoveHandler (which decrements the state by one */
   },
@@ -83,7 +83,7 @@ var Board = React.createClass({
     var n = this.state.boxcount + 1;
     this.setState({ boxcount: n });
   },
-  onRemoveHandler: function (index) {
+  onRemoveHandler: function (key) {
     console.log('parent: removing...');
     var n = this.state.boxcount - 1;
     this.setState({ boxcount: n });
@@ -95,7 +95,7 @@ var Board = React.createClass({
       timerBoxesArr.push(
               <TimerBox
                 boxcount={this.state.boxcount}
-                index={i}
+                key={i}
                 onRemove={this.onRemoveHandler} />
             );
           }
