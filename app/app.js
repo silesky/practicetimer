@@ -9,13 +9,20 @@ import CountDown from './CountDown';
 import Title from './Title';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
+import reducer  from './_Reducer';
 
 
-
-/* 
+/*
 TimerUp
 TimerDn
 */
+
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+
+let store = createStore(reducer);
 
 
     /* T i m e r B o x: boards kid */
@@ -66,7 +73,7 @@ var TimerBox = React.createClass({
       /** B o a r d * */
 
 var Board = React.createClass({
-  
+
   getInitialState: function () {
     return {
             boxcount: 1
@@ -95,7 +102,7 @@ var Board = React.createClass({
     return(
             <div className="board">
               <CountDownTotal />
-              <div 
+              <div
               className="btn btnComp btnAddTimerComp"
                 onClick={this.add}>
                 [+]
@@ -107,7 +114,9 @@ var Board = React.createClass({
 });
       /* drum roll */
 ReactDOM.render(
-        <Board />,
+    <Provider store={store}>
+        <Board />
+      </Provider>,
         document.getElementById('timer')
       );
 
