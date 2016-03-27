@@ -74,16 +74,16 @@ componentDidMount: function() {
 
 var Board = React.createClass({
 
-  getInitialState: function () {
+  getInitialState: () => {
     return {
             boxcount: 1
           };
   },
-  add: function () {
+  add:  () => {
     var n = this.state.boxcount + 1;
     this.setState({ boxcount: n });
   },
-  onRemoveHandler: function (index) {
+  onRemoveHandler:  (index) => {
     console.log('parent: removing...');
     var n = this.state.boxcount - 1;
     this.setState({ boxcount: n });
