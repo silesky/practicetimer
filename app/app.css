@@ -8,7 +8,7 @@ body {
   background-color: green;
   height: 250px;
   position: relative;
-  width: 30%;
+  width: 250px;
   border-radius: 20px;
   border: 3px solid;
 }
@@ -48,7 +48,7 @@ body {
 .btnAddTimerComp {
   width: 10%;
   position: fixed;
-  
+
   left: 90%;
 }
 
@@ -101,7 +101,7 @@ input[type="number"] {
   top: 70%;
   left: 20%;
   right: 20%;
-  
+
 }
 
 .countDownText {
@@ -109,4 +109,3 @@ input[type="number"] {
   text-align: center;
   margin: auto;
 }
-
