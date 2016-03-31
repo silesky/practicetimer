@@ -1,7 +1,7 @@
-function reducer (state, action) {
+const reducer = function reducer(state = 0, action){
         if (typeof state === 'undefined') {
           return 0
-        }
+        } else {
         switch (action.type) {
           case 'INCREMENT':
             console.log('INCREMENT');
@@ -16,8 +16,9 @@ function reducer (state, action) {
             console.log('state:' + (state - 1));
             return state - 1;
           default:
-            return state
-        }
-      };
+            return state;
+          }
+      }
+    };
 
-module.exports = reducer;
+    module.exports = reducer;
