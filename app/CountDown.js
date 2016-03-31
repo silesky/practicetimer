@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
 import { createStore } from 'redux';
 
 /* put this in reducer.js eventually */
