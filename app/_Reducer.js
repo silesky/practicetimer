@@ -1,4 +1,4 @@
-const reducer = (state, action) => {
+function reducer (state, action) {
         if (typeof state === 'undefined') {
           return 0
         }
