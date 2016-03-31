@@ -7,22 +7,35 @@ import ReactDOM from 'react-dom';
 import CountDownTotal from './CountDownTotal';
 import CountDown from './CountDown';
 import Title from './Title';
-
 import $ from 'jquery';
 import draggable from 'jquery-ui';
+import reducer  from './_Reducer';
+
+
+/*
+TimerUp
+TimerDn
+*/
+
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+
+let store = createStore(reducer);
 
 
     /* T i m e r B o x: boards kid */
 var TimerBox = React.createClass({
 
-  componentDidMount: function() {
-    $(this.getDOMNode()).draggable();
+componentDidMount: function() {
+    $(ReactDOM.findDOMNode(this)).draggable();
   },
   remove: function (i) {
     console.log('removing');
     console.log(this.props.boxcount + ' boxes left.');
-    console.log('you removed index ' + this.props.index);
-    this.props.onRemove(this.props.index);
+    console.log('you removed key ' + this.props.key);
+    this.props.onRemove(this.props.key);
          /* so this.remove calls onRemove() is just a roundabout
          way of calling literally this.onRemoveHandler (which decrements the state by one */
   },
@@ -60,7 +73,7 @@ var TimerBox = React.createClass({
       /** B o a r d * */
 
 var Board = React.createClass({
-  
+
   getInitialState: function () {
     return {
             boxcount: 1
@@ -70,7 +83,7 @@ var Board = React.createClass({
     var n = this.state.boxcount + 1;
     this.setState({ boxcount: n });
   },
-  onRemoveHandler: function (index) {
+  onRemoveHandler: function (key) {
     console.log('parent: removing...');
     var n = this.state.boxcount - 1;
     this.setState({ boxcount: n });
@@ -82,14 +95,14 @@ var Board = React.createClass({
       timerBoxesArr.push(
               <TimerBox
                 boxcount={this.state.boxcount}
-                index={i}
+                key={i}
                 onRemove={this.onRemoveHandler} />
             );
           }
     return(
             <div className="board">
               <CountDownTotal />
-              <div 
+              <div
               className="btn btnComp btnAddTimerComp"
                 onClick={this.add}>
                 [+]
@@ -101,7 +114,9 @@ var Board = React.createClass({
 });
       /* drum roll */
 ReactDOM.render(
-        <Board />,
+    <Provider store={store}>
+        <Board />
+      </Provider>,
         document.getElementById('timer')
       );
 
