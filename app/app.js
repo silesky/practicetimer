@@ -110,11 +110,13 @@ var Board = React.createClass({
   },
 });
       /* drum roll */
-ReactDOM.render(
+const renderRoot = () => {
+  ReactDOM.render(
     <Provider store={store}>
         <Board />
-      </Provider>,
-        document.getElementById('timer')
+    </Provider>,
+    document.getElementById('timer')
       );
-
-      // start static server
+};
+store.subscribe(renderRoot);
+renderRoot(); // initial render method (chapter 19)
