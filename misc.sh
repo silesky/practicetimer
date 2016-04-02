@@ -1,1 +1,1 @@
-webpack --progress --colors --watch
+webpack --progress --colors --watch --devtool source-map 
