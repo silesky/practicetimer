@@ -1,3 +1,0 @@
-a / shift a - new file/folder in tree view
-webpack --progress --colors --watch
-kill `pgrep -f webpack`
