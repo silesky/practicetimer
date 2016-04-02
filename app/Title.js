@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import store from './_Store';
 
 var Title = React.createClass({
   getInitialState: function () {
@@ -9,34 +10,44 @@ var Title = React.createClass({
     };
   },
 
-  handleTitleInput: function (e) {
-    console.log('handleTitleInput: ' + e.target.value);
-    this.setState({
-      titletext: e.target.value,
-      style: { background: 'white' }
-    });
-  },
+  // handleTitleInput: function (e) {
+  //   console.log('handleTitleInput: ' + e.target.value);
+  //   this.setState({
+  //     titletext: e.target.value,
+  //     style: { background: 'white' }
+  //   });
+  // },
 
   handleTitleBlur: function () {
     this.setState({
       style: { background: 'red',
-      color: 'white' }
-    });
+        color: 'white' }
+      });
 
-  },
+    },
 
-  render: function () {
-    return (
-      <div>
-      <input
-      style={this.state.style}
-      type="text"
-      onBlur={this.handleTitleBlur}
-      onChange={this.handleTitleInput} />
-      <div>
-      {this.state.titletext}
-      </div>
-      </div>
+
+    render: function () {
+      console.log(store.getState());
+      return (
+        <div>
+          <input ref={myVal => {this.input = myVal;}}
+            style={this.state.style}
+            type="text"
+            onBlur={this.handleTitleBlur}
+            onChange={() => {
+              store.dispatch({
+                type: 'SET_TITLE',
+                text: this.input.value,
+              });
+            } } />
+          <div>
+            {store.getState().text}
+          </div>
+          <div>
+
+          </div>
+        </div>
       );
     }
 
