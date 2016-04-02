@@ -9,7 +9,7 @@ import CountDown from './CountDown';
 import Title from './Title';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
-import reducer  from './_Reducer';
+import store from './_Store';
 
 
 /*
@@ -19,10 +19,7 @@ TimerDn
 
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 
-
-let store = createStore(reducer);
 
 
     /* T i m e r B o x: boards kid */

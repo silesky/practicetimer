@@ -1,33 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-import { createStore } from 'redux';
-
-/* put this in reducer.js eventually */
-function reducer(state, action) {
-        if (typeof state === 'undefined') {
-          return 0
-        }
-        switch (action.type) {
-          case 'INCREMENT':
-            console.log('INCREMENT');
-            console.log('state:' + (state + 1));
-            return state + 1;
-          case 'PAUSEPLAY':
-            console.log('PAUSEPLAY');
-            console.log('state:' + 0);
-            return 0;
-          case 'DECREMENT':
-            console.log('DECREMENT');
-            console.log('state:' + (state - 1));
-            return state - 1;
-          default:
-            return state
-        }
-      }
+import store from './_Store';
 
 
-let store = createStore(reducer);
   /* C o u n t D o w n: timerbox and boards kid */
 var CountDown = React.createClass({
 
@@ -73,7 +48,7 @@ var CountDown = React.createClass({
       });
   },
   pausePlay: function () {
-    store.dispatch({ type: 'PAUSEPLAY' });
+
     if (!this.state.ticking) {
         this.countDownStart();
         this.setState({ paused: false });
@@ -83,14 +58,14 @@ var CountDown = React.createClass({
       }
   },
   handleTimerUp: function () {
-    store.dispatch({ type: 'INCREMENT' });
+
     this.setState({
         secondsElapsed: this.state.secondsElapsed + 1
       });
   },
   handleTimerDown: function () {
     console.log('decrement');
-    store.dispatch({ type: 'DECREMENT' });
+
     this.setState({
         secondsElapsed: this.state.secondsElapsed - 1
       });
@@ -118,14 +93,14 @@ var CountDown = React.createClass({
                 onClick={this.edit}>OK</button>
               <div
                 className="countDownBtnPausePlay btn"
-                onClick={this.pausePlay}>[=>]</div>
+                onClick={() => store.dispatch({ type: 'PAUSEPLAY' })}>[=>]</div>
               <div className="setTimerUpDnContainer btn">
                 <div
                   className="setTimerUpComp"
-                  onClick={ this.handleTimerUp }>[up]</div>
+                  onClick={() => store.dispatch({ type: 'INCREMENT' })}>[up]</div>
                 <div
                   className="setTimerDnComp"
-                  onClick={ this.handleTimerDown }>[dn]</div>
+                  onClick={() => store.dispatch({ type: 'DECREMENT' })}>[dn]</div>
               </div>
               <div
                 className="countDownBtnReset btn"
