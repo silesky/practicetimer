@@ -37,7 +37,8 @@
     "mocha": "^2.4.5",
     "mocha-loader": "^0.7.1",
     "webpack": "^1.12.13",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "babel-node-debug": "~2.0.0"
   },
   "directories": {
     "test": "test"
