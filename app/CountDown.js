@@ -73,14 +73,15 @@ var CountDown = React.createClass({
   },
 
   render: function() {
-
+/*
     var timerText;
+
     if (this.state.secondsElapsed > 0) {
         timerText = this.state.secondsElapsed;
       } else {
         timerText = 'done.';
         clearInterval(this.interval);
-      }
+      }*/
     return (
           <div>
             <div className="countDownSettingsContainer">
@@ -109,7 +110,7 @@ var CountDown = React.createClass({
 
             </div>
             <div className="countDownTextContainer">
-              <div className="countDownText">{timerText}</div>
+              <div className="countDownText">{store.getState()}</div>
             </div>
           </div>
 
