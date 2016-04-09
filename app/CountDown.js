@@ -13,7 +13,6 @@ var CountDown = React.createClass({
         paused: true };
   },
   componentDidMount: () => {
-     var self = this;
         // (???) called right after render. setInterval takes calls this.tick every 10000ms...
   },
   componentWillUnmount: function() {
@@ -34,21 +33,21 @@ var CountDown = React.createClass({
     this.setState({ ticking: false });
 
   },
-  reset: function() {
+/*  reset: function() {
     this.countDownStop();
     var stateObj = this.getInitialState();
     var newNum = stateObj.secondsElapsed;
     this.setState({
         secondsElapsed: newNum
       });
-  },
-  handleNumInput: function(e) {
+  },*/
+/*  handleNumInput: function(e) {
     console.log(e.target.value);
     this.setState({
         secondsElapsed: e.target.value
       });
-  },
-  pausePlay: function() {
+  },*/
+/*  pausePlay: function() {
 
     if (!this.state.ticking) {
         this.countDownStart();
@@ -57,20 +56,20 @@ var CountDown = React.createClass({
         this.setState({ paused: true });
         this.countDownStop();
       }
-  },
-  handleTimerUp: function() {
+  },*/
+/*  handleTimerUp: function() {
 
     this.setState({
         secondsElapsed: this.state.secondsElapsed + 1
       });
-  },
-  handleTimerDown: function() {
+  },*/
+/*  handleTimerDown: function() {
     console.log('decrement');
 
     this.setState({
         secondsElapsed: this.state.secondsElapsed - 1
       });
-  },
+  },*/
 
   render: function() {
 /*
@@ -82,17 +81,23 @@ var CountDown = React.createClass({
         timerText = 'done.';
         clearInterval(this.interval);
       }*/
+      let nextTimerId = 0;
     return (
           <div>
             <div className="countDownSettingsContainer">
-              <input
+              <input ref={node => {this.timeSetInput = node; }}
                 type="number"
-                placeholder="new time"
-                onChange={this.handleNumInput} />
+                placeholder="new time" />
               <button
                 label="stuff"
                 type="button"
-                onClick={this.edit}>OK</button>
+                onClick={() => {
+                  store.dispatch({
+                  type: 'SET_TIME',
+                  time: this.timeSetInput.value,
+                  id: nextTimerId++,
+                });
+              }}>OK</button>
               <div
                 className="countDownBtnPausePlay btn"
                 onClick={() => store.dispatch({ type: 'PAUSEPLAY' })}>[=>]</div>
@@ -106,11 +111,11 @@ var CountDown = React.createClass({
               </div>
               <div
                 className="countDownBtnReset btn"
-                onClick={this.reset}>[r]</div>
+                onClick={() => store.dispatch({ type: 'RESET' })}>[r]</div>
 
             </div>
             <div className="countDownTextContainer">
-              <div className="countDownText">{store.getState()}</div>
+              <div className="countDownText">{store.getState().time}</div>
             </div>
           </div>
 

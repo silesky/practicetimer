@@ -28,17 +28,16 @@ var Title = React.createClass({
 
 
     render: function () {
-      console.log(store.getState());
       return (
         <div>
-          <input ref={myVal => {this.input = myVal;}}
+          <input ref={node => {this.titleSetInput = node;}}
             style={this.state.style}
             type="text"
             onBlur={this.handleTitleBlur}
             onChange={() => {
               store.dispatch({
                 type: 'SET_TITLE',
-                text: this.input.value,
+                text: this.titleSetInput.value,
               });
             } } />
           <div>
