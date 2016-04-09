@@ -7,33 +7,34 @@ import store from './_Store';
 var CountDown = React.createClass({
 
 
-  getInitialState: function () {
+  getInitialState: () => {
     return { secondsElapsed: 10,
         ticking: false,
         paused: true };
   },
-  componentDidMount: function () {
+  componentDidMount: () => {
+     var self = this;
         // (???) called right after render. setInterval takes calls this.tick every 10000ms...
   },
-  componentWillUnmount: function () {
+  componentWillUnmount: function() {
         // (???) called at the end, right before the component is destroyed/deleted...
     this.countDownStop();
   },
-  tick: function () {
+  tick: function() {
         // every time this is called, counter goes down by 1
     this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
   },
-  countDownStart: function () {
+  countDownStart: function() {
     clearInterval(this.interval);
     this.interval = setInterval(this.tick, 1000);
     this.setState({ ticking: true });
   },
-  countDownStop: function () {
+  countDownStop: function() {
     clearInterval(this.interval);
     this.setState({ ticking: false });
 
   },
-  reset: function () {
+  reset: function() {
     this.countDownStop();
     var stateObj = this.getInitialState();
     var newNum = stateObj.secondsElapsed;
@@ -41,13 +42,13 @@ var CountDown = React.createClass({
         secondsElapsed: newNum
       });
   },
-  handleNumInput: function (e) {
+  handleNumInput: function(e) {
     console.log(e.target.value);
     this.setState({
         secondsElapsed: e.target.value
       });
   },
-  pausePlay: function () {
+  pausePlay: function() {
 
     if (!this.state.ticking) {
         this.countDownStart();
@@ -57,13 +58,13 @@ var CountDown = React.createClass({
         this.countDownStop();
       }
   },
-  handleTimerUp: function () {
+  handleTimerUp: function() {
 
     this.setState({
         secondsElapsed: this.state.secondsElapsed + 1
       });
   },
-  handleTimerDown: function () {
+  handleTimerDown: function() {
     console.log('decrement');
 
     this.setState({
@@ -71,7 +72,7 @@ var CountDown = React.createClass({
       });
   },
 
-  render: function () {
+  render: function() {
 
     var timerText;
     if (this.state.secondsElapsed > 0) {

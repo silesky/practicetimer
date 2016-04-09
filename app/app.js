@@ -87,8 +87,8 @@ var Board = React.createClass({
   },
         /* parent gives props as attributes */
   render: function() {
-    var timerBoxesArr = [];
-    for (var i = 0; i < this.state.boxcount; i++) {
+    const timerBoxesArr = [];
+    for (let i = 0; i < this.state.boxcount; i++) {
       timerBoxesArr.push(
               <TimerBox
                 boxcount={this.state.boxcount}
