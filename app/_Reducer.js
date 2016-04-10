@@ -35,6 +35,7 @@ const reducer = function reducer(state = {
             };
         case 'PAUSEPLAY':
                                                       console.log('PAUSEPLAY');
+          return state;
           /* should simply return
           the current time, and then clearInterval (stop ticking). */
 
