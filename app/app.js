@@ -6,6 +6,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CountDownTotal from './CountDownTotal';
 import CountDown from './CountDown';
+import TimerBox from './TimerBox';
+
 import Title from './Title';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
@@ -23,49 +25,6 @@ import { Provider } from 'react-redux'
 
 
     /* T i m e r B o x: boards kid */
-var TimerBox = React.createClass({
-
-componentDidMount: function() {
-    $(ReactDOM.findDOMNode(this)).draggable();
-  },
-  remove: function (i) {
-    console.log('removing');
-    console.log(this.props.boxcount + ' boxes left.');
-    console.log('you removed key ' + this.props.key);
-    this.props.onRemove(this.props.key);
-         /* so this.remove calls onRemove() is just a roundabout
-         way of calling literally this.onRemoveHandler (which decrements the state by one */
-  },
-  render: function () {
-    return (
-            <div className="timerBox" onRemove={this.remove}>
-
-              <div className="topBarContainer">
-                <div className="topBarLeft">
-                  <div
-                    onClick={this.remove}
-                    className="btn btnComp btnCloseTimerComp">[-]</div>
-                </div>
-                <div className="topBarRight">
-                </div>
-
-              </div>
-              <div className="titleContainer">
-                <div className="titleComp">
-                  <Title />
-                </div>
-              </div>
-
-              <CountDown />
-
-
-
-
-            </div>
-
-          );
-  }
-});
 
       /** B o a r d * */
 
