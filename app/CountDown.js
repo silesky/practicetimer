@@ -6,81 +6,8 @@ import store from './_Store';
   /* C o u n t D o w n: timerbox and boards kid */
 var CountDown = React.createClass({
 
-
-  getInitialState: () => {
-    return { secondsElapsed: 10,
-        ticking: false,
-        paused: true };
-  },
-  componentDidMount: () => {
-        // (???) called right after render. setInterval takes calls this.tick every 10000ms...
-  },
-  componentWillUnmount: function() {
-        // (???) called at the end, right before the component is destroyed/deleted...
-    this.countDownStop();
-  },
-  tick: function() {
-        // every time this is called, counter goes down by 1
-    this.setState({ secondsElapsed: this.state.secondsElapsed - 1 });
-  },
-  countDownStart: function() {
-    clearInterval(this.interval);
-    this.interval = setInterval(this.tick, 1000);
-    this.setState({ ticking: true });
-  },
-  countDownStop: function() {
-    clearInterval(this.interval);
-    this.setState({ ticking: false });
-
-  },
-/*  reset: function() {
-    this.countDownStop();
-    var stateObj = this.getInitialState();
-    var newNum = stateObj.secondsElapsed;
-    this.setState({
-        secondsElapsed: newNum
-      });
-  },*/
-/*  handleNumInput: function(e) {
-    console.log(e.target.value);
-    this.setState({
-        secondsElapsed: e.target.value
-      });
-  },*/
-/*  pausePlay: function() {
-
-    if (!this.state.ticking) {
-        this.countDownStart();
-        this.setState({ paused: false });
-      } else {
-        this.setState({ paused: true });
-        this.countDownStop();
-      }
-  },*/
-/*  handleTimerUp: function() {
-
-    this.setState({
-        secondsElapsed: this.state.secondsElapsed + 1
-      });
-  },*/
-/*  handleTimerDown: function() {
-    console.log('decrement');
-
-    this.setState({
-        secondsElapsed: this.state.secondsElapsed - 1
-      });
-  },*/
-
   render: function() {
-/*
-    var timerText;
 
-    if (this.state.secondsElapsed > 0) {
-        timerText = this.state.secondsElapsed;
-      } else {
-        timerText = 'done.';
-        clearInterval(this.interval);
-      }*/
       let nextTimerId = 0;
     return (
           <div>
