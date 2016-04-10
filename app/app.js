@@ -5,27 +5,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CountDownTotal from './components/CountDownTotal';
-import CountDown from './components/CountDown';
 import TimerBox from './components/TimerBox';
-import Title from './components/Title';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
 import store from './_Store';
-
-
-/*
-TimerUp
-TimerDn
-*/
-
-
 import { Provider } from 'react-redux'
-
-
-
-    /* T i m e r B o x: boards kid */
-
-      /** B o a r d * */
 
 var Board = React.createClass({
 
@@ -68,13 +52,13 @@ var Board = React.createClass({
   },
 });
       /* drum roll */
-const renderRoot = () => {
-  ReactDOM.render(
-    <Provider store={store}>
-        <Board />
-    </Provider>,
-    document.getElementById('timer')
-      );
+  const renderRoot = () => {
+    ReactDOM.render(
+      <Provider store={store}>
+          <Board />
+      </Provider>,
+      document.getElementById('timer')
+        );
 };
 store.subscribe(renderRoot);
 renderRoot(); // initial render method (chapter 19)
