@@ -48,8 +48,13 @@ body {
 .btnAddTimerComp {
   width: 10%;
   position: fixed;
-
   left: 90%;
+}
+
+.btnRemoveTimerComp {
+  width: 10%;
+  position: fixed;
+  left: 80%;
 }
 
 .btnCloseTimerComp {

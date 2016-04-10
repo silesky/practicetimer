@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerBox from '../components/TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
-
+import store from '../_Store';
 const Board = React.createClass({
 
   getInitialState: function () {
@@ -10,21 +10,13 @@ const Board = React.createClass({
             boxcount: 1
           };
   },
-  add: function () {
-    var n = this.state.boxcount + 1;
-    this.setState({ boxcount: n });
-  },
-  onRemoveHandler: function (key) {
-    console.log('parent: removing...');
-    var n = this.state.boxcount - 1;
-    this.setState({ boxcount: n });
-  },
   render: function() {
+
+    const timerCount = store.getState().timerCount;
     const timerBoxesArr = [];
-    for (let i = 0; i < this.state.boxcount; i++) {
+    for (let i = 0; i < timerCount; i++) {
       timerBoxesArr.push(
               <TimerBox
-                boxcount={this.state.boxcount}
                 key={i}
                 onRemove={this.onRemoveHandler} />
             );
@@ -34,10 +26,15 @@ const Board = React.createClass({
               <CountDownTotal />
               <div
               className="btn btnComp btnAddTimerComp"
-                onClick={this.add}>
+                onClick={() => store.dispatch({ type: 'INCREMENT_TIMERCOUNT' })}>
                 [+]
               </div>
-              {timerBoxesArr}
+              <div
+              className="btn btnComp btnRemoveTimerComp"
+                onClick={() => store.dispatch({ type: 'DECREMENT_TIMERCOUNT' })}>
+                [-]
+              </div>
+              { timerBoxesArr }
             </div>
           );
   },
