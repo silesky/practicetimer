@@ -4,11 +4,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CountDownTotal from './CountDownTotal';
-import CountDown from './CountDown';
-import TimerBox from './TimerBox';
-
-import Title from './Title';
+import CountDownTotal from './components/CountDownTotal';
+import CountDown from './components/CountDown';
+import TimerBox from './components/TimerBox';
+import Title from './components/Title';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
 import store from './_Store';

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from './_Store';
+import store from '../_Store';
 
 var Title = React.createClass({
   getInitialState: function () {
