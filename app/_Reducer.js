@@ -41,7 +41,7 @@ const reducer = function reducer(state = {
         case 'SET_TIME':
                                                     console.log('SET THE TIME');
         return {
-            time: action.time,
+            time: Number(action.time),
           };
         default:
           return state;
