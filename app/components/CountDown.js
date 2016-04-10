@@ -2,13 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from '../_Store';
 
-
-  /* C o u n t D o w n: timerbox and boards kid */
 var CountDown = React.createClass({
 
   render: function() {
-
-      let nextTimerId = 0;
+  let nextTimerId = 0;
     return (
           <div>
             <div className="countDownSettingsContainer">
