@@ -16,7 +16,6 @@ const TimerBox = React.createClass({
         <div className="topBarContainer">
           <div className="topBarLeft">
             <div
-              onClick={ console.log('remove') }
               className="btn btnComp btnCloseTimerComp">[-]</div>
           </div>
           <div className="topBarRight">

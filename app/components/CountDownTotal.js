@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-console.log("COUNTDOWN TOTAL");
 var CountDownTotal = React.createClass({
   render: function() {
     return (

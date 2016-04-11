@@ -1,6 +1,17 @@
+/*
 
+<Board>
+  <CountDownTotal />
 
-//webpack --progress --colors --watch
+  <TimerBox>
+     <Title />
+    <CountDown />
+  </TimerBox>
+
+</Board>
+*/
+
+//webpack -/-progress --colors --watch
 
 import React from 'react';
 import ReactDOM from 'react-dom';
