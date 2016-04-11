@@ -65,7 +65,7 @@ const reducer = function reducer(state = {
         return {
            id: state.id,
            time: Number(action.time), //
-           text: state.text,
+           text: state.text ,
            timerCount: state.timerCount
           };
         default:

@@ -9,14 +9,6 @@ const TimerBox = React.createClass({
   componentDidMount: function() {
     $(ReactDOM.findDOMNode(this)).draggable();
   },
-  remove: function (i) {
-    console.log('removing');
-    console.log(this.props.boxcount + ' boxes left.');
-    console.log('you removed key ' + this.props.key);
-    this.props.onRemove(this.props.key);
-    /* so this.remove calls onRemove() is just a roundabout
-    way of calling literally this.onRemoveHandler (which decrements the state by one */
-  },
   render: function () {
     return (
       <div className="timerBox" onRemove={this.remove}>
@@ -24,7 +16,7 @@ const TimerBox = React.createClass({
         <div className="topBarContainer">
           <div className="topBarLeft">
             <div
-              onClick={this.remove}
+              onClick={ console.log('remove') }
               className="btn btnComp btnCloseTimerComp">[-]</div>
           </div>
           <div className="topBarRight">
