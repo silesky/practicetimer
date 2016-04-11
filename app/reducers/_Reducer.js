@@ -47,7 +47,6 @@ const reducer = function reducer(state = {
         return Object.assign({}, state, {
              time: Number(action.time)
            });
-
         default:
           return state;
       }
