@@ -28,7 +28,7 @@ const TimerBox = React.createClass({
           </div>
         </div>
 
-        <CountDown />
+        <CountDown eachTime={this.props.eachTime}  />
 
 
 

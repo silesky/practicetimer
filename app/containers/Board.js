@@ -11,7 +11,7 @@ const Board = React.createClass({
     const timeArray = store.getState().timeArray;
     const timerBoxesArr = [];
     for (let i = 0; i < timerCount; i++) {
-      timerBoxesArr.push(<TimerBox key={ i } />);
+      timerBoxesArr.push(<TimerBox key={ i } eachTime={store.getState().timeArray[i] }  />);
     }
 
     return(

@@ -39,7 +39,7 @@ var CountDown = React.createClass({
 
             </div>
             <div className="countDownTextContainer">
-              <div className="countDownText">{store.getState().time}</div>
+              <div className="countDownText">{ this.props.eachTime } </div>
             </div>
           </div>
 
