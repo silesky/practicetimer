@@ -69,13 +69,11 @@ const reducer = function reducer(state = {
           the current time, and then clearInterval (stop ticking). */
 
       case 'SET_TIME':
-        return {
-            timeArray: [10, 20, 30],
-           id: state.id,
-           time: Number(action.time), //
-           text: state.text ,
-           timerCount: state.timerCount
-          };
+
+        return Object.assign({}, state, {
+             time: Number(action.time)
+           });
+  
         default:
           return state;
       }
