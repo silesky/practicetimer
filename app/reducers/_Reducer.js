@@ -2,25 +2,30 @@ import { combineReducers } from 'redux';
 
 const reducer = function(state = {
   timerCount: 1,
-  timeArray: [10, 20, 30], 
-  id: [1, 2, 3],
-  text: ['shop', 'read', 'study'],
+  timeArray: [10, 20, 30],
+  idArray: [1, 2, 3],
+  textArray: ['shop', 'read', 'study'],
 }, action) {
 
   console.log('reducer called');
   console.log(state);
+
+  const lastArrayValue = (arr) => arr[arr.length - 1];
+  const nextId = lastArrayValue(state.idArray);
+
   switch (action.type) {
     case 'INCREMENT_TIMERCOUNT':
       // add another array item to the end of timeArray, incremented by one.
-      const newItem = state.timeArray[state.timeArray.length - 1]++;
       return Object.assign({}, state, {
         timerCount: state.timerCount + 1,
-        id: [...state.timeArray, newItem],
+        timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) + 1)],
+        idArray: [...state.idArray, nextId]
       });
       case 'DECREMENT_TIMERCOUNT':
       return Object.assign({}, state, {
         timerCount: state.timerCount - 1,
-        id: state.id - 1,
+        timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) - 1)],
+        idArray: [...state.idArray, nextId],
       });
       case 'SET_TITLE':
       return Object.assign({}, state, {
