@@ -5,11 +5,6 @@ import CountDownTotal from '../components/CountDownTotal';
 import store from '../_Store';
 const Board = React.createClass({
 
-  getInitialState: function () {
-    return {
-            boxcount: 1
-          };
-  },
   render: function() {
 
     const timerCount = store.getState().timerCount;
