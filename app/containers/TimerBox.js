@@ -24,7 +24,10 @@ const TimerBox = React.createClass({
         </div>
         <div className="titleContainer">
           <div className="titleComp">
-            <Title eachTitle= { this.props.eachTitle } />
+            <Title
+              eachKey={ this.props.eachKey }
+               eachTitle={ this.props.eachTitle }
+               />
           </div>
         </div>
 

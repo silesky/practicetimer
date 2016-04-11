@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+// make id the same as the keys
 const reducer = function(state = {
   timerCount: 1,
   timeArray: [10, 20, 30],
@@ -28,9 +29,12 @@ const reducer = function(state = {
         idArray: [...state.idArray, nextId],
       });
       case 'SET_TITLE':
-      return Object.assign({}, state, {
-        titleArray: [...state.titleArray, action.text],
-      });
+            const oldArrayCopy = state.titleArray.slice();
+            oldArrayCopy.splice(action.id, 1, action.text);
+        console.log(state.titleArray);
+        return Object.assign({}, state, {
+          titleArray: oldArrayCopy
+        });
       case 'RESET':
       return Object.assign({}, state, {
         time: 0,
