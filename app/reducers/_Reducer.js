@@ -1,5 +1,6 @@
 
 const reducer = function reducer(state = {
+      timeArray: [10, 20, 30],
       id: 0,
       time: 10,
       text: 'enter text',
@@ -13,6 +14,7 @@ const reducer = function reducer(state = {
     switch (action.type) {
       case 'INCREMENT_TIMERCOUNT':
         return {
+            timeArray: [10, 20, 30],
           id: state.id,
           time: state.time,
           text: state.text,
@@ -21,6 +23,7 @@ const reducer = function reducer(state = {
         };
         case 'DECREMENT_TIMERCOUNT':
           return {
+              timeArray: [10, 20, 30],
             id: state.id,
             time: state.time,
             text: state.text,
@@ -28,6 +31,7 @@ const reducer = function reducer(state = {
           };
       case 'SET_TITLE':
         return {
+            timeArray: [10, 20, 30],
           id: action.id,
           time: state.time,
           text: action.text, //
@@ -35,14 +39,16 @@ const reducer = function reducer(state = {
         };
       case 'RESET':
         return {
+            timeArray: [10, 20, 30],
           id: state.id,
           time: 0, //
           text: state.text,
-          timerCount: state.timerCount /* should simply return
+          timerCount: state.timerCount, /* should simply return
               the current time, and then clearInterval (stop ticking). */
         };
       case 'INCREMENT':
         return {
+            timeArray: [10, 20, 30],
           id: state.id,
           time: state.time + 1, //
           text: state.text,
@@ -50,6 +56,7 @@ const reducer = function reducer(state = {
         };
       case 'DECREMENT':
         return {
+            timeArray: [10, 20, 30],
            id: state.id,
            time: state.time - 1, //
            text: state.text,
@@ -63,6 +70,7 @@ const reducer = function reducer(state = {
 
       case 'SET_TIME':
         return {
+            timeArray: [10, 20, 30],
            id: state.id,
            time: Number(action.time), //
            text: state.text ,
