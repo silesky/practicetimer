@@ -1,5 +1,4 @@
 /*
-
 <Board>
   <CountDownTotal />
 
@@ -10,8 +9,6 @@
 
 </Board>
 */
-
-//webpack -/-progress --colors --watch
 
 import React from 'react';
 import ReactDOM from 'react-dom';
