@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TimerBox from '../components/TimerBox';
+import TimerBox from './TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
 import store from '../_Store';
 const Board = React.createClass({

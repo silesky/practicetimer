@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
-import Title from './Title';
-import CountDown from './CountDown';
+import Title from '../components/Title';
+import CountDown from '../components/CountDown';
 const TimerBox = React.createClass({
 
   componentDidMount: function() {
