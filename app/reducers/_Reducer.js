@@ -4,7 +4,7 @@ const reducer = function(state = {
   timerCount: 1,
   timeArray: [10, 20, 30],
   idArray: [1, 2, 3],
-  textArray: ['shop', 'read', 'study'],
+  titleArray: ['shop', 'read', 'study'],
 }, action) {
 
   console.log('reducer called');
@@ -29,7 +29,7 @@ const reducer = function(state = {
       });
       case 'SET_TITLE':
       return Object.assign({}, state, {
-        text: action.text,
+        titleArray: [...state.titleArray, action.text],
       });
       case 'RESET':
       return Object.assign({}, state, {

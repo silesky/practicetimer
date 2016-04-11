@@ -41,7 +41,7 @@ var Title = React.createClass({
               });
             } } />
           <div>
-            {store.getState().text}
+            { this.props.eachTitle }
           </div>
           <div>
 
