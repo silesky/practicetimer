@@ -13,55 +13,29 @@ const reducer = function reducer(state = {
 
     switch (action.type) {
       case 'INCREMENT_TIMERCOUNT':
-        return {
-            timeArray: [10, 20, 30],
-          id: state.id,
-          time: state.time,
-          text: state.text,
-          timerCount: state.timerCount + 1, //
-
-        };
+          return Object.assign({}, state, {
+              timerCount: state.timerCount + 1
+          });
         case 'DECREMENT_TIMERCOUNT':
-          return {
-              timeArray: [10, 20, 30],
-            id: state.id,
-            time: state.time,
-            text: state.text,
-            timerCount: state.timerCount - 1, //
-          };
+          return Object.assign({}, state, {
+              timerCount: state.timerCount - 1
+          });
       case 'SET_TITLE':
-        return {
-            timeArray: [10, 20, 30],
-          id: action.id,
-          time: state.time,
-          text: action.text, //
-          timerCount: state.timerCount,
-        };
+        return Object.assign({}, state, {
+          text: action.text
+        });
       case 'RESET':
-        return {
-            timeArray: [10, 20, 30],
-          id: state.id,
-          time: 0, //
-          text: state.text,
-          timerCount: state.timerCount, /* should simply return
-              the current time, and then clearInterval (stop ticking). */
-        };
+        return Object.assign({}, state, {
+          time: 0
+        });
       case 'INCREMENT':
-        return {
-            timeArray: [10, 20, 30],
-          id: state.id,
-          time: state.time + 1, //
-          text: state.text,
-          timerCount: state.timerCount
-        };
+        return Object.assign({}, state, {
+          time: state.time + 1
+        });
       case 'DECREMENT':
-        return {
-            timeArray: [10, 20, 30],
-           id: state.id,
-           time: state.time - 1, //
-           text: state.text,
-           timerCount: state.timerCount
-        };
+        return Object.assign({}, state, {
+          time: state.time - 1
+        });
       case 'PAUSEPLAY':
         return state;
 
@@ -69,13 +43,11 @@ const reducer = function reducer(state = {
           the current time, and then clearInterval (stop ticking). */
 
       case 'SET_TIME':
-        return {
-            timeArray: [10, 20, 30],
-           id: state.id,
-           time: Number(action.time), //
-           text: state.text ,
-           timerCount: state.timerCount
-          };
+
+        return Object.assign({}, state, {
+             time: Number(action.time)
+           });
+
         default:
           return state;
       }
