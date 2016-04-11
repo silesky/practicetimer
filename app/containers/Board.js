@@ -11,18 +11,18 @@ const Board = React.createClass({
     const timeArray = store.getState().timeArray;
     const timerBoxesArr = [];
     for (let i = 0; i < timerCount; i++) {
-      timerBoxesArr.push(
-              <TimerBox
-                specificTime={ timeArray[i] }
-                key={ i } />
-            );
-          }
+      timerBoxesArr.push(<TimerBox key={ i } />);
+    }
+
     return(
             <div className="board">
               <CountDownTotal />
               <div
               className="btn btnComp btnAddTimerComp"
-                onClick={() => store.dispatch({ type: 'INCREMENT_TIMERCOUNT' })}>
+                onClick={() =>
+                   store.dispatch({
+                     type: 'INCREMENT_TIMERCOUNT',
+                      })}>
                 [+]
               </div>
               <div

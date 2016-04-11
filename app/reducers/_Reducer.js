@@ -1,9 +1,8 @@
 
 const reducer = function reducer(state = {
       timeArray: [10, 20, 30],
-      id: 0,
-      time: 10,
-      text: 'enter text',
+      id: [1, 2, 3],
+      text: ['shop', 'read', 'study'],
       timerCount: 1,
     },
     action) {
@@ -13,12 +12,16 @@ const reducer = function reducer(state = {
 
     switch (action.type) {
       case 'INCREMENT_TIMERCOUNT':
+      // auto increment
+       const newItem = state.timeArray[state.timeArray.length - 1]++;
           return Object.assign({}, state, {
-              timerCount: state.timerCount + 1
+              timerCount: state.timerCount + 1,
+              id: [...state.timeArray, newItem]
           });
         case 'DECREMENT_TIMERCOUNT':
           return Object.assign({}, state, {
-              timerCount: state.timerCount - 1
+              timerCount: state.timerCount - 1,
+              id: state.id - 1,
           });
       case 'SET_TITLE':
         return Object.assign({}, state, {
