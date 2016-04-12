@@ -8,63 +8,62 @@ const reducer = function(state = {
   titleArray: ['shop', 'read', 'study'],
 }, action) {
 
-  console.log('reducer called');
+  console.log('reducer called...state:');
   console.log(state);
-
   const lastArrayValue = (arr) => arr[arr.length - 1];
   const nextId = lastArrayValue(state.idArray);
 
   switch (action.type) {
     case 'INCREMENT_TIMERCOUNT':
-      // add another array item to the end of timeArray, incremented by one.
-      return Object.assign({}, state, {
-        timerCount: state.timerCount + 1,
-        timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) + 1)],
-        idArray: [...state.idArray, nextId]
-      });
-      case 'DECREMENT_TIMERCOUNT':
-      return Object.assign({}, state, {
-        timerCount: state.timerCount - 1,
-        timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) - 1)],
-        idArray: [...state.idArray, nextId],
-      });
-      case 'SET_TITLE':
-            const oldArrayCopy = state.titleArray.slice();
-            oldArrayCopy.splice(action.id, 1, action.text);
-        console.log(state.titleArray);
-        return Object.assign({}, state, {
-          titleArray: oldArrayCopy
-        });
-      case 'RESET':
-      return Object.assign({}, state, {
-        time: 0,
-      });
-      case 'INCREMENT':
-      return Object.assign({}, state, {
-        time: state.time + 1,
-      });
-      case 'DECREMENT':
-      return Object.assign({}, state, {
-        time: state.time - 1,
-      });
-      case 'PAUSEPLAY':
-      return state;
+    // add another array item to the end of timeArray, incremented by one.
+    return Object.assign({}, state, {
+      timerCount: state.timerCount + 1,
+      timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) + 1)],
+      idArray: [...state.idArray, nextId]
+    });
+    case 'DECREMENT_TIMERCOUNT':
+    return Object.assign({}, state, {
+      timerCount: state.timerCount - 1,
+      timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) - 1)],
+      idArray: [...state.idArray, nextId],
+    });
+    case 'SET_TITLE':
+    const oldArrayCopy = state.titleArray.slice();
+    oldArrayCopy.splice(action.id, 1, action.text);
 
-          /* should simply return
-          the current time, and then clearInterval (stop ticking). */
+    return Object.assign({}, state, {
+      titleArray: oldArrayCopy
+    });
+    case 'RESET':
+    return Object.assign({}, state, {
+      time: 0,
+    });
+    case 'INCREMENT':
+    return Object.assign({}, state, {
+      time: state.time + 1,
+    });
+    case 'DECREMENT':
+    return Object.assign({}, state, {
+      time: state.time - 1,
+    });
+    case 'PAUSEPLAY':
+    return state;
 
-          case 'SET_TIME':
-          return Object.assign({}, state, {
-           time: Number(action.time),
-         });
-          default:
-          return state;
-        }
+    /* should simply return
+    the current time, and then clearInterval (stop ticking). */
 
-      };
+    case 'SET_TIME':
+    return Object.assign({}, state, {
+      time: Number(action.time),
+    });
+    default:
+    return state;
+  }
+
+};
 
 /* const reducer = combineReducers({
-   reducer1, reducer2,
- });
+reducer1, reducer2,
+});
 */
 module.exports = reducer;
