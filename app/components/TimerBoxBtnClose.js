@@ -6,6 +6,7 @@ const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
       className="btn btnComp btnCloseTimerComp"
       onClick={() => {
         console.log('close');
+        onTimerBoxBtnCloseClick();
       } }>
       [-]
     </div>

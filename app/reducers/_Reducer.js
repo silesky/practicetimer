@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 // make id the same as the keys
 const reducer = function(state = {
-  timerCount: 1,
+  timerCount: 3,
   timeArray: [10, 20, 30],
   idArray: [1, 2, 3],
   titleArray: ['shop', 'read', 'study'],
@@ -11,9 +11,27 @@ const reducer = function(state = {
   console.log('reducer called...state:');
   console.log(state);
   const lastArrayValue = (arr) => arr[arr.length - 1];
+  function removeItemFromArray(array, itemToRemove) {
+    var indexToRemove = array.indexOf(itemToRemove);
+    const copyArray = array.slice();
+    copyArray.splice(indexToRemove, 1);
+    return copyArray;
+  };
   const nextId = lastArrayValue(state.idArray);
 
   switch (action.type) {
+    case 'REMOVE_TIMER':
+    // add another array item to the end of timeArray, incremented by one.
+
+    const newIdArray = removeItemFromArray(state.idArray, action.id);
+        console.log(newIdArray);
+      console.log(action);
+          return Object.assign({}, state, {
+            timerCount: state.timerCount - 1,
+            timeArray: [...state.timeArray, (lastArrayValue(state.timeArray) - 1)],
+            idArray: newIdArray
+          });
+
     case 'INCREMENT_TIMERCOUNT':
     // add another array item to the end of timeArray, incremented by one.
     return Object.assign({}, state, {

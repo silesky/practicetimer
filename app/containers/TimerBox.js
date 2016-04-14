@@ -28,8 +28,8 @@ const TimerBox = React.createClass({
             <TimerBoxBtnClose
                     onTimerBoxBtnCloseClick={ key =>
                       store.dispatch({
-                        type: 'REMOVE',
-                        id: key,
+                        type: 'REMOVE_TIMER',
+                        id: this.props.eachKey,
                       })
               }
       />
