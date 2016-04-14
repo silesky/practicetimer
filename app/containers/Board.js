@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerBox from './TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
+import BoardBtnIncrementDecrement from '../components/BoardBtnIncrementDecrement';
 import store from '../_Store';
 const Board = React.createClass({
 
@@ -21,23 +22,16 @@ const Board = React.createClass({
         />);
     } */
 
+/* al this board does is increment the timer */
     return(
             <div className="board">
               <CountDownTotal />
-              <div
-              className="btn btnComp btnAddTimerComp"
-                onClick={() =>
-                   store.dispatch({
-                     type: 'INCREMENT_TIMERCOUNT',
-                      })}>
-                [+]
-              </div>
-              <div
-              className="btn btnComp btnRemoveTimerComp"
-                onClick={() => store.dispatch({ type: 'DECREMENT_TIMERCOUNT' })}>
-                [-]
-              </div>
+              <BoardBtnIncrementDecrement
+                onBoardBtnIncrementClick={() => store.dispatch({ type: 'INCREMENT_TIMERCOUNT' }) }
+                onBoardBtnDecrementClick={() => store.dispatch({ type: 'DECREMENT_TIMERCOUNT' }) }
+              />
 
+            
                 { timeArray.map((el, i) => {
                       return(<TimerBox
                     eachKey={ i }
@@ -45,7 +39,8 @@ const Board = React.createClass({
                     eachTitle={ titleArray[i] }
                     />);
                   }) }
-                            </div>
+
+          </div>
           );
   },
 });
