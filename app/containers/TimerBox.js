@@ -4,24 +4,36 @@ import $ from 'jquery';
 import draggable from 'jquery-ui';
 import Title from '../components/Title';
 import CountDown from '../components/CountDown';
+import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
+import store from '../_Store';
 const TimerBox = React.createClass({
 
   componentDidMount: function() {
     $(ReactDOM.findDOMNode(this)).draggable();
   },
+
+  /* onTimerBoxBtnCloseClick ---
+  so this parent component is the ui logic...
+   * but it's not the eventhandler itself...
+   *  onTimerBoxBtnCloseClick !== onClick
+   *  ... onTimerBoxBtnCloseClick is passed to  TimerBoxBtnClose as a prop
+   **/
+
   render: function () {
     return (
       <div className="timerBox" onRemove={this.remove}>
-
         <div className="topBarContainer">
           <div className="topBarLeft">
-            <div
-              className="btn btnComp btnCloseTimerComp">[-]</div>
-          </div>
-          <div className="topBarRight">
-          </div>
 
-        </div>
+            <TimerBoxBtnClose
+                    onTimerBoxBtnCloseClick={ key =>
+                      store.dispatch({
+                        type: 'REMOVE_TIMER',
+                        id: this.props.eachKey,
+                      })
+              }
+      />
+            </div>
         <div className="titleContainer">
           <div className="titleComp">
             <Title
@@ -36,6 +48,7 @@ const TimerBox = React.createClass({
 
 
 
+      </div>
       </div>
 
     );
