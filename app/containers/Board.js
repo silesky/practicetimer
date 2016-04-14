@@ -11,14 +11,15 @@ const Board = React.createClass({
     const timeArray = store.getState().timeArray;
     //const idArray = store.getState().idArray;
     const titleArray = store.getState().titleArray;
-    const timerBoxesArr = [];
-    for (let i = 0; i < timerCount; i++) {
+  /*
+  const timerBoxesArr = [];
+ for (let i = 0; i < timerCount; i++) {
       timerBoxesArr.push(<TimerBox
         eachKey= { i }
         eachTime={ timeArray[i] }
         eachTitle={ titleArray[i] }
         />);
-    }
+    } */
 
     return(
             <div className="board">
@@ -36,8 +37,15 @@ const Board = React.createClass({
                 onClick={() => store.dispatch({ type: 'DECREMENT_TIMERCOUNT' })}>
                 [-]
               </div>
-              { timerBoxesArr }
-            </div>
+
+                { timeArray.map((el, i) => {
+                      return(<TimerBox
+                    eachKey={ i }
+                    eachTime={ timeArray[i] }
+                    eachTitle={ titleArray[i] }
+                    />);
+                  }) }
+                            </div>
           );
   },
 });
