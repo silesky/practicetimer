@@ -7,6 +7,8 @@ import store from '../_Store';
 const Board = React.createClass({
   render: function() {
 
+const timeArray = store.getState().timerBoxReducer.timeArray;
+const titleArray = store.getState().timerBoxReducer.titleArray;
   /* al this board does is increment the timer */
       return(
               <div className="board">
@@ -17,11 +19,11 @@ const Board = React.createClass({
                 />
 
 
-              { store.getState().timeArray.map((el, i) => {
+              { store.getState().timerBoxReducer.timeArray.map((el, i) => {
                         return(<TimerBox
                       eachKey={ i }
-                      eachTime={ store.getState().timeArray[i] }
-                      eachTitle={ store.getState().titleArray[i] }
+                      eachTime={ timeArray[i] }
+                      eachTitle={ titleArray[i] }
                       />);
                     }) }
 
