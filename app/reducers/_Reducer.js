@@ -13,11 +13,13 @@ import timerBoxReducer from './timerBoxReducer';
 */
 
 
+/* basically, it's saying to grab these items  */
 
-
+/* assign these two objects to */
+// keys -> properties of the state object
 const reducer = combineReducers({
   boardReducer,
-  timerBoxReducer,
+  timerBoxReducer
 });
 
 export default reducer;
