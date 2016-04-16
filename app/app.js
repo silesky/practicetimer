@@ -14,15 +14,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './containers/Board';
 import store from './_Store';
-import { Provider } from 'react-redux';
 
 
   const renderRoot = () => {
     console.log(store.getState());
     ReactDOM.render(
-      <Provider store={store}>
-          <Board />
-      </Provider>,
+          <Board />,
       document.getElementById('timer')
         );
 };
