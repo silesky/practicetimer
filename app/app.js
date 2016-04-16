@@ -18,6 +18,7 @@ import { Provider } from 'react-redux';
 
 
   const renderRoot = () => {
+    console.log(store.getState());
     ReactDOM.render(
       <Provider store={store}>
           <Board />

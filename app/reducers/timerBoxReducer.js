@@ -17,8 +17,6 @@ const timerBoxReducer = function(
      titleArray: [''],
    },
    action) {
-      console.log('reducer called...state:');
-      console.log(state);
       const lastArrayValue = (arr) => arr[arr.length - 1];
       function removeItemFromArray(array, itemToRemove) {
         var indexToRemove = array.indexOf(itemToRemove);
