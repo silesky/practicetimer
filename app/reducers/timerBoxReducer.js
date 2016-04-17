@@ -1,16 +1,16 @@
 import boardReducer from './boardReducer';
 
 const timerBoxReducer = function(
-  state = [{ id: 1, time: 10, title: 'shop' },{ id: 2, time: 5, title: 'work' }], action) {
+  state = [{ id: 1, time: 10, title: 'shop' }, { id: 2, time: 5, title: 'work' }], action) {
 
 
     switch (action.type) {
 
       case 'INCREMENT':
       // copy the state array
-      //const stateCopyArr = state.slice(0);
+      // const stateCopyArr = state.slice(0);
       // search in the array, return the object with the right id
-      //const foundObj = stateCopyArr.find((el) => el.id === action.id);
+      // const foundObj = stateCopyArr.find((el) => el.id === action.id);
       console.log(foundObj);
       // change that object
       // foundObj.time =  foundObj.time + 1;
@@ -41,7 +41,7 @@ const timerBoxReducer = function(
       default:
       return state;
     }
-  }
+  };
 
 
   //
