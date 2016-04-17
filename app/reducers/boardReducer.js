@@ -8,7 +8,7 @@ const boardReducer =  (state = { timerCount: 1 }, action) => {
       case 'DECREMENT_TIMERCOUNT':
             console.log('decrement--reducer');
         return state.timerCount - 1;
-        default:
+     default:
         return state;
       }
   };

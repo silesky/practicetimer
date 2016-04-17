@@ -26,11 +26,12 @@ const TimerBox = React.createClass({
           <div className="topBarLeft">
 
             <TimerBoxBtnClose
-                    onTimerBoxBtnCloseClick={ key =>
+                    onTimerBoxBtnCloseClick={ () =>
                       store.dispatch({
                         type: 'REMOVE_TIMER',
+                        id: this.props.eachKey
                       })
-              }
+                    }
       />
             </div>
         <div className="titleContainer">

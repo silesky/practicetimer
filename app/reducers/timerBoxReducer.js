@@ -8,7 +8,6 @@ const timerBoxReducer = function(
     case 'INCREMENT':
     // copy the state array
     var copy = state.timerBoxReducer;
-    console.log(copy);
     // search in the array, return the object with the right id
        //  const foundObj = stateCopyArr.find((el) => el.id === action.id);
   //  console.log(foundObj);
@@ -23,10 +22,9 @@ const timerBoxReducer = function(
       //  console.log(stateCopyArr.time);
           // return stateCopyArr;
     case 'DECREMENT':
-
-      console.log("DECREMENT");
-    case 'REMOVE_TIMER':
-      console.log('close');
+      console.log('DECREMENT');
+  case 'REMOVE_TIMER':
+      console.log(action.id);
     default:
       return state;
   }
