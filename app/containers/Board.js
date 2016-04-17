@@ -3,7 +3,17 @@ import ReactDOM from 'react-dom';
 import TimerBox from './TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
 import BoardBtnIncrementDecrement from '../components/BoardBtnIncrementDecrement';
+import { connect } from 'react-redux';
 import store from '../_Store';
+
+
+const mapStateToProps = function(state) {
+   return {
+     timerBoxReducer: state.timerBoxReducer,
+   };
+ };
+
+
 const Board = React.createClass({
   render: function() {
 
@@ -17,7 +27,7 @@ const Board = React.createClass({
                 />
 
 
-              { store.getState().timerBoxReducer.map((el) => {
+              { this.props.timerBoxReducer.map((el) => {
                         return(<TimerBox
                       eachKey={el.id}
                       eachTime={el.time}
@@ -30,5 +40,5 @@ const Board = React.createClass({
     },
 });
 
-module.exports = Board;
+export default connect(mapStateToProps)(Board)
       /* drum roll */
