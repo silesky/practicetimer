@@ -5,14 +5,22 @@ import CountDownTotal from '../components/CountDownTotal';
 import BoardBtnIncrementDecrement from '../components/BoardBtnIncrementDecrement';
 import { connect } from 'react-redux';
 import store from '../_Store';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../actions/_actionCreators';
 
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+      actionIncrementTimercount: actionCreators.actionIncrementTimercount,
+      actionDecrementTimercount: actionCreators.actionDecrementTimercount
+    }, dispatch);
+};
 
 const mapStateToProps = function(state) {
    return {
      timerBoxReducer: state.timerBoxReducer,
    };
  };
-
 
 const Board = React.createClass({
   render: function() {
@@ -22,10 +30,9 @@ const Board = React.createClass({
               <div className="board">
                 <CountDownTotal />
                 <BoardBtnIncrementDecrement
-                  onBoardBtnIncrementClick={() => store.dispatch({ type: 'INCREMENT_TIMERCOUNT' }) }
-                  onBoardBtnDecrementClick={() => store.dispatch({ type: 'DECREMENT_TIMERCOUNT' }) }
+                  onBoardBtnIncrementClick={this.props.actionIncrementTimercount}
+                  onBoardBtnDecrementClick={this.props.actionDecrementTimercount}
                 />
-
 
               { this.props.timerBoxReducer.map((el) => {
                         return(<TimerBox
@@ -34,11 +41,10 @@ const Board = React.createClass({
                       eachTitle={el.title}
                       />);
                     }) }
-
             </div>
             );
     },
 });
 
-export default connect(mapStateToProps)(Board)
+export default connect(mapStateToProps, mapDispatchToProps)(Board)
       /* drum roll */
