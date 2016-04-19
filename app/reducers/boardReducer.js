@@ -1,13 +1,19 @@
+import timerBoxReducer from './timerBoxReducer';
 
-const boardReducer =  (state = { timerCount: 1 }, action) => {
+
+const boardReducer =  (state = {}, action) => {
+  const timerBoxState = timerBoxReducer(undefined, action);
+  const timerCount = timerBoxState.length;
+        console.log(state);
     switch (action.type) {
       case 'INCREMENT_TIMERCOUNT':
-      // add another array item to the end of timeArray, incremented by one.
-        console.log('increment-- reducer');
-        return state.timerCount + 1;
+        return Object.assign({}, state, {
+            timerCount: timerCount + 1
+              });
       case 'DECREMENT_TIMERCOUNT':
-            console.log('decrement--reducer');
-        return state.timerCount - 1;
+        return Object.assign({}, state, {
+            timerCount: timerCount  - 1
+              });
      default:
         return state;
       }
