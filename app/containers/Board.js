@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerBox from './TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
-import BoardBtnIncrementDecrement from '../components/BoardBtnIncrementDecrement';
+import BoardBtnIncrement from '../components/BoardBtnIncrement';
 import { connect } from 'react-redux';
 import store from '../_Store';
 import { bindActionCreators } from 'redux';
@@ -29,9 +29,8 @@ const Board = React.createClass({
       return(
               <div className="board">
                 <CountDownTotal />
-                <BoardBtnIncrementDecrement
+                <BoardBtnIncrement
                   onBoardBtnIncrementClick={this.props.actionIncrementTimercount}
-                  onBoardBtnDecrementClick={this.props.actionDecrementTimercount}
                 />
 
               { this.props.timerBoxReducer.map((el) => {

@@ -10,10 +10,6 @@ const boardReducer =  (state = {}, action) => {
         return Object.assign({}, state, {
             timerCount: timerCount + 1
               });
-      case 'DECREMENT_TIMERCOUNT':
-        return Object.assign({}, state, {
-            timerCount: timerCount  - 1
-              });
      default:
         return state;
       }
