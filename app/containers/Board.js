@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import TimerBox from './TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
 import { connect } from 'react-redux';
-import store from '../_Store';
 import { bindActionCreators } from 'redux';
-import * as actionCreators from '../actions/_actionCreators';
+// import * as actionCreators from '../actions/_actionCreators';
 
 
 const mapDispatchToProps = (dispatch) => {
