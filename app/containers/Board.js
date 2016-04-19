@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerBox from './TimerBox';
 import CountDownTotal from '../components/CountDownTotal';
-import BoardBtnIncrement from '../components/BoardBtnIncrement';
 import { connect } from 'react-redux';
 import store from '../_Store';
 import { bindActionCreators } from 'redux';
@@ -11,8 +10,8 @@ import * as actionCreators from '../actions/_actionCreators';
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-      actionIncrementTimercount: actionCreators.actionIncrementTimercount,
-      actionDecrementTimercount: actionCreators.actionDecrementTimercount
+      // actionIncrementTimercount: actionCreators.actionIncrementTimercount,
+      // actionDecrementTimercount: actionCreators.actionDecrementTimercount
     }, dispatch);
 };
 
@@ -29,10 +28,6 @@ const Board = React.createClass({
       return(
               <div className="board">
                 <CountDownTotal />
-                <BoardBtnIncrement
-                  onBoardBtnIncrementClick={this.props.actionIncrementTimercount}
-                />
-
               { this.props.timerBoxReducer.map((el) => {
                         return(<TimerBox
                       eachKey={el.id}

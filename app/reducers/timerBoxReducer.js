@@ -5,6 +5,9 @@ const timerBoxReducer = function(
 
 
     switch (action.type) {
+      case 'ADD_TIMER':
+            console.log('add!');
+      return [...state, {id: 3, time: 10, title: 'shop' }];
 
       case 'INCREMENT':
       // copy the state array
@@ -26,7 +29,6 @@ const timerBoxReducer = function(
       console.log('DECREMENT');
 
       case 'REMOVE_TIMER':
-      console.log(action.id);
       // copy the state array
       const stateCopyArr = state.slice(0);
       // search in the array, return the object w/ the id that belongs to the clicked element
@@ -65,6 +67,8 @@ const timerBoxReducer = function(
   //       case 'REMOVE_TIMER':
   //       // add another array item to the end of timeArray, incremented by one.
   //
+          //  const lastArrayValue = (arr) => arr[arr.length - 1];
+          //   const nextId = lastArrayValue(state.idArray);
   //       const newIdArray = removeItemFromArray(state.idArray, action.id);
   //           console.log(newIdArray);
   //         console.log(action);

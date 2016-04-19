@@ -4,9 +4,10 @@ import timerBoxReducer from './timerBoxReducer';
 const boardReducer =  (state = {}, action) => {
   const timerBoxState = timerBoxReducer(undefined, action);
   const timerCount = timerBoxState.length;
-        console.log(state);
+      console.log(state);
     switch (action.type) {
       case 'INCREMENT_TIMERCOUNT':
+      timerBoxReducer(undefined, {type: 'ADD_TIMER'})
         return Object.assign({}, state, {
             timerCount: timerCount + 1
               });

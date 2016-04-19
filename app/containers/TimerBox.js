@@ -4,6 +4,7 @@ import $ from 'jquery';
 import draggable from 'jquery-ui';
 import Title from '../components/Title';
 import CountDown from '../components/CountDown';
+import TimerBoxBtnAdd from '../components/TimerBoxBtnAdd';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
 import store from '../_Store';
 const TimerBox = React.createClass({
@@ -24,7 +25,6 @@ const TimerBox = React.createClass({
       <div className="timerBox" onRemove={this.remove}>
         <div className="topBarContainer">
           <div className="topBarLeft">
-
             <TimerBoxBtnClose
                     onTimerBoxBtnCloseClick={ () =>
                       store.dispatch({
@@ -32,8 +32,19 @@ const TimerBox = React.createClass({
                         id: this.props.eachKey
                       })
                     }
-      />
-            </div>
+             />
+
+          </div>
+          <div className="topBarRight">
+            <TimerBoxBtnAdd
+                      onTimerBoxBtnAddClick={ () =>
+                        store.dispatch({
+                          type: 'ADD_TIMER',
+                          id: this.props.eachKey
+                        })
+                      }
+             />
+          </div>
         <div className="titleContainer">
           <div className="titleComp">
             <Title
