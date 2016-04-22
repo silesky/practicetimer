@@ -4,7 +4,7 @@
 
   <TimerBox>
      <Title />
-    <CountDown />
+    <TimerBoxCountDown />
   </TimerBox>
 
 </Board>

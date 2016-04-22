@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
 import Title from '../components/Title';
-import CountDown from '../components/CountDown';
+import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnAdd from '../components/TimerBoxBtnAdd';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
 import store from '../_Store';
@@ -54,7 +54,7 @@ const TimerBox = React.createClass({
           </div>
         </div>
 
-        <CountDown eachTime={this.props.eachTime}  />
+        <TimerBoxCountDown eachTime={this.props.eachTime}  />
 
 
 

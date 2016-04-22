@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from '../_Store';
 
-var CountDown = React.createClass({
+var TimerBoxCountDown = React.createClass({
 
   render: function() {
   let nextTimerId = 0;
@@ -47,4 +47,4 @@ var CountDown = React.createClass({
         );
   }
 });
-module.exports = CountDown;
+module.exports = TimerBoxCountDown;
