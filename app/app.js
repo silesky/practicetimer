@@ -1,6 +1,6 @@
 /*
 <Board>
-  <CountDownTotal />
+  <BoardCountDownTotal />
 
   <TimerBox>
      <Title />

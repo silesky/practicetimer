@@ -1,10 +1,10 @@
-.countDownTotalContainer {
+.BoardCountDownTotalContainer {
     height: 100px;
     background-color: grey;
     position: fixed;
     width: 100%;
 }
-.countDownTotalNum {
+.BoardCountDownTotalNum {
   font-family: Arial;
   color: white;
   font-size: 3em;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerBox from './TimerBox';
-import CountDownTotal from '../components/CountDownTotal';
+import BoardCountDownTotal from '../components/BoardCountDownTotal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import * as actionCreators from '../actions/_actionCreators';
@@ -26,7 +26,7 @@ const Board = React.createClass({
   /* al this board does is increment the timer */
       return(
               <div className="board">
-                <CountDownTotal />
+                <BoardCountDownTotal />
               { this.props.timerBoxReducer.map((el) => {
                         return(<TimerBox
                       eachKey={el.id}
