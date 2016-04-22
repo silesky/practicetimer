@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import store from '../_Store';
 import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
-
+import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
 const TimerBoxCountDown = React.createClass({
 
   render: function() {
@@ -34,7 +34,10 @@ const TimerBoxCountDown = React.createClass({
                 onTimerBoxCountDownBtnDecrementClick={() =>
                   store.dispatch({ type: 'DECREMENT' }) }
                 />
-
+              <TimerBoxCountDownBtnReset
+                    onTimerBoxCountDownBtnResetClick={ () =>
+                    store.dispatch({ type: 'RESET' }) }
+                    />
               <div
                 className="countDownBtnReset btn"
                 onClick={() => store.dispatch({ type: 'RESET' })}>[r]</div>
