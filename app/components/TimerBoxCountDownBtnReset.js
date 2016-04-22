@@ -8,7 +8,7 @@ const TimerBoxCountDownBtnReset = ({  onTimerBoxCountDownBtnResetClick }) => {
     console.log('onTimerBoxCountDownBtnResetClick');
         onTimerBoxCountDownBtnResetClick();
     } }>
-      [=>]
+    [r]
     </div>
 
   );

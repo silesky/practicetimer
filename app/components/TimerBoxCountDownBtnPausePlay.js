@@ -8,7 +8,7 @@ const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayClick }
     console.log('onTimerBoxCountDownBtnPausePlayClick');
         onTimerBoxCountDownBtnPausePlayClick();
     } }>
-      [=>]
+    [p]
     </div>
 
   );

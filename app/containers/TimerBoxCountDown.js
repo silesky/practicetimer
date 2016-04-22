@@ -38,10 +38,6 @@ const TimerBoxCountDown = React.createClass({
                     onTimerBoxCountDownBtnResetClick={ () =>
                     store.dispatch({ type: 'RESET' }) }
                     />
-              <div
-                className="countDownBtnReset btn"
-                onClick={() => store.dispatch({ type: 'RESET' })}>[r]</div>
-
             </div>
             <div className="countDownTextContainer">
               <div className="countDownText">{ this.props.eachTime } </div>
