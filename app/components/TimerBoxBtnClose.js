@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
 const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
   return (
@@ -12,7 +12,7 @@ const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
     </div>
 
 
-  )
-}
+  );
+};
 
 export default TimerBoxBtnClose;

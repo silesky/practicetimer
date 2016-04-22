@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
 const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayClick }) => {
   return (
@@ -11,7 +11,7 @@ const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayClick }
       [=>]
     </div>
 
-  )
-}
+  );
+};
 
 export default TimerBoxCountDownBtnPausePlay;

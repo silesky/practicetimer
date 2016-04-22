@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import store from '../_Store';
 
 const Title = React.createClass({
-    render: function () {
+    render: function() {
       return (
         <div>
           <input ref={node => {this.titleSetInput = node;}}

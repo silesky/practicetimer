@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
 const TimerBoxBtnAdd = ({  onTimerBoxBtnAddClick }) => {
   return (
@@ -11,7 +11,7 @@ const TimerBoxBtnAdd = ({  onTimerBoxBtnAddClick }) => {
       [+]
     </div>
 
-  )
-}
+  );
+};
 
 export default TimerBoxBtnAdd;

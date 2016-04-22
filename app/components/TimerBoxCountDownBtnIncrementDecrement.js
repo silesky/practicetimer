@@ -1,5 +1,5 @@
 
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
 const TimerBoxCountDownBtnIncrementDecrement =
 ({  onTimerBoxCountDownBtnIncrementClick,
@@ -33,6 +33,6 @@ const TimerBoxCountDownBtnIncrementDecrement =
 
 
 );
-}
+};
 
 export default TimerBoxCountDownBtnIncrementDecrement;
