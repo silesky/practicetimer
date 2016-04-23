@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 
-const TimerBoxBtnAdd = ({  onTimerBoxBtnAddClick }) => {
+const TimerBoxBtnAdd = ({  onTimerBoxBtnAddEvent }) => {
   return (
     <div
       className="btn btnComp btnAddTimerComp"
       onClick={() => {
-        console.log('onTimerBoxBtnAddClick');
-        onTimerBoxBtnAddClick();
+        console.log('onTimerBoxBtnAddEvent');
+        onTimerBoxBtnAddEvent();
       } }>
       [+]
     </div>

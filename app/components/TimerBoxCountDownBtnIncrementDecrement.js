@@ -2,8 +2,8 @@
 import React, { PropTypes } from 'react';
 
 const TimerBoxCountDownBtnIncrementDecrement =
-({  onTimerBoxCountDownBtnIncrementClick,
-  onTimerBoxCountDownBtnDecrementClick }) => {
+({  onTimerBoxCountDownBtnIncrementEvent,
+  onTimerBoxCountDownBtnDecrementEvent }) => {
     return (
       <div className="setTimerUpDnContainer btn">
 
@@ -11,7 +11,7 @@ const TimerBoxCountDownBtnIncrementDecrement =
         <div
           className="setTimerUpComp"
           onClick={ () => {
-            onTimerBoxCountDownBtnIncrementClick();
+            onTimerBoxCountDownBtnIncrementEvent();
           }
         }
         >
@@ -21,7 +21,7 @@ const TimerBoxCountDownBtnIncrementDecrement =
       <div
         className="setTimerDnComp"
         onClick={() => {
-          onTimerBoxCountDownBtnDecrementClick();
+          onTimerBoxCountDownBtnDecrementEvent();
         }
       }
       >

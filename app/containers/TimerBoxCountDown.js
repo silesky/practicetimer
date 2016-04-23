@@ -26,17 +26,17 @@ const TimerBoxCountDown = React.createClass({
               });
             }}>OK</button>
             <TimerBoxCountDownBtnPausePlay
-              onTimerBoxCountDownBtnPausePlayClick={ () =>
+              onTimerBoxCountDownBtnPausePlayEvent={ () =>
                 store.dispatch({ type: 'PAUSEPLAY' }) } />
 
               <TimerBoxCountDownBtnIncrementDecrement
-                onTimerBoxCountDownBtnIncrementClick={ () =>
+                onTimerBoxCountDownBtnIncrementEvent={ () =>
                   store.dispatch({ type: 'INCREMENT' }) }
-                  onTimerBoxCountDownBtnDecrementClick={() =>
+                  onTimerBoxCountDownBtnDecrementEvent={() =>
                     store.dispatch({ type: 'DECREMENT' }) }
                     />
                   <TimerBoxCountDownBtnReset
-                    onTimerBoxCountDownBtnResetClick={ () =>
+                    onTimerBoxCountDownBtnResetEvent={ () =>
                       store.dispatch({ type: 'RESET' }) }
                       />
                   </div>
