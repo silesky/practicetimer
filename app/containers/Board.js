@@ -8,36 +8,36 @@ import { bindActionCreators } from 'redux';
 
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({
-      // actionIncrementTimercount: actionCreators.actionIncrementTimercount,
-      // actionDecrementTimercount: actionCreators.actionDecrementTimercount
-    }, dispatch);
+  return bindActionCreators({
+    // actionIncrementTimercount: actionCreators.actionIncrementTimercount,
+    // actionDecrementTimercount: actionCreators.actionDecrementTimercount
+  }, dispatch);
 };
 
 const mapStateToProps = function(state) {
-   return {
-     timerBoxReducer: state.timerBoxReducer,
-   };
- };
+  return {
+    timerBoxReducer: state.timerBoxReducer,
+  };
+};
 
 const Board = React.createClass({
   render: function() {
 
-  /* al this board does is increment the timer */
-      return(
-              <div className="board">
-                <BoardCountDownTotal />
-              { this.props.timerBoxReducer.map((el) => {
-                        return(<TimerBox
-                      eachKey={el.id}
-                      eachTime={el.time}
-                      eachTitle={el.title}
-                      />);
-                    }) }
-            </div>
-            );
+    /* al this board does is increment the timer */
+    return(
+      <div className="board">
+        <BoardCountDownTotal />
+        { this.props.timerBoxReducer.map((el) => {
+          return(<TimerBox
+            eachKey={el.id}
+            eachTime={el.time}
+            eachTitle={el.title}
+            />);
+          }) }
+        </div>
+      );
     },
-});
+  });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Board)
-      /* drum roll */
+  export default connect(mapStateToProps, mapDispatchToProps)(Board);
+  /* drum roll */

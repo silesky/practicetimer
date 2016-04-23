@@ -15,51 +15,51 @@ const TimerBox = React.createClass({
 
   /* onTimerBoxBtnCloseClick ---
   so this parent component is the ui logic...
-   * but it's not the eventhandler itself...
-   *  onTimerBoxBtnCloseClick !== onClick
-   *  ... onTimerBoxBtnCloseClick is passed to  TimerBoxBtnClose as a prop
-   **/
+  * but it's not the eventhandler itself...
+  *  onTimerBoxBtnCloseClick !== onClick
+  *  ... onTimerBoxBtnCloseClick is passed to  TimerBoxBtnClose as a prop
+  **/
 
-  render: function () {
+  render: function() {
     return (
       <div className="timerBox" onRemove={this.remove}>
         <div className="topBarContainer">
           <div className="topBarLeft">
             <TimerBoxBtnClose
-                    onTimerBoxBtnCloseClick={ () =>
-                      store.dispatch({
-                        type: 'REMOVE_TIMER',
-                        id: this.props.eachKey
-                      })
-                    }
-             />
+              onTimerBoxBtnCloseClick={ () =>
+                store.dispatch({
+                  type: 'REMOVE_TIMER',
+                  id: this.props.eachKey
+                })
+              }
+              />
 
           </div>
           <div className="topBarRight">
             <TimerBoxBtnAdd
-                      onTimerBoxBtnAddClick={ () =>
-                        store.dispatch({
-                          type: 'ADD_TIMER',
-                          id: this.props.eachKey
-                        })
-                      }
-             />
+              onTimerBoxBtnAddClick={ () =>
+                store.dispatch({
+                  type: 'ADD_TIMER',
+                  id: this.props.eachKey
+                })
+              }
+              />
           </div>
-        <div className="titleContainer">
-          <div className="titleComp">
-            <Title
-              eachKey={ this.props.eachKey }
-               eachTitle={ this.props.eachTitle }
-               />
+          <div className="titleContainer">
+            <div className="titleComp">
+              <Title
+                eachKey={ this.props.eachKey }
+                eachTitle={ this.props.eachTitle }
+                />
+            </div>
           </div>
+
+          <TimerBoxCountDown eachTime={this.props.eachTime}  />
+
+
+
+
         </div>
-
-        <TimerBoxCountDown eachTime={this.props.eachTime}  />
-
-
-
-
-      </div>
       </div>
 
     );

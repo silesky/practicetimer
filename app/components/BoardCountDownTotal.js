@@ -5,9 +5,9 @@ var BoardCountDownTotal = React.createClass({
   render: function() {
     return (
       <div className="BoardCountDownTotalContainer">
-          <div className="BoardCountDownTotalNum">
-            40
-          </div>
+        <div className="BoardCountDownTotalNum">
+          40
+        </div>
       </div>
     );
   }
