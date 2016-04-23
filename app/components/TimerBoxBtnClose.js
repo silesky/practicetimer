@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 
-const TimerBoxBtnClose = ({ onTimerBoxBtnCloseEvent }) => {
+const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
   return (
     <div
       className="btn btnComp btnCloseTimerComp"
       onClick={() => {
         console.log('close');
-        onTimerBoxBtnCloseEvent();
+        onTimerBoxBtnCloseClick();
       } }>
       [-]
     </div>

@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 
-const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayEvent }) => {
+const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayClick }) => {
   return (
     <div
       className="countDownBtnPausePlay btn"
       onClick={() => {
-        console.log('onTimerBoxCountDownBtnPausePlayEvent');
-        onTimerBoxCountDownBtnPausePlayEvent();
+        console.log('onTimerBoxCountDownBtnPausePlayClick');
+        onTimerBoxCountDownBtnPausePlayClick();
       } }>
       [p]
     </div>

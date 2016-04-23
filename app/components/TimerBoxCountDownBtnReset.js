@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 
-const TimerBoxCountDownBtnReset = ({  onTimerBoxCountDownBtnResetEvent }) => {
+const TimerBoxCountDownBtnReset = ({  onTimerBoxCountDownBtnResetClick }) => {
   return (
     <div
       className="countDownBtnReset btn"
       onClick={() => {
-        console.log('onTimerBoxCountDownBtnResetEvent');
-        onTimerBoxCountDownBtnResetEvent();
+        console.log('onTimerBoxCountDownBtnResetClick');
+        onTimerBoxCountDownBtnResetClick();
       } }>
       [r]
     </div>

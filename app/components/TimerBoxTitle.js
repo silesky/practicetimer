@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from '../_Store';
 
-const TimerBoxTitle = ({onTimerBoxTitleEvent, eachTitle }) => {
+const TimerBoxTitle = ({onTimerBoxTitleSet, eachTitle }) => {
 	var titleSetInput;
 	return (
 
@@ -12,7 +12,7 @@ const TimerBoxTitle = ({onTimerBoxTitleEvent, eachTitle }) => {
 					node => {titleSetInput = node;}
 				}
 				onChange={() => {
-					onTimerBoxTitleEvent(titleSetInput);
+					onTimerBoxTitleSet(titleSetInput);
 				}} />
 				<div>
 					{eachTitle}
