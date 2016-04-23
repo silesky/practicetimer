@@ -4,6 +4,7 @@ import store from '../_Store';
 import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
 import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
+import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
 const TimerBoxCountDown = React.createClass({
 
   render: function() {
@@ -38,13 +39,14 @@ const TimerBoxCountDown = React.createClass({
                     onTimerBoxCountDownBtnResetClick={ () =>
                     store.dispatch({ type: 'RESET' }) }
                     />
-            </div>
-            <div className="countDownTextContainer">
-              <div className="countDownText">{ this.props.eachTime } </div>
-            </div>
           </div>
 
+          <TimerBoxCountDownTotal
+            eachTime={ this.props.eachTime }
+            />
 
+
+        </div>
         );
   }
 });
