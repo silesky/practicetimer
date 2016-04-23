@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from '../_Store';
 
-const Title = React.createClass({
+const TimerBoxTitle = React.createClass({
   render: function() {
     return (
       <div>
@@ -27,4 +27,4 @@ const Title = React.createClass({
 
   });
 
-  module.exports = Title;
+  module.exports = TimerBoxTitle;

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
-import Title from '../components/Title';
+import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnAdd from '../components/TimerBoxBtnAdd';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
@@ -47,7 +47,7 @@ const TimerBox = React.createClass({
           </div>
           <div className="titleContainer">
             <div className="titleComp">
-              <Title
+              <TimerBoxTitle
                 eachKey={ this.props.eachKey }
                 eachTitle={ this.props.eachTitle }
                 />
