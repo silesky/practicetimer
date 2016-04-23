@@ -22,7 +22,7 @@ const TimerBox = React.createClass({
 
   render: function() {
     return (
-      <div className="timerBox" onRemove={this.remove}>
+      <div className="timerBox">
         <div className="topBarContainer">
           <div className="topBarLeft">
             <TimerBoxBtnClose
