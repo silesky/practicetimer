@@ -2,29 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import store from '../_Store';
 
-const TimerBoxTitle = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <input ref={node => {this.titleSetInput = node;}}
-          type="text"
-          onChange={() => {
-            store.dispatch({
-              type: 'SET_TITLE',
-              text: this.titleSetInput.value,
-              id: this.props.eachKey
-            });
-          } } />
-          <div>
-            { this.props.eachTitle}
-          </div>
-          <div>
+const TimerBoxTitle = ({onTimerBoxTitleSet, eachTitle }) => {
+	var titleSetInput;
+	return (
 
-          </div>
-        </div>
-      );
-    }
+		<div className="titleComp">
+			<input type="text"
+				ref={
+					node => {titleSetInput = node;}
+				}
+				onChange={() => {
+					onTimerBoxTitleSet(titleSetInput);
+				}} />
+				<div>
+					{eachTitle}
+				</div>
+			</div>
+		);
+	};
 
-  });
 
-  module.exports = TimerBoxTitle;
+	export default TimerBoxTitle;

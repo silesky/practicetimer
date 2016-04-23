@@ -46,12 +46,19 @@ const TimerBox = React.createClass({
               />
           </div>
           <div className="titleContainer">
-            <div className="titleComp">
+
               <TimerBoxTitle
+                onTimerBoxTitleSet={ (titleSetInput) => {
+                  store.dispatch({
+                              type: 'SET_TITLE',
+                              text: titleSetInput.value,
+                              id: this.props.eachKey
+                          });
+                 }
+                }
                 eachKey={ this.props.eachKey }
                 eachTitle={ this.props.eachTitle }
                 />
-            </div>
           </div>
 
           <TimerBoxCountDown eachTime={this.props.eachTime}  />
