@@ -40,7 +40,6 @@ const TimerBox = React.createClass({
               onTimerBoxBtnAddClick={ () =>
                 store.dispatch({
                   type: 'ADD_TIMER',
-                  id: this.props.eachKey
                 })
               }
               />

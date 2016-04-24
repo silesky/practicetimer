@@ -8,21 +8,20 @@ const timerBoxReducer = function(
     // search in the array, return the object w/ the id that belongs to the clicked element
     let foundObj = stateCopyArr.find((el) => el.id === action.id);
     // grab the index of the object to remove
+   const getNextId = Math.max(...stateCopyArr.map(el => el['id'])) + 1;
     const foundIndex = stateCopyArr.indexOf(foundObj);
     // copy the array and remove the found element, and replace it with the new element
     switch (action.type) {
       case 'SET_TITLE':
       // grab the node
+      console.log(state);
         const newText = action.text;
-     // remove the old node
-        console.log(foundObj.title);
-      // create the new object e.g {id: 2, time: 3, title: newText }
       stateCopyArr[foundIndex].title = newText;
       return stateCopyArr;
 
       case 'ADD_TIMER':
             console.log('add!');
-      return [...state, { id: 3, time: 10, title: 'shop' }];
+      return [...stateCopyArr, { id: getNextId, time: 10, title: 'shop' }];
       case 'INCREMENT':
         console.log('INCREMENT');
       case 'DECREMENT':
