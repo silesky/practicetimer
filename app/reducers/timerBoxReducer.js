@@ -6,42 +6,39 @@ const timerBoxReducer = function(
 
     // copy the state array
     const stateCopyArr = state.slice(0);
-    // search in the array, return the object w/ the id that belongs to the clicked element
-    const foundObj = stateCopyArr.find((el) => el.id === action.id);
-    // grab the index of the object to remove
-    const foundIndex = stateCopyArr.indexOf(foundObj);
+
+
 
     const util = {
-      replaceElByIndex: (array, index, el) => {
+      getState_replaceElByIndex: (index, el) => {
         return [
-          ...array.slice(0, index),
-          array[index] =  el,
-          ...array.slice(index + 1)
+          ...state.slice(0, index),
+          state[index] =  el,
+          ...state.slice(index + 1)
         ];
       },
-      removeElByIndex: (array, index) => {
+      getState_removeElByIndex: (index) => {
         return [
-          ...array.slice(0, index),
-          ...array.slice(index + 1)
+          ...state.slice(0, index),
+          ...state.slice(index + 1)
         ];
       },
       getNextId: (arr) => {
         return Math.max(...arr.map(el => el['id'])) + 1;
-      }
+      },
+      getCurrentIndex: () => {
+        const foundObj = state.find((el) => el.id === action.id);
+        const foundIndex = state.indexOf(foundObj);
+        return foundIndex;
+      },
+      getCurrentObj: () => {
+         return state.find((el) => el.id === action.id);
+       },
     };
-
-    // copy the array and remove the found element, and replace it with the new element
     switch (action.type) {
       case 'SET_TITLE':
-      // grab the node
-      console.log(state);
-      const newText = action.text;
-      stateCopyArr[foundIndex].title = newText;
-      return stateCopyArr;
-
       case 'ADD_TIMER':
-      console.log('add!');
-      return [...stateCopyArr, { id: util.getNextId, time: 10, title: 'shop' }];
+      return [...state, { id: util.getNextId, time: 10, title: 'shop' }];
 
       case 'INCREMENT':
       console.log('INCREMENT');
@@ -50,10 +47,7 @@ const timerBoxReducer = function(
       console.log('DECREMENT');
 
       case 'REMOVE_TIMER':
-
-      return util.removeElByIndex(state, foundIndex);
-      // now that you know where it is in the array, remove the old object
-      // stateCopyArr.splice(foundIndex, 1);
+      return util.getState_removeElByIndex(util.getCurrentIndex());
 
       default:
       return state;
