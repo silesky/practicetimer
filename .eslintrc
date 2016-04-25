@@ -73,7 +73,7 @@
     "consistent-return": 1,
     "curly": [1, "all"],
     "default-case": 0,
-    "dot-notation": [1, { "allowKeywords": true, "allowPattern": "" }],
+    "dot-notation": [0, { "allowKeywords": true, "allowPattern": "" }],
     "dot-location": [1, "property"],
     "eqeqeq": 1,
     "guard-for-in": 0,

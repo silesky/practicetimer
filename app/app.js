@@ -22,7 +22,6 @@ const mapStateToProps = function(state) {
    }
  };
   const renderRoot = () => {
-    console.log(store.getState());
     ReactDOM.render(
       <Provider store={store}>
         <Board />
