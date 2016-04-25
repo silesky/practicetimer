@@ -22,6 +22,7 @@ const TimerBoxCountDownBtnIncrementDecrement =
         className="setTimerDnComp"
         onClick={() => {
           onTimerBoxCountDownBtnDecrementClick();
+
         }
       }
       >

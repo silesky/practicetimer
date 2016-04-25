@@ -9,23 +9,14 @@
 
 </Board>
 */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './containers/Board';
 import store from './_Store';
-import { Provider } from 'react-redux';
 
-const mapStateToProps = function(state) {
-   return {
-     time: state.timerBoxReducer
-   }
- };
   const renderRoot = () => {
     ReactDOM.render(
-      <Provider store={store}>
-        <Board />
-      </Provider>,
+      <Board />,
       document.getElementById('timer')
         );
 };
