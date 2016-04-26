@@ -1,6 +1,7 @@
 const reducer = function(
   state = [{ id: 1, time: 10, title: 'shop' }], action) {
-
+    let _index;
+    let _objEl;
     // copy the state array
     const stateCopyArr = state.slice(0);
 
@@ -29,7 +30,7 @@ const reducer = function(
       },
       getCurrentObjEl: () => {
         console.log('getCurrentObjEl...');
-         return state.find((el) => el.id === action.id);
+         return state.find((el) => el.id == action.id);
        },
       getNextId: () => {
         return Math.max(...state.map(el => el['id'])) + 1;
@@ -37,7 +38,6 @@ const reducer = function(
     };
     switch (action.type) {
       case 'SET_TITLE':
-      console.log(state);
       const _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.title = action.text;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
@@ -48,11 +48,17 @@ const reducer = function(
 
       case 'INCREMENT':
       console.log('INCREMENT');
-      return state;
+      _index = util.getCurrentIndex();
+      _objEl = util.getCurrentObjEl();
+      _objEl.time = _objEl.time + 1;
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
+
 
       case 'DECREMENT':
-      console.log('INCREMENT');
-      return state;
+      _index = util.getCurrentIndex();
+      _objEl = util.getCurrentObjEl();
+      _objEl.time = _objEl.time - 1;
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
 
       case 'REMOVE_TIMER':
       return util.getState_removeElByIndex(util.getCurrentIndex());
