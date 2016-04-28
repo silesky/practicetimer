@@ -9,6 +9,9 @@ const TimerBoxCountDown = React.createClass({
 
   render: function() {
     let nextTimerId = 0;
+
+
+
     return (
       <div>
         <div className="countDownSettingsContainer">
@@ -26,13 +29,34 @@ const TimerBoxCountDown = React.createClass({
               });
             }}>OK</button>
             <TimerBoxCountDownBtnPausePlay
-              onTimerBoxCountDownBtnPausePlayClick={ () =>
-                store.dispatch({
-                  type: 'PAUSEPLAY',
-                  id: this.props.eachKey
-                })
-             }
-             />
+            onTimerBoxCountDownStart={() => {
+              this.myInt = setInterval(
+              () => store.dispatch({
+                  type: 'DECREMENT',
+                  id: this.props.eachKey}),
+              1000);
+            }
+          }
+
+            ifZero={()=> {
+                    const list = () => {
+                      if (this.props.eachTime < 0) {
+                            clearInterval(this.myInt);
+                        }
+                    }
+                    store.subscribe(list);
+              }
+            }
+
+
+
+              onTimerBoxCountDownStop={()=> {
+                window.clearInterval(myInt)
+              }
+            }
+
+            eachTime={this.props.eachTime}
+ />
 
               <TimerBoxCountDownBtnIncrementDecrement
                 onTimerBoxCountDownBtnIncrementClick={ () =>
@@ -52,14 +76,14 @@ const TimerBoxCountDown = React.createClass({
                     onTimerBoxCountDownBtnResetClick={ () =>
                       store.dispatch({
                         type: 'RESET',
-                        id: this.props.eachKey 
+                        id: this.props.eachKey
                       })
                     }
                       />
                   </div>
 
                   <TimerBoxCountDownTotal
-                    eachTime={ this.props.eachTime }
+                    eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
                     />
 
 

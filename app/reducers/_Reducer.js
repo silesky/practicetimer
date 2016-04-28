@@ -1,5 +1,5 @@
 const reducer = function(
-  state = [{ id: 1, time: 10, title: 'shop' }], action) {
+  state = [{ id: 1, time: 2, title: 'shop' }], action) {
     let _index;
     let _objEl;
     // copy the state array
