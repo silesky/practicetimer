@@ -30,28 +30,33 @@ const TimerBoxCountDown = React.createClass({
             }}>OK</button>
             <TimerBoxCountDownBtnPausePlay
             onTimerBoxCountDownStart={() => {
-              this.myInt = setInterval(
-              () => store.dispatch({
-                  type: 'DECREMENT',
-                  id: this.props.eachKey}),
-              1000);
-            }
+              if (!this.ticking || !this.myInt) {
+                this.ticking = true;
+                this.myInt = setInterval(
+                () => store.dispatch({
+                    type: 'DECREMENT',
+                    id: this.props.eachKey }),
+                1000);
+              }
+          }
           }
 
             ifZero={()=> {
                     const list = () => {
                       if (this.props.eachTime < 0) {
-                            clearInterval(this.myInt);
+                            window.clearInterval(this.myInt);
+                            this.ticking = false;
                         }
-                    }
+                    };
                     store.subscribe(list);
               }
             }
 
 
 
-              onTimerBoxCountDownStop={()=> {
-                window.clearInterval(myInt)
+            onTimerBoxCountDownStop={()=> {
+                window.clearInterval(this.myInt);
+                this.ticking = false;
               }
             }
 
