@@ -10,8 +10,13 @@ const TimerBoxCountDown = React.createClass({
   render: function() {
     let nextTimerId = 0;
     const startTicking = () => {
-      console.log('again');
+      console.log('startTicking()');
+      // only start ticking if interval is not set (no double ticks)
       if (!this.ticking || !this.myInt) {
+        store.dispatch({
+          type: 'SET_TICKING_TRUE',
+          id: this.props.eachKey
+        });
         this.ticking = true;
         this.myInt = setInterval(
           () => store.dispatch({
@@ -19,30 +24,30 @@ const TimerBoxCountDown = React.createClass({
             id: this.props.eachKey }),
             1000);
           }
-        };
+        }
 
 
-        return (
-          <div>
-            <div className="countDownSettingsContainer">
-              <input ref={node => {this.timeSetInput = node; }}
-                type="number"
-                placeholder="new time" />
-              <button
-                label="stuff"
-                type="button"
-                onClick={() => {
-                  store.dispatch({
-                    type: 'SET_TIME',
-                    time: this.timeSetInput.value,
-                    id: nextTimerId++,
-                  });
-                }}>OK</button>
-                <TimerBoxCountDownBtnPausePlay
-                  onTimerBoxCountDownStart={() => {
-                    startTicking();
-                  }
-                }
+    return (
+      <div>
+        <div className="countDownSettingsContainer">
+          <input ref={node => {this.timeSetInput = node; }}
+            type="number"
+            placeholder="new time" />
+          <button
+            label="stuff"
+            type="button"
+            onClick={() => {
+              store.dispatch({
+                type: 'SET_TIME',
+                time: this.timeSetInput.value,
+                id: nextTimerId++,
+              });
+            }}>OK</button>
+            <TimerBoxCountDownBtnPausePlay
+            onTimerBoxCountDownStart={() => {
+              startTicking();
+          }
+          }
 
             ifZero={()=> {
                     const list = () => {
@@ -55,45 +60,52 @@ const TimerBoxCountDown = React.createClass({
               }
             }
 
-              onTimerBoxCountDownStop={()=> {
+
+
+            onTimerBoxCountDownStop={()=> {
                 window.clearInterval(this.myInt);
                 this.ticking = false;
+                store.dispatch({
+                  type: 'SET_TICKING_FALSE',
+                  id: this.props.eachKey
+                });
               }
             }
+
             eachTime={this.props.eachTime}
-            />
+ />
 
-          <TimerBoxCountDownBtnIncrementDecrement
-            onTimerBoxCountDownBtnIncrementClick={ () =>
-              store.dispatch({
-                type: 'INCREMENT',
-                id: this.props.eachKey
-              })
+              <TimerBoxCountDownBtnIncrementDecrement
+                onTimerBoxCountDownBtnIncrementClick={ () =>
+                  store.dispatch({
+                    type: 'INCREMENT',
+                    id: this.props.eachKey
+                  })
+                }
+                  onTimerBoxCountDownBtnDecrementClick={ () =>
+                    store.dispatch({
+                       type: 'DECREMENT',
+                      id: this.props.eachKey
+                    })
+                  }
+                    />
+                  <TimerBoxCountDownBtnReset
+                    onTimerBoxCountDownBtnResetClick={ () =>
+                      store.dispatch({
+                        type: 'RESET',
+                        id: this.props.eachKey
+                      })
+                    }
+                      />
+                  </div>
+
+                  <TimerBoxCountDownTotal
+                    eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
+                    />
+
+
+                </div>
+              );
             }
-            onTimerBoxCountDownBtnDecrementClick={ () =>
-              store.dispatch({
-                type: 'DECREMENT',
-                id: this.props.eachKey
-              })
-            }
-            />
-          <TimerBoxCountDownBtnReset
-            onTimerBoxCountDownBtnResetClick={ () =>
-              store.dispatch({
-                type: 'RESET',
-                id: this.props.eachKey
-              })
-            }
-            />
-        </div>
-
-        <TimerBoxCountDownTotal
-          eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
-          />
-
-
-      </div>
-    );
-  }
-});
-module.exports = TimerBoxCountDown;
+          });
+          module.exports = TimerBoxCountDown;

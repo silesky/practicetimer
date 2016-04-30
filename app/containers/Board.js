@@ -18,6 +18,7 @@ const Board = React.createClass({
             eachKey={el.id}
             eachTime={el.time}
             eachTitle={el.title}
+            eachTicking={el.ticking}
             />);
           }) }
         </div>

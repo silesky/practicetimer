@@ -1,10 +1,10 @@
 const reducer = function(
-  state = [{ id: 1, time: 2, title: 'shop' }], action) {
+  state = [{ id: 1, time: 2, title: 'shop', ticking: false }], action) {
     let _index;
     let _objEl;
+    let _individualTimerObjEl;
     // copy the state array
     const stateCopyArr = state.slice(0);
-
 
     const util = {
       getState_replaceElByIndex: (index, el) => {
@@ -37,8 +37,20 @@ const reducer = function(
       },
     };
     switch (action.type) {
+      case 'SET_TICKING_TRUE':
+      console.log('SET_TICKING_TRUE');
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.ticking = true;
+      return util.getState_removeElByIndex(util.getCurrentIndex, _individualTimerObjEl);
+
+      case 'SET_TICKING_FALSE':
+      console.log('SET_TICKING_FALSE');
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.ticking = false;
+      return util.getState_removeElByIndex(util.getCurrentIndex, _individualTimerObjEl);
+
       case 'SET_TITLE':
-      const _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.title = action.text;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       //at the moment that add_timer is instantiated, the state only has two timers
