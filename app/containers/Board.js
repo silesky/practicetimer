@@ -1,30 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+
 import TimerBox from './TimerBox';
 import BoardCountDownTotal from '../components/BoardCountDownTotal';
-import { bindActionCreators } from 'redux';
-import store from '../_Store';
 
+const mapStateToProps = (state) => ({ state });
 
+/* all this board does is increment the timer */
 const Board = React.createClass({
   render: function() {
-
-    /* al this board does is increment the timer */
     return(
       <div className="board">
         <BoardCountDownTotal />
-        { store.getState().map((el) => {
+        { this.props.state.map((el) => {
           return(<TimerBox
             eachKey={el.id}
             eachTime={el.time}
             eachTitle={el.title}
             eachTicking={el.ticking}
             />);
-          }) }
+          })
+        }
         </div>
       );
     },
   });
 
-  export default Board;
+  export default connect(mapStateToProps)(Board);
   /* drum roll */

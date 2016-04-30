@@ -2,68 +2,78 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import draggable from 'jquery-ui';
+import { dispatch,  bindActionCreators } from 'redux';
+import { connect  } from 'react-redux';
+
+import store from '../_Store';
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnAdd from '../components/TimerBoxBtnAdd';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
-import store from '../_Store';
-const TimerBox = React.createClass({
 
+import * as actions from '../actions/_actionCreators';
+
+// grabs state property from the state object...
+const mapStateToProps = (state) => ({ state });
+
+// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actions, dispatch) }
+};
+
+const TimerBox = React.createClass({
   componentDidMount: function() {
     $(ReactDOM.findDOMNode(this)).draggable();
+
   },
 
-  /* onTimerBoxBtnCloseClick ---
-  so this parent component is the ui logic...
-  * but it's not the eventhandler itself...
-  *  onTimerBoxBtnCloseClick !== onClick
-  *  ... onTimerBoxBtnCloseClick is passed to  TimerBoxBtnClose as a prop
-  **/
 
   render: function() {
+
+// remove props wrapper:this.props.action.removeTimer... -> action.removeTimer...
+    const {
+      eachTime,
+      eachKey,
+      eachTitle,
+      actions
+    } = this.props;
+
     return (
       <div className="timerBox">
         <div className="topBarContainer">
           <div className="topBarLeft">
             <TimerBoxBtnClose
-              onTimerBoxBtnCloseClick={ () =>
-                store.dispatch({
-                  type: 'REMOVE_TIMER',
-                  id: this.props.eachKey
-                })
-              }
+              onTimerBoxBtnCloseClick={ actions.removeTimer.bind(this, eachKey) }
               />
 
           </div>
           <div className="topBarRight">
             <TimerBoxBtnAdd
-              onTimerBoxBtnAddClick={ () =>
-                store.dispatch({
-                  type: 'ADD_TIMER',
-                })
-              }
+              onTimerBoxBtnAddClick={ actions.addTimer.bind(this, eachKey) }
+
               />
           </div>
           <div className="titleContainer">
 
-              <TimerBoxTitle
-                onTimerBoxTitleSet={ (titleSetInput) => {
+            <TimerBoxTitle
+              onTimerBoxTitleSet={
+                (titleSetInput) => {
                   store.dispatch({
-                              type: 'SET_TITLE',
-                              text: titleSetInput.value,
-                              id: this.props.eachKey
-                          });
-                 }
+                    type: 'SET_TITLE',
+                    text: titleSetInput.value,
+                    id: eachKey
+                  });
                 }
-                eachKey={ this.props.eachKey }
-                eachTitle={ this.props.eachTitle }
-                />
+              }
+
+              eachKey={ eachKey }
+              eachTitle={ eachTitle }
+              />
           </div>
 
-          <TimerBoxCountDown eachKey= { this.props.eachKey } eachTime={this.props.eachTime}  />
-
-
-
+          <TimerBoxCountDown
+            eachKey={ eachKey }
+            eachTime={ eachTime }  />
 
         </div>
       </div>
@@ -72,4 +82,4 @@ const TimerBox = React.createClass({
   }
 });
 
-module.exports = TimerBox;
+export default connect(mapStateToProps, mapDispatchToProps)(TimerBox);

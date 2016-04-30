@@ -1,10 +1,19 @@
-export function actionIncrementTimercount() {
+// TimerBox
+
+export function removeTimer(id) {
   return {
-    type: 'INCREMENT_TIMERCOUNT',
-  };
+    type: 'REMOVE_TIMER',
+    id
+  }
 }
-export function actionDecrementTimercount() {
+
+export function addTimer(id) {
+  console.log(id);
   return {
-    type: 'DECREMENT_TIMERCOUNT',
-  };
+    type: 'ADD_TIMER',
+    id
+  }
 }
+
+
+// TimerBoxCountDown

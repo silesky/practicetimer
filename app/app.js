@@ -11,12 +11,16 @@
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import redux from 'redux';
 import Board from './containers/Board';
 import store from './_Store';
+import { Provider } from 'react-redux';
 
   const renderRoot = () => {
     ReactDOM.render(
-      <Board />,
+      <Provider store={store}>
+        <Board />
+      </Provider>,
       document.getElementById('timer')
         );
 };
