@@ -19,7 +19,7 @@ const TimerBoxCountDown = React.createClass({
             id: this.props.eachKey }),
             1000);
           }
-        }
+        };
 
 
         return (
@@ -44,25 +44,22 @@ const TimerBoxCountDown = React.createClass({
                   }
                 }
 
-                ifZero={()=> {
-                  const list = () => {
-                    if (this.props.eachTime < 0) {
-                      window.clearInterval(this.myInt);
-                      this.ticking = false;
-                    }
-                  };
-                  store.subscribe(list);
-                }
+            ifZero={()=> {
+                    const list = () => {
+                      if (this.props.eachTime < 0) {
+                            window.clearInterval(this.myInt);
+                            this.ticking = false;
+                        }
+                    };
+                    store.subscribe(list);
               }
-
-
+            }
 
               onTimerBoxCountDownStop={()=> {
                 window.clearInterval(this.myInt);
                 this.ticking = false;
               }
             }
-
             eachTime={this.props.eachTime}
             />
 
