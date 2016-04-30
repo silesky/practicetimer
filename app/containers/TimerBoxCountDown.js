@@ -9,91 +9,94 @@ const TimerBoxCountDown = React.createClass({
 
   render: function() {
     let nextTimerId = 0;
-
-
-
-    return (
-      <div>
-        <div className="countDownSettingsContainer">
-          <input ref={node => {this.timeSetInput = node; }}
-            type="number"
-            placeholder="new time" />
-          <button
-            label="stuff"
-            type="button"
-            onClick={() => {
-              store.dispatch({
-                type: 'SET_TIME',
-                time: this.timeSetInput.value,
-                id: nextTimerId++,
-              });
-            }}>OK</button>
-            <TimerBoxCountDownBtnPausePlay
-            onTimerBoxCountDownStart={() => {
-              if (!this.ticking || !this.myInt) {
-                this.ticking = true;
-                this.myInt = setInterval(
-                () => store.dispatch({
-                    type: 'DECREMENT',
-                    id: this.props.eachKey }),
-                1000);
-              }
+    const startTicking = () => {
+      console.log('again');
+      if (!this.ticking || !this.myInt) {
+        this.ticking = true;
+        this.myInt = setInterval(
+          () => store.dispatch({
+            type: 'DECREMENT',
+            id: this.props.eachKey }),
+            1000);
           }
-          }
+        }
 
-            ifZero={()=> {
-                    const list = () => {
-                      if (this.props.eachTime < 0) {
-                            window.clearInterval(this.myInt);
-                            this.ticking = false;
-                        }
-                    };
-                    store.subscribe(list);
+
+        return (
+          <div>
+            <div className="countDownSettingsContainer">
+              <input ref={node => {this.timeSetInput = node; }}
+                type="number"
+                placeholder="new time" />
+              <button
+                label="stuff"
+                type="button"
+                onClick={() => {
+                  store.dispatch({
+                    type: 'SET_TIME',
+                    time: this.timeSetInput.value,
+                    id: nextTimerId++,
+                  });
+                }}>OK</button>
+                <TimerBoxCountDownBtnPausePlay
+                  onTimerBoxCountDownStart={() => {
+                    startTicking();
+                  }
+                }
+
+                ifZero={()=> {
+                  const list = () => {
+                    if (this.props.eachTime < 0) {
+                      window.clearInterval(this.myInt);
+                      this.ticking = false;
+                    }
+                  };
+                  store.subscribe(list);
+                }
               }
-            }
 
 
 
-            onTimerBoxCountDownStop={()=> {
+              onTimerBoxCountDownStop={()=> {
                 window.clearInterval(this.myInt);
                 this.ticking = false;
               }
             }
 
             eachTime={this.props.eachTime}
- />
+            />
 
-              <TimerBoxCountDownBtnIncrementDecrement
-                onTimerBoxCountDownBtnIncrementClick={ () =>
-                  store.dispatch({
-                    type: 'INCREMENT',
-                    id: this.props.eachKey
-                  })
-                }
-                  onTimerBoxCountDownBtnDecrementClick={ () =>
-                    store.dispatch({
-                       type: 'DECREMENT',
-                      id: this.props.eachKey
-                    })
-                  }
-                    />
-                  <TimerBoxCountDownBtnReset
-                    onTimerBoxCountDownBtnResetClick={ () =>
-                      store.dispatch({
-                        type: 'RESET',
-                        id: this.props.eachKey
-                      })
-                    }
-                      />
-                  </div>
-
-                  <TimerBoxCountDownTotal
-                    eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
-                    />
-
-
-                </div>
-              );
+          <TimerBoxCountDownBtnIncrementDecrement
+            onTimerBoxCountDownBtnIncrementClick={ () =>
+              store.dispatch({
+                type: 'INCREMENT',
+                id: this.props.eachKey
+              })
             }
-          });
-          module.exports = TimerBoxCountDown;
+            onTimerBoxCountDownBtnDecrementClick={ () =>
+              store.dispatch({
+                type: 'DECREMENT',
+                id: this.props.eachKey
+              })
+            }
+            />
+          <TimerBoxCountDownBtnReset
+            onTimerBoxCountDownBtnResetClick={ () =>
+              store.dispatch({
+                type: 'RESET',
+                id: this.props.eachKey
+              })
+            }
+            />
+        </div>
+
+        <TimerBoxCountDownTotal
+          eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
+          />
+
+
+      </div>
+    );
+  }
+});
+module.exports = TimerBoxCountDown;
