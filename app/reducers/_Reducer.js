@@ -6,9 +6,9 @@ const reducer = function(
     // copy the state array
     const stateCopyArr = state.slice(0);
 
+
     const util = {
       getState_replaceElByIndex: (index, el) => {
-        console.log('getState_replace...');
         return [
           ...state.slice(0, index),
           state[index] =  el,
@@ -17,7 +17,6 @@ const reducer = function(
 
       },
       getState_removeElByIndex: (index) => {
-                console.log('getState_remove...');
         return [
           ...state.slice(0, index),
           ...state.slice(index + 1)
@@ -29,7 +28,6 @@ const reducer = function(
         return foundIndex;
       },
       getCurrentObjEl: () => {
-        console.log('getCurrentObjEl...');
          return state.find((el) => el.id == action.id);
        },
       getNextId: () => {
@@ -51,9 +49,10 @@ const reducer = function(
 
       case 'SET_TITLE':
       _individualTimerObjEl = util.getCurrentObjEl();
+
       _individualTimerObjEl.title = action.text;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
-      //at the moment that add_timer is instantiated, the state only has two timers
+      // at the moment that add_timer is instantiated, the state only has two timers
       case 'ADD_TIMER':
       console.log(util.getNextId());
       return [...state, { id: util.getNextId(), time: 10, title: 'new timer' }];

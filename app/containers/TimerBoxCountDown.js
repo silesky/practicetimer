@@ -1,23 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { dispatch,  bindActionCreators } from 'redux';
+import { connect  } from 'react-redux';
+
 import store from '../_Store';
 import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
 import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
 import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
+
+import * as actions from '../actions/_actionCreators';
+
+
+// grabs state property from the state object...
+const mapStateToProps = (state) => ({ state });
+
+// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actions, dispatch) }
+};
+
+
 const TimerBoxCountDown = React.createClass({
 
   render: function() {
+    const {
+      actions
+    } = this.props;
+
     let nextTimerId = 0;
     const startTicking = () => {
-      console.log('startTicking()');
-      // only start ticking if interval is not set (no double ticks)
-      if (!this.ticking || !this.myInt) {
-        store.dispatch({
-          type: 'SET_TICKING_TRUE',
-          id: this.props.eachKey
-        });
-        this.ticking = true;
+      // only start ticking if interval is not set (no double intervals)
+      if (!this.props.eachTicking || !this.myInt) {
+        actions.setTickingTrue(this.props.eachKey);
+        // count down, myInt
         this.myInt = setInterval(
           () => store.dispatch({
             type: 'DECREMENT',
@@ -36,7 +52,7 @@ const TimerBoxCountDown = React.createClass({
           <button
             label="stuff"
             type="button"
-            onClick={() => {
+            onClick={ () => {
               store.dispatch({
                 type: 'SET_TIME',
                 time: this.timeSetInput.value,
@@ -44,35 +60,24 @@ const TimerBoxCountDown = React.createClass({
               });
             }}>OK</button>
             <TimerBoxCountDownBtnPausePlay
-            onTimerBoxCountDownStart={() => {
-              startTicking();
-          }
-          }
-
-            ifZero={()=> {
-                    const list = () => {
-                      if (this.props.eachTime < 0) {
-                            window.clearInterval(this.myInt);
-                            this.ticking = false;
-                        }
-                    };
-                    store.subscribe(list);
+              onTimerBoxCountDownBtnPausePlayClick={ () => {
+                startTicking();
+                }
               }
-            }
 
+              onTimerBoxCountDownZero={ ()=> {
+                const list = () => {
+                  if (this.props.eachTime < 1 && this.props.eachTicking === true)  {
+                       actions.setTickingFalse(this.props.eachKey);
+                        window.clearInterval(this.myInt);
+                    }
+                };
 
+                store.subscribe(list);
 
-            onTimerBoxCountDownStop={()=> {
-                window.clearInterval(this.myInt);
-                this.ticking = false;
-                store.dispatch({
-                  type: 'SET_TICKING_FALSE',
-                  id: this.props.eachKey
-                });
-              }
-            }
+                  }
+                }
 
-            eachTime={this.props.eachTime}
  />
 
               <TimerBoxCountDownBtnIncrementDecrement
@@ -108,4 +113,4 @@ const TimerBoxCountDown = React.createClass({
               );
             }
           });
-          module.exports = TimerBoxCountDown;
+export default connect(mapStateToProps, mapDispatchToProps)(TimerBoxCountDown);

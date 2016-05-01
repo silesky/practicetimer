@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 
-const TimerBoxCountDownBtnPausePlay = ({  ifZero, onTimerBoxCountDownStart}) => {
+const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayClick, onTimerBoxCountDownZero }) => {
+
   return (
     <div
       className="countDownBtnPausePlay btn"
       onClick={() => {
-        ifZero();
-        onTimerBoxCountDownStart();
+        onTimerBoxCountDownBtnPausePlayClick();
+        onTimerBoxCountDownZero();
       } }>
       [p]
     </div>

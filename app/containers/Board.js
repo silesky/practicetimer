@@ -13,15 +13,18 @@ const Board = React.createClass({
     return(
       <div className="board">
         <BoardCountDownTotal />
-        { this.props.state.map((el) => {
-          return(<TimerBox
+      {
+        this.props.state.map((el) => {
+          return (
+            <TimerBox
             eachKey={el.id}
             eachTime={el.time}
             eachTitle={el.title}
             eachTicking={el.ticking}
-            />);
-          })
-        }
+            />
+          );
+        })
+      }
         </div>
       );
     },
