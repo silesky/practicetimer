@@ -1,5 +1,6 @@
-const reducer = function(
-  state = [{ id: 1, time: 2, title: 'shop', ticking: false }], action) {
+const initialState = [{ id: 1, time: 2, title: 'shop', ticking: false }];
+
+const reducer = function(state = initialState, action) {
     let _index;
     let _objEl;
     let _individualTimerObjEl;
