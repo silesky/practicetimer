@@ -29,11 +29,9 @@ describe('**MY REDUCER TESTS**', function() {
       assert.equal(store.getState()[0].ticking, false);
     });
   });
-  describe('REDUCER->TEST TIMER CHANGE GROUP:', function() {
-    it('store.getState()[0].time should increment after action: INCREMENT is dispatched...', function() {
-      let time = store.getState()[0].time;
-      store.dispatch({ type: 'INCREMENT', id: 1});
-      assert.equal(store.getState()[0].time,  time + 1);
+});
+//I think i need to pass in the clear interval component
+  describe('Clear Interval Tests', function() {
+    it('after stopTicking is called, there should be no more interval ', function() {
     });
-  });
 });
