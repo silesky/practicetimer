@@ -13,6 +13,7 @@ import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
 
 import * as actions from '../actions/_actionCreators';
 
+
 // grabs state property from the state object...
 const mapStateToProps = (state) => ({ state });
 
@@ -35,8 +36,24 @@ const TimerBox = React.createClass({
       eachTime,
       eachKey,
       eachTitle,
-      actions
+      actions,
+      eachTicking
     } = this.props;
+
+    const startTicking = (id = eachTicking) => {
+          // only start ticking if interval is not set (no double intervals)
+          if (!eachTicking || !this.myInt) {
+            actions.setTickingTrue(id);
+            // count down, myInt
+            this.myInt = {};
+            this.myInt.id = setInterval(
+              () => store.dispatch({
+                type: 'DECREMENT',
+                id }),
+                1000);
+              }
+            };
+
 
     return (
       <div className="timerBox">
@@ -72,9 +89,10 @@ const TimerBox = React.createClass({
           </div>
 
           <TimerBoxCountDown
+            startTicking={ startTicking }
             eachKey={ eachKey }
             eachTime={ eachTime }
-            eachTicking = { this.props.eachTicking }  />
+            eachTicking = { eachTicking }  />
 
         </div>
       </div>

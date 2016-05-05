@@ -1,0 +1,21 @@
+- TimerBoxCountDown->startTicking()... move to TimerBox
+- pass in an ID, start ticking
+- generate a unique myInt based on the id
+
+  const startTicking = (id = this.props.eachTicking) => {
+        // only start ticking if interval is not set (no double intervals)
+        if (!id || !this.myInt) {
+          actions.setTickingTrue(id);
+          // count down, myInt
+          this.myInt = {};
+          this.myInt[id] = setInterval(
+            () => store.dispatch({
+              type: 'DECREMENT',
+              id }),
+              1000);
+            }
+          };
+
+rops.startTicking
+
+it can get called with
