@@ -25,6 +25,7 @@ const TimerBoxCountDown = React.createClass({
 
   render: function() {
     const {
+      stopTicking,
       startTicking,
       actions
     } = this.props;
@@ -55,22 +56,15 @@ const TimerBoxCountDown = React.createClass({
               }
 
               onTimerBoxCountDownZero={ ()=> {
-                const list = () => {
+                const ifZeroStopTicking = () => {
                   if (this.props.eachTime < 1 && this.props.eachTicking === true)  {
-                       actions.setTickingFalse(this.props.eachKey);
-                        window.clearInterval(this.myInt);
-                        console.log('zero!');
-                        //when ticking is over, pass in the next id that's supposed to be ticking
-                        startTicking(this.props.eachKey + 1);
-                    }
-                };
-
-                store.subscribe(list);
-
+                    stopTicking(this.props.eachKey);
                   }
-                }
-
- />
+                };
+                store.subscribe(ifZeroStopTicking);
+              }
+            }
+              />
 
               <TimerBoxCountDownBtnIncrementDecrement
                 onTimerBoxCountDownBtnIncrementClick={ () =>

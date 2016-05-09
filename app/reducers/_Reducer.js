@@ -1,12 +1,6 @@
 const initialState = [{ id: 1, time: 2, title: 'shop', ticking: false }];
 
 const reducer = function(state = initialState, action) {
-    let _index;
-    let _objEl;
-    let _individualTimerObjEl;
-    // copy the state array
-    const stateCopyArr = state.slice(0);
-
 
     const util = {
       getState_replaceElByIndex: (index, el) => {
@@ -29,52 +23,43 @@ const reducer = function(state = initialState, action) {
         return foundIndex;
       },
       getCurrentObjEl: () => {
-         return state.find((el) => el.id == action.id);
+         return state.find((el) => el.id === action.id);
        },
       getNextId: () => {
         return Math.max(...state.map(el => el['id'])) + 1;
       },
     };
+    var _individualTimerObjEl = util.getCurrentObjEl();
+    var _currentIndex = util.getCurrentIndex();
+console.log(state);
     switch (action.type) {
       case 'SET_TICKING_TRUE':
       console.log('SET_TICKING_TRUE');
-      _individualTimerObjEl = util.getCurrentObjEl();
-      _individualTimerObjEl.ticking = true;
-      return util.getState_removeElByIndex(util.getCurrentIndex, _individualTimerObjEl);
-
+      if (_individualTimerObjEl !== 'undefined')   {
+        _individualTimerObjEl.ticking =  true;
+      }
+      return util.getState_replaceElByIndex(_currentIndex, _individualTimerObjEl);
       case 'SET_TICKING_FALSE':
       console.log('SET_TICKING_FALSE');
-      _individualTimerObjEl = util.getCurrentObjEl();
-      _individualTimerObjEl.ticking = false;
-      return util.getState_removeElByIndex(util.getCurrentIndex, _individualTimerObjEl);
-
+        if (_individualTimerObjEl !== 'undefined') {
+          _individualTimerObjEl.ticking = false;
+      }
+      return util.getState_replaceElByIndex(_currentIndex, _individualTimerObjEl);
       case 'SET_TITLE':
-      _individualTimerObjEl = util.getCurrentObjEl();
-
       _individualTimerObjEl.title = action.text;
-      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+      return util.getState_replaceElByIndex(_currentIndex, _individualTimerObjEl);
       // at the moment that add_timer is instantiated, the state only has two timers
       case 'ADD_TIMER':
-      console.log(util.getNextId());
-      return [...state, { id: util.getNextId(), time: 10, title: 'new timer' }];
-
+      return [...state, { id: util.getNextId(), time: 10, title: 'new timer', ticking: false }];
       case 'INCREMENT':
       console.log('INCREMENT');
-      _index = util.getCurrentIndex();
-      _objEl = util.getCurrentObjEl();
-      _objEl.time = _objEl.time + 1;
-      return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
-
-
+      _individualTimerObjEl.time = _individualTimerObjEl.time + 1;
+      return util.getState_replaceElByIndex(_currentIndex, _individualTimerObjEl);
       case 'DECREMENT':
-      _index = util.getCurrentIndex();
-      _objEl = util.getCurrentObjEl();
-      _objEl.time = _objEl.time - 1;
-      return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
-
+      _individualTimerObjEl.time = _individualTimerObjEl.time - 1;
+      return util.getState_replaceElByIndex(_currentIndex, _individualTimerObjEl);
       case 'REMOVE_TIMER':
-      return util.getState_removeElByIndex(util.getCurrentIndex());
-
+      return util.getState_removeElByIndex(_currentIndex, _individualTimerObjEl);
       default:
       return state;
     }
