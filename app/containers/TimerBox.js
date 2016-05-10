@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => {
   return { actions: bindActionCreators(actions, dispatch) }
 };
 
+
 const TimerBox = React.createClass({
   componentDidMount: function() {
     $(ReactDOM.findDOMNode(this)).draggable();
@@ -39,8 +40,17 @@ const TimerBox = React.createClass({
       actions,
       eachTicking
     } = this.props;
-
+    const getCurrentObjEl = () => {
+       return store.getState().find((el) => el.id === eachKey);
+     };
+   const  getNextArrayItem = (arr = store.getState(), value = getCurrentObjEl()) => {
+      const index = arr.indexOf(value);
+      if (index >= 0 && index < arr.length - 1) {
+          return arr[index + 1];
+        }
+    };
     const startTicking = (id = eachTicking) => {
+      console.log(getNextArrayItem());
           // only start ticking if interval is not set (no double intervals)
           if (!eachTicking || !this.myInt) {
             actions.setTickingTrue(id);
@@ -57,7 +67,7 @@ const TimerBox = React.createClass({
 // passed to TimerBoxCountDown->ifZeroStopTicking
     const stopTicking = () => {
       actions.setTickingFalse(this.props.eachKey);
-      window.clearInterval(this.myInt);
+      window.clearInterval(this.myInt[this.props.eachKey]);
       console.log('zero!');
       // when ticking is over, pass in the next id that's supposed to be ticking
       startTicking(this.props.eachKey + 1);

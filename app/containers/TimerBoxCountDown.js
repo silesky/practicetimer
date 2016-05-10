@@ -58,7 +58,7 @@ const TimerBoxCountDown = React.createClass({
               onTimerBoxCountDownZero={ ()=> {
                 const ifZeroStopTicking = () => {
                   if (this.props.eachTime < 1 && this.props.eachTicking === true)  {
-                    stopTicking(this.props.eachKey);
+                    stopTicking();
                   }
                 };
                 store.subscribe(ifZeroStopTicking);
