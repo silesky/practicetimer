@@ -1,5 +1,8 @@
 > Things are breaking, write FUNCTIONAL (not visual) tests before you refactor/change code. That way, as you refactor, you can make sure that you aren't breaking other parts of your app.
 
+- after stopTicking is called, there should be no more interval
+
+-
 > ClearInterval is not working...
 this.myInt = {id: 0}... the interval is being overwritten...
 ...I don't think there's any need for an ID!

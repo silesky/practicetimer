@@ -27,7 +27,9 @@ const mapDispatchToProps = (dispatch) => {
 
 const TimerBoxCountDown = React.createClass({
 
-
+ foo: function() {
+   return 'foo';
+ },
 
   render: function() {
     function myLog() {
@@ -54,7 +56,7 @@ const TimerBoxCountDown = React.createClass({
       }
     }
     let nextId = _getNextIdFromCurrentValue(_getCurrentValueFromStateArr());
-    
+
     return nextId;
   };
 

@@ -12,7 +12,6 @@ import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
 
 import * as actions from '../actions/_actionCreators';
 
-
 // grabs state property from the state object...
 const mapStateToProps = (state) => ({ state });
 

@@ -1,37 +1,8 @@
 /* eslint-disable */
 import { assert } from 'Chai';
-import React from 'react';
-import redux from 'redux';
-import store from '../app/_store.js';
-import reducer from '../app/reducers/_Reducer.js';
-// import * as support from 'support';
-// import API from 'api-vbb'
-
-describe('MY MOCHA TEST', function() {
-  describe('indexOf()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal(-1, [1,2,3].indexOf(5));
-      assert.equal(-1, [1,2,3].indexOf(0));
-    });
-  });
-});
-
-describe('**MY REDUCER TESTS**', function() {
-  describe('set ticking true...', function() {
-    it('store.getState()[0].ticking should return true when action: SET_TICKING_TRUE is dispatched...', function() {
-      store.dispatch({ type: 'SET_TICKING_TRUE', id: 1 })
-      assert.equal(store.getState()[0].ticking, true);
-    });
-  });
-  describe('set ticking false...', function() {
-    it('store.getState()[0].ticking should return false after action: SET_TICKING_FALSE is dispatched...', function() {
-      store.dispatch({ type: 'SET_TICKING_FALSE', id: 1 });
-      assert.equal(store.getState()[0].ticking, false);
-    });
-  });
-});
-//I think i need to pass in the clear interval component
-  describe('Clear Interval Tests', function() {
-    it('after stopTicking is called, there should be no more interval ', function() {
-    });
-});
+import test_mocha from './test_mocha'
+import test_reducer from './test_reducer';
+import test_timerbox from './test_timerbox';
+test_mocha();
+test_reducer();
+test_timerbox();
