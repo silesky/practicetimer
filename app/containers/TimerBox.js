@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import draggable from 'jquery-ui';
+// depreaimport $ from 'jquery';
+// deprecated: import draggable from 'jquery-ui';
 import { dispatch,  bindActionCreators } from 'redux';
 import { connect  } from 'react-redux';
 
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const TimerBox = React.createClass({
   componentDidMount: function() {
-    $(ReactDOM.findDOMNode(this)).draggable();
+    //$(ReactDOM.findDOMNode(this)).draggable();
 
   },
 
