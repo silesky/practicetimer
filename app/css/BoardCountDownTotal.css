@@ -1,7 +1,7 @@
 .BoardCountDownTotalContainer {
     height: 100px;
     background-color: grey;
-    position: fixed;
+
     width: 100%;
 }
 .BoardCountDownTotalNum {

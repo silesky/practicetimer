@@ -1,11 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { dispatch,  bindActionCreators } from 'redux';
 
 import TimerBox from './TimerBox';
 import BoardCountDownTotal from '../components/BoardCountDownTotal';
+import BoardBtnAdd from '../components/BoardBtnAdd';
+
+
+import * as actions from '../actions/_actionCreators';
+import store from '../_Store'
+
 
 const mapStateToProps = (state) => ({ state });
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actions, dispatch) }
+};
+// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
 
 /* all this board does is increment the timer */
 const Board = React.createClass({
@@ -13,6 +24,7 @@ const Board = React.createClass({
     return(
       <div className="board">
         <BoardCountDownTotal />
+
       {
         this.props.state.map((el) => {
           return (
@@ -25,10 +37,14 @@ const Board = React.createClass({
           );
         })
       }
+      <BoardBtnAdd
+        onBoardBtnAddClick={ () => { store.dispatch({type: 'ADD_TIMER' }) }  } />
         </div>
       );
     },
   });
+//
 
-  export default connect(mapStateToProps)(Board);
+  // onBoardBtnAddClick={  }
+ export default connect(mapStateToProps, mapDispatchToProps)(Board);
   /* drum roll */

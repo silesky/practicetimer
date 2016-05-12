@@ -7,11 +7,10 @@ export function removeTimer(id) {
   }
 }
 
-export function addTimer(id) {
+export function addTimer() {
   return {
     type: 'ADD_TIMER',
-    id
-  }
+  };
 }
 
 // TimerBoxCountDown

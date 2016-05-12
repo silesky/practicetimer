@@ -8,7 +8,6 @@ import { connect  } from 'react-redux';
 import store from '../_Store';
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
-import TimerBoxBtnAdd from '../components/TimerBoxBtnAdd';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
 
 import * as actions from '../actions/_actionCreators';
@@ -70,10 +69,7 @@ const stopTicking = (id) => {
 
           </div>
           <div className="topBarRight">
-            <TimerBoxBtnAdd
-              onTimerBoxBtnAddClick={ actions.addTimer.bind(this, eachKey) }
 
-              />
           </div>
           <div className="titleContainer">
 
