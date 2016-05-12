@@ -21,19 +21,65 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
+// var arr = [{id: 1}, {id: 2}, {id: 3}];
+
+
+
 const TimerBoxCountDown = React.createClass({
 
+
+
   render: function() {
+    function myLog() {
+      console.log(store.getState(127));
+    }
+    store.subscribe(myLog);
     const {
       stopTicking,
       startTicking,
-      actions,
+      actions
     } = this.props;
 
-    let nextTimerId = 0;
+  const getNextId = (stateArr = this.props.state, currentId = this.props.eachKey) => {
+    const _getCurrentValueFromStateArr = () => {
+      return stateArr.find((el) => el.id == currentId);
+    }
+    const _getNextIdFromCurrentValue = (currentValue) => {
+      let index = stateArr.indexOf(currentValue);
+      if (index >= 0 && index < stateArr.length - 1) {
+        const nextItem = stateArr[index + 1];
+        return nextItem.id;
+      } else {
+        return 0;
+      }
+    }
+    let nextId = _getNextIdFromCurrentValue(_getCurrentValueFromStateArr());
+    
+    return nextId;
+  };
+
+const ifZero = () => {
+  const myId =  getNextId(this.props.state, this.props.eachKey);
+  if (this.props.eachTime <= 1 && this.props.eachTicking === true)  {
+      let _key = this.props.eachKey;
+      let _state = this.props.state;
+      actions.setTickingFalse(_key);
+      stopTicking(_key);
+    /* get next object */
+      const _nextId = getNextId(_state, _key);
+      startTicking(_nextId);
+    }
+};
+
+
+
+
 
 
     return (
+
+
+
       <div>
         <div className="countDownSettingsContainer">
           <input ref={node => {this.timeSetInput = node; }}
@@ -56,19 +102,13 @@ const TimerBoxCountDown = React.createClass({
               }
 
               onTimerBoxCountDownZero={ ()=> {
-                const list = () => {
-                  if (this.props.eachTime < 1 && this.props.eachTicking === true)  {
-                       actions.setTickingFalse(this.props.eachKey);
-                        stopTicking(this.props.eachKey);
-                        // get next object
-                        startTicking(this.props.eachKey + 1);
-                    }
-                };
 
-                store.subscribe(list);
 
-                  }
+                store.subscribe(ifZero);
+
+
                 }
+              }
 
  />
 

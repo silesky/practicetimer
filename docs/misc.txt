@@ -1,8 +1,9 @@
-[x] TimerBoxCountDown->startTicking()... move to TimerBox
-[x] pass in an ID, start ticking
-[ ] generate a unique myInt based on the id... timerBox.js
-[] write a test where I find out whether or not it actually clears the interval
-[] [low priority] refactor reducer
-[] TimerBox is involved
- ... TimerBoxCountDown --- startTicking();
- ... passes to TimerBox
+> ClearInterval is not working...
+this.myInt = {id: 0}... the interval is being overwritten...
+...I don't think there's any need for an ID!
+
+> Replace with promises or a while loop: TimerBox->startTicking() aka
+ ...if (!eachTicking || !myInt) {
+  actions.setTickingTrue(id);
+  // count down, myInt
+  this.myInt = {id: 0};...

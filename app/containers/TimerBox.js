@@ -41,12 +41,14 @@ const TimerBox = React.createClass({
 
 // passed down as a callback to CountDown
     const startTicking = (id) => {
+         let myInt = this.myInt;
+         window.clearInterval(myInt);
           // only start ticking if interval is not set (no double intervals)
-          if (!eachTicking || !this.myInt) {
+          if (!eachTicking || !myInt) {
             actions.setTickingTrue(id);
             // count down, myInt
-            window.myInt = {};
-            window.myInt = setInterval(
+            this.myInt = {id: 0};
+            this.myInt.id = setInterval(
               () => store.dispatch({
                 type: 'DECREMENT',
                 id  }),
@@ -54,7 +56,7 @@ const TimerBox = React.createClass({
               }
             };
 // passed down as a callback to CountDown
-const stopTicking = (id) => {
+const stopTicking = (id = this.props.eachKey) => {
   actions.setTickingFalse(id);
    window.clearInterval(this.myInt);
 };
