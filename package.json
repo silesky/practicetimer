@@ -34,7 +34,6 @@
     "eslint-plugin-react": "^4.2.3",
     "live-server": "^0.9.2",
     "mocha": "^2.4.5",
-    "mocha-jsdom": "^1.1.0",
     "mocha-loader": "^0.7.1",
     "react-addons-test-utils": "^15.0.2",
     "webpack": "^1.12.13",
