@@ -5,12 +5,13 @@ import store from '../app/_Store';
 import { TimerBox } from '../app/containers/TimerBox';
 // removeTimer, addTimer, setTickingTrue, setTickingFalse
 import * as actions from '../app/actions/_actionCreators';
+import { shallow, mount, render } from 'enzyme';
 
 
 function setup(componentToTest) {
   const renderer = ReactTestUtils.createRenderer();
   renderer.render(componentToTest);
-  let output = renderer.getRenderOutput()
+  let output = renderer.getRenderOutput();
   return {
     output,
     renderer
@@ -24,8 +25,8 @@ module.exports = function() {
       assert(TimerBox);
     });
     it('<TimerBox /> should render.', () => {
-       const { output } = setup(<TimerBox actions={ actions } />);
-       assert(output);
+      const { output } = setup(<TimerBox actions={ actions } />);
+      assert(output);
     })
   })
 };
@@ -34,19 +35,19 @@ module.exports = function() {
 {
 
 '$$typeof': Symbol(react.element),
-  type: 'div',
-  key: null,
-  ref: null,
-  props:
-   { className: 'timerBox',
-     children:
-      { '$$typeof': Symbol(react.element),
-        type: 'div',
-        key: null,
-        ref: null,
-        props: [Object],
-        _owner: null,
-        _store: {} } },
-  _owner: null,
-  _store: {} }
+type: 'div',
+key: null,
+ref: null,
+props:
+{ className: 'timerBox',
+children:
+{ '$$typeof': Symbol(react.element),
+type: 'div',
+key: null,
+ref: null,
+props: [Object],
+_owner: null,
+_store: {} } },
+_owner: null,
+_store: {} }
 */
