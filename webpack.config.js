@@ -9,13 +9,21 @@ module.exports = {
     filename: '[name].js',
     path: __dirname + '/dist'
   },
-   module: {
-      loaders: [
-        {
-          exclude: /node_modules/,
-          loaders: ['babel-loader'],
-          test: /\.js$/,
-        },
-      ],
-    }
-    };
+  module: {
+    loaders: [
+      {
+        exclude: /node_modules/,
+        loaders: ['babel-loader'],
+        test: /\.js$/,
+      },
+    ],
+  },
+  externals: {
+    'jsdom': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': 'window',
+     cheerio: 'window',
+    'text-encoding': 'window'
+
+}
+};

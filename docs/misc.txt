@@ -1,14 +1,11 @@
-> Things are breaking, write FUNCTIONAL (not visual) tests before you refactor/change code. That way, as you refactor, you can make sure that you aren't breaking other parts of your app.
-
-- after stopTicking is called, there should be no more interval
-
--
-> ClearInterval is not working...
+- ClearInterval is not working...
 this.myInt = {id: 0}... the interval is being overwritten...
 ...I don't think there's any need for an ID!
 
-> Replace with promises or a while loop: TimerBox->startTicking() aka
- ...if (!eachTicking || !myInt) {
-  actions.setTickingTrue(id);
-  // count down, myInt
-  this.myInt = {id: 0};...
+testing:
+- if current timer is clicked, wait one second, current time should be less than 1....
+  - if PausePlay (w/ id = 1) has a simulated click
+  - wait 1 sec
+  - then store.getState().[1].time < 1
+
+  
