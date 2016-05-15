@@ -1,27 +1,52 @@
 import { assert } from 'Chai';
 import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
+import store from '../app/_Store';
+import { TimerBox } from '../app/containers/TimerBox';
+// removeTimer, addTimer, setTickingTrue, setTickingFalse
 import * as actions from '../app/actions/_actionCreators';
 
-import { TimerBox as PlainTimerBox } from '../app/containers/TimerBox';
 
-const { removeTimer } = actions;
-
-// importing the named TimerBox component, rather than the default store. Otherwise, we would need to create a mock store and a provider.
-
-
+function setup() {
+  const renderer = ReactTestUtils.createRenderer();
+  renderer.render(<TimerBox actions={ actions } />)
+  let output = renderer.getRenderOutput()
+  return {
+  output,
+   renderer
+  }
+}
 
 
 module.exports = function() {
   describe(' * * * <TimerBox /> * * * ', () => {
-    it('<PlainTimerBox /> should exist.', () => {
-      assert(PlainTimerBox);
+    it('<TimerBox /> should exist.', () => {
+      assert(TimerBox);
     });
-    it('<PlainTimerBox /> should render.', () => {
-      let renderer = ReactTestUtils.createRenderer();
-      renderer.render(<PlainTimerBox { ...actions } />);
-      let output = render.getRenderOutput();
-
+    it('<TimerBox /> should render.', () => {
+       const { output } = setup();
+       assert(output);
     })
   })
 };
+
+/* render output:
+{
+
+'$$typeof': Symbol(react.element),
+  type: 'div',
+  key: null,
+  ref: null,
+  props:
+   { className: 'timerBox',
+     children:
+      { '$$typeof': Symbol(react.element),
+        type: 'div',
+        key: null,
+        ref: null,
+        props: [Object],
+        _owner: null,
+        _store: {} } },
+  _owner: null,
+  _store: {} }
+*/
