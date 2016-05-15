@@ -1,8 +1,8 @@
 module.exports = {
-  context: __dirname + "/app",
+  context: __dirname,
   entry: {
-    test: '../test/test.js',
-    app: ['./app.js'],
+    test: ['./test/test.js'],
+    app: ['./app/app.js'],
 
   },
   output: {
@@ -14,7 +14,7 @@ module.exports = {
         {
           exclude: /node_modules/,
           loaders: ['babel-loader'],
-          test: /\.js$/
+          test: /\.js$/,
         },
       ],
     }
