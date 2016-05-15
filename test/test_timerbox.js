@@ -1,23 +1,27 @@
-import ReactTestUtils from 'react-addons-test-utils';
 import { assert } from 'Chai';
-/*
-var node = this.refs.button;
-ReactTestUtils.Simulate.click(node)
-*/
-/*
-renderIntoDocument
-ReactComponent renderIntoDocument(
+import React from 'react';
+import ReactTestUtils from 'react-addons-test-utils';
+import * as actions from '../app/actions/_actionCreators';
 
-)
-*/
+import { TimerBox as PlainTimerBox } from '../app/containers/TimerBox';
+
+const { removeTimer } = actions;
+
+// importing the named TimerBox component, rather than the default store. Otherwise, we would need to create a mock store and a provider.
+
+
+
+
 module.exports = function() {
-
   describe(' * * * <TimerBox /> * * * ', () => {
-    beforeEach(() => {
+    it('<PlainTimerBox /> should exist.', () => {
+      assert(PlainTimerBox);
     });
-    it('<TimerBox /> should load correctly.', () => {
-      var timerbox = require('../app/containers/TimerBox');
-      assert(timerbox);
+    it('<PlainTimerBox /> should render.', () => {
+      let renderer = ReactTestUtils.createRenderer();
+      renderer.render(<PlainTimerBox { ...actions } />);
+      let output = render.getRenderOutput();
+
     })
   })
 };
