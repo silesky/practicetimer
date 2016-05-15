@@ -7,13 +7,13 @@ import { TimerBox } from '../app/containers/TimerBox';
 import * as actions from '../app/actions/_actionCreators';
 
 
-function setup() {
+function setup(componentToTest) {
   const renderer = ReactTestUtils.createRenderer();
-  renderer.render(<TimerBox actions={ actions } />)
+  renderer.render(componentToTest);
   let output = renderer.getRenderOutput()
   return {
-  output,
-   renderer
+    output,
+    renderer
   }
 }
 
@@ -24,7 +24,7 @@ module.exports = function() {
       assert(TimerBox);
     });
     it('<TimerBox /> should render.', () => {
-       const { output } = setup();
+       const { output } = setup(<TimerBox actions={ actions } />);
        assert(output);
     })
   })
