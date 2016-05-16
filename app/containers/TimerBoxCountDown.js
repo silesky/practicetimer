@@ -20,18 +20,9 @@ const mapDispatchToProps = () => {
   return { actions: bindActionCreators(actions, dispatch)}
 };
 
-
-// var arr = [{id: 1}, {id: 2}, {id: 3}];
-
-
-
 const TimerBoxCountDown = React.createClass({
 
-  foo: function() {
-    return 'foo';
-  },
   render: function() {
-    let myInt;
 
     const startTicking = (id) => {
       console.log('startTicking()');
@@ -40,26 +31,21 @@ const TimerBoxCountDown = React.createClass({
         id
       });
       // count down, myInt
-      clearInterval(myInt);
-      myInt = setInterval(
+      this.myInt = setInterval(
         () => store.dispatch({
           type: 'DECREMENT',
           id  }),
           1000);
-          console.log('my interval is: ' + myInt);
-
+          console.log('my interval is: ' + this.myInt);
         };
         const stopTicking = (id) => {
           console.log('stopTicking()');
-          clearInterval(myInt);
-          store.dispatch({
-            type: 'SET_TICKING_FALSE',
-            id
-          });
+
+
         };
-        const getNextId = (stateArr = this.props.state, currentId = this.props.eachKey) => {
+        const getNextId = (stateArr = store.getState(), currentId = this.props.eachKey) => {
           const _getCurrentValueFromStateArr = () => {
-            return stateArr.find((el) => el.id == currentId);
+            return stateArr.find((el) => el.id === currentId);
           };
           const _getNextIdFromCurrentValue = (currentValue) => {
             let index = stateArr.indexOf(currentValue);
@@ -76,11 +62,16 @@ const TimerBoxCountDown = React.createClass({
         };
 
         const ifZero = () => {
-          // must be 0 and ticking must be false
-          if (this.props.eachTime < 1 && this.props.eachTicking) {
-            console.log('ifZero()');
-            stopTicking(this.props.eachKey);
-            const _nextId = getNextId(this.props.state, this.props.eachKey);
+          console.log("ifZero()");
+          // basically does the same thing as a while loop since it's called multiple times
+            if (this.props.eachTime < 1 && this.props.eachTicking) {
+              console.log('ifZero: if statement passed (time should be less than 1, current timer should be ticking)');
+            store.dispatch({
+                      type: 'SET_TICKING_FALSE',
+                      id: this.props.eachKey,
+                    });
+            clearInterval(this.myInt);
+            const _nextId = getNextId(store.getState(), this.props.eachKey);
             console.log('next ID: ' + _nextId);
             startTicking(_nextId);
 
