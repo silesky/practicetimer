@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { dispatch,  bindActionCreators } from 'redux';
 import { connect  } from 'react-redux';
-
 import store from '../_Store';
+
 import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
 import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
@@ -16,8 +16,8 @@ import * as actions from '../actions/_actionCreators';
 const mapStateToProps = (state) => ({ state });
 
 // remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
-const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actions, dispatch) }
+const mapDispatchToProps = () => {
+  return { actions: bindActionCreators(actions, dispatch)}
 };
 
 
@@ -30,22 +30,37 @@ const TimerBoxCountDown = React.createClass({
  foo: function() {
    return 'foo';
  },
-
   render: function() {
-    function myLog() {
-      console.log(store.getState(127));
-    }
-    store.subscribe(myLog);
-    const {
-      stopTicking,
-      startTicking,
-      actions
-    } = this.props;
+      let myInt;
 
+    const startTicking = (id) => {
+          console.log('startTicking()');
+            store.dispatch({
+              type: 'SET_TICKING_TRUE',
+              id
+            });
+            // count down, myInt
+            clearInterval(myInt);
+            myInt = setInterval(
+              () => store.dispatch({
+                type: 'DECREMENT',
+                id  }),
+                1000);
+                console.log('my interval is: ' + myInt);
+
+          };
+  const stopTicking = (id) => {
+          console.log('stopTicking()');
+          clearInterval(myInt);
+          store.dispatch({
+            type: 'SET_TICKING_FALSE',
+            id
+          });
+  };
   const getNextId = (stateArr = this.props.state, currentId = this.props.eachKey) => {
     const _getCurrentValueFromStateArr = () => {
       return stateArr.find((el) => el.id == currentId);
-    }
+    };
     const _getNextIdFromCurrentValue = (currentValue) => {
       let index = stateArr.indexOf(currentValue);
       if (index >= 0 && index < stateArr.length - 1) {
@@ -61,15 +76,14 @@ const TimerBoxCountDown = React.createClass({
   };
 
 const ifZero = () => {
-  const myId =  getNextId(this.props.state, this.props.eachKey);
-  if (this.props.eachTime <= 1 && this.props.eachTicking === true)  {
-      let _key = this.props.eachKey;
-      let _state = this.props.state;
-      actions.setTickingFalse(_key);
-      stopTicking(_key);
-    /* get next object */
-      const _nextId = getNextId(_state, _key);
+  // must be 0 and ticking must be false
+  if (this.props.eachTime < 1 && this.props.eachTicking) {
+      console.log('ifZero()');
+      stopTicking(this.props.eachKey);
+      const _nextId = getNextId(this.props.state, this.props.eachKey);
+      console.log('next ID: ' + _nextId);
       startTicking(_nextId);
+
     }
 };
 

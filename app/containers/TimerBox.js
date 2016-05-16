@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { dispatch,  bindActionCreators } from 'redux';
 import { connect  } from 'react-redux';
-
 import store from '../_Store';
+
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
@@ -36,27 +36,8 @@ export const TimerBox = React.createClass({
       eachTicking,
     } = this.props;
 
+
 // passed down as a callback to CountDown
-    const startTicking = (id) => {
-         let myInt = this.myInt;
-         window.clearInterval(myInt);
-          // only start ticking if interval is not set (no double intervals)
-          if (!eachTicking || !myInt) {
-            actions.setTickingTrue(id);
-            // count down, myInt
-            this.myInt = {id: 0};
-            this.myInt.id = setInterval(
-              () => store.dispatch({
-                type: 'DECREMENT',
-                id  }),
-                1000);
-              }
-            };
-// passed down as a callback to CountDown
-const stopTicking = (id = this.props.eachKey) => {
-  actions.setTickingFalse(id);
-   window.clearInterval(this.myInt);
-};
 
     return (
       <div className="timerBox">
@@ -89,11 +70,11 @@ const stopTicking = (id = this.props.eachKey) => {
           </div>
 
           <TimerBoxCountDown
-            startTicking={ startTicking }
+
             eachKey={ eachKey }
             eachTime={ eachTime }
             eachTicking = { eachTicking }
-            stopTicking = { stopTicking }
+
              />
 
         </div>

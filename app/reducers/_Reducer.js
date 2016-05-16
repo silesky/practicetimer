@@ -1,4 +1,4 @@
-  const initialState = [{ id: 1, time: 1, title: 'shop', ticking: false }];
+  const initialState = [{ id: 1, time: 3, title: 'shop', ticking: false }];
 
 const reducer = function(state = initialState, action) {
     let _index;
@@ -40,13 +40,13 @@ const reducer = function(state = initialState, action) {
       console.log('SET_TICKING_TRUE');
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.ticking = true;
-      return util.getState_removeElByIndex(util.getCurrentIndex, _individualTimerObjEl);
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
 
       case 'SET_TICKING_FALSE':
       console.log('SET_TICKING_FALSE');
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.ticking = false;
-      return util.getState_removeElByIndex(util.getCurrentIndex, _individualTimerObjEl);
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
 
       case 'SET_TITLE':
       _individualTimerObjEl = util.getCurrentObjEl();
@@ -67,6 +67,7 @@ const reducer = function(state = initialState, action) {
 
 
       case 'DECREMENT':
+      console.log('DECREMENT');
       _index = util.getCurrentIndex();
       _objEl = util.getCurrentObjEl();
       _objEl.time = _objEl.time - 1;

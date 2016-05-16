@@ -17,7 +17,7 @@ export function addTimer() {
 
 export function setTickingTrue(id) {
   console.log('actionCreator.setTickingTrue() called...you should see reducer->SET_TICKING_TRUE ');
-
+console.log(id);
   return {
     type: 'SET_TICKING_TRUE',
     id

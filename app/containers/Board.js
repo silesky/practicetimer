@@ -38,7 +38,7 @@ const Board = React.createClass({
         })
       }
       <BoardBtnAdd
-        onBoardBtnAddClick={ () => { store.dispatch({type: 'ADD_TIMER' }) }  } />
+        onBoardBtnAddClick={ () => { store.dispatch({type: 'ADD_TIMER' })}  } />
         </div>
       );
     },
