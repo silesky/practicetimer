@@ -27,7 +27,7 @@ export const TimerBox = React.createClass({
 
   render: function() {
 
-// remove props wrapper:this.props.action.removeTimer... -> action.removeTimer...
+    // remove props wrapper:this.props.action.removeTimer... -> action.removeTimer...
     const {
       eachTime,
       eachKey,
@@ -37,7 +37,7 @@ export const TimerBox = React.createClass({
     } = this.props;
 
 
-// passed down as a callback to CountDown
+    // passed down as a callback to CountDown
 
     return (
       <div className="timerBox">
@@ -75,7 +75,7 @@ export const TimerBox = React.createClass({
             eachTime={ eachTime }
             eachTicking = { eachTicking }
 
-             />
+            />
 
         </div>
       </div>

@@ -56,7 +56,7 @@ const reducer = function(state = initialState, action) {
       // at the moment that add_timer is instantiated, the state only has two timers
       case 'ADD_TIMER':
       console.log(util.getNextId());
-      return [...state, { id: util.getNextId(), time: 1, title: 'new timer' }];
+      return [...state, { id: util.getNextId(), ticking: false, time: 1, title: 'new timer' }];
 
       case 'INCREMENT':
       console.log('INCREMENT');
