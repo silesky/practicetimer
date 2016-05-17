@@ -1,0 +1,8 @@
+.timerBox {
+  background-color: green;
+  height: 250px;
+  position: relative;
+  width: 250px;
+  border-radius: 20px;
+  border: 3px solid;
+}

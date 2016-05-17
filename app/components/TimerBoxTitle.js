@@ -6,7 +6,7 @@ const TimerBoxTitle = ({onTimerBoxTitleSet, eachTitle }) => {
 	var titleSetInput;
 	return (
 
-		<div className="titleComp">
+		<div className="titleContainer">
 			<input size='10' type="text"
 				ref={
 					node => {titleSetInput = node;}

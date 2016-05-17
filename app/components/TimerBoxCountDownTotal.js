@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 
 const TimerBoxCountDownTotal = ({ eachTime }) => {
   return (
-    <div className="countDownTextContainer">
-      <div className="countDownText">{ eachTime } </div>
+    <div className="TimerBoxCountDownTotal_container">
+      <div className="TimerBoxCountDownTotal_text">{ eachTime } </div>
     </div>
   );
 };

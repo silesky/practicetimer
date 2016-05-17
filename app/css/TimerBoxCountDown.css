@@ -1,0 +1,13 @@
+.TimerBoxCountDown_container {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  background-color: inherit;
+  position: absolute;
+  //border: 1px dotted white;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  /* border-radius: inherit; */
+
+}

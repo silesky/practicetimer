@@ -88,7 +88,7 @@ const TimerBoxCountDown = React.createClass({
 
 
           <div>
-            <div className="countDownSettingsContainer">
+            <div className="TimerBoxCountDown_container">
               <input ref={node => {this.timeSetInput = node; }}
                 type="number"
                 placeholder="new time" />

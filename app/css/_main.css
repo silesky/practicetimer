@@ -1,0 +1,60 @@
+body {
+  background-color: #2c2c2c;
+  color: white;
+  font-family: Helvetica;
+}
+
+.topBarContainer {
+ display: flex;
+ flex-direction: row;
+}
+
+
+.topBarLeft {
+ position: absolute;
+ left: 1%;
+ margin: 1%;
+}
+
+.topBarRight {
+  position: absolute;
+  right: 1%;
+  margin: 1%;
+}
+
+
+.btnComp {
+  font-size: 2em;
+  border: 3px dotted grey;
+  text-align: center;
+  vertical-align: middle;
+  background-color: yellow;
+  color: black;
+}
+
+.btn {
+  cursor: pointer;
+
+}
+
+
+
+
+.setTimerUpDnContainer {
+  font-size: 0.5em;
+}
+
+.countDownBtnReset {
+}
+
+input[type="number"] {
+  font-size: 0.5em;
+  width: 25%;
+  text-align: center;
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+
+}
