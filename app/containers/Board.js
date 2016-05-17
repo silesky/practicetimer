@@ -6,8 +6,7 @@ import { dispatch,  bindActionCreators } from 'redux';
 import TimerBox from './TimerBox';
 import BoardCountDownTotal from '../components/BoardCountDownTotal';
 import BoardBtnAdd from '../components/BoardBtnAdd';
-
-
+import BoardBtnControls from '../components/BoardBtnControls';
 import * as actions from '../actions/_actionCreators';
 import store from '../_Store'
 
@@ -24,6 +23,7 @@ const Board = React.createClass({
     return(
       <div className="board">
         <BoardCountDownTotal />
+        <BoardBtnControls />
 
       {
         this.props.state.map((el) => {

@@ -1,0 +1,10 @@
+
+.BoardBtnControls {
+  border: 1px dotted grey;
+}
+.BoardBtnPausePlay {
+    font-size: 2em;
+    border: 1px solid white;
+    display: inline;
+    cursor: pointer;
+}
