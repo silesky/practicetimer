@@ -1,20 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { dispatch,  bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 
 import TimerBox from './TimerBox';
 import BoardCountDownTotal from '../components/BoardCountDownTotal';
 import BoardBtnAdd from '../components/BoardBtnAdd';
 import BoardBtnControls from '../components/BoardBtnControls';
-import * as actions from '../actions/_actionCreators';
-import store from '../_Store'
+import * as actionCreators from '../actions/_actionCreators';
 
 
-const mapStateToProps = (state) => ({ state });
-const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actions, dispatch) }
-};
+
 // remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
 
 /* all this board does is increment the timer */
@@ -37,14 +33,22 @@ const Board = React.createClass({
           );
         })
       }
+
       <BoardBtnAdd
-        onBoardBtnAddClick={ () => { store.dispatch({type: 'ADD_TIMER' })}  } />
+        onBoardBtnAddClick={ () => {
+           /* dont need dispatch function anymore bc of mapDispatchToProps, mapStateToProps */
+           this.props.actions.addTimerThunk(this.props.state);
+        }  }
+        />
         </div>
       );
     },
   });
-//
 
-  // onBoardBtnAddClick={  }
+
+  const mapStateToProps = (state) => ({ state });
+  const mapDispatchToProps = (dispatch) => {
+    return { actions: bindActionCreators(actionCreators, dispatch) }
+  };
  export default connect(mapStateToProps, mapDispatchToProps)(Board);
   /* drum roll */

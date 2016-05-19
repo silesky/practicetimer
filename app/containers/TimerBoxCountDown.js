@@ -1,24 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { dispatch,  bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect  } from 'react-redux';
-import store from '../_Store';
 
 import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
 import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
 import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
 
-import * as actions from '../actions/_actionCreators';
+import * as actionCreators from '../actions/_actionCreators';
 
 
-// grabs state property from the state object...
-const mapStateToProps = (state) => ({ state });
 
-// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
-const mapDispatchToProps = () => {
-  return { actions: bindActionCreators(actions, dispatch)}
-};
 
 const TimerBoxCountDown = React.createClass({
 
@@ -26,13 +19,13 @@ const TimerBoxCountDown = React.createClass({
 
     const startTicking = (id) => {
       console.log('startTicking()');
-      store.dispatch({
+      this.props.state.dispatch({
         type: 'SET_TICKING_TRUE',
         id
       });
       // count down, myInt
       this.myInt = setInterval(
-        () => store.dispatch({
+        () => this.props.state.dispatch({
           type: 'DECREMENT',
           id  }),
           1000);
@@ -43,7 +36,7 @@ const TimerBoxCountDown = React.createClass({
 
 
         };
-        const getNextId = (stateArr = store.getState(), currentId = this.props.eachKey) => {
+        const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {
           const _getCurrentValueFromStateArr = () => {
             return stateArr.find((el) => el.id === currentId);
           };
@@ -66,7 +59,7 @@ const TimerBoxCountDown = React.createClass({
           // basically does the same thing as a while loop since it's called multiple times
             if (this.props.eachTime < 1 && this.props.eachTicking) {
               console.log('ifZero: if statement passed (time should be less than 1, current timer should be ticking)');
-            store.dispatch({
+            this.props.state.dispatch({
                       type: 'SET_TICKING_FALSE',
                       id: this.props.eachKey,
                     });
@@ -96,7 +89,7 @@ const TimerBoxCountDown = React.createClass({
                 label="stuff"
                 type="button"
                 onClick={ () => {
-                  store.dispatch({
+                  this.props.state.dispatch({
                     type: 'SET_TIME',
                     time: this.timeSetInput.value,
                     id: nextTimerId++,
@@ -121,13 +114,13 @@ const TimerBoxCountDown = React.createClass({
 
             <TimerBoxCountDownBtnIncrementDecrement
               onTimerBoxCountDownBtnIncrementClick={ () =>
-                store.dispatch({
+                this.prop.state.dispatch({
                   type: 'INCREMENT',
                   id: this.props.eachKey
                 })
               }
               onTimerBoxCountDownBtnDecrementClick={ () =>
-                store.dispatch({
+                this.prop.state.dispatch({
                   type: 'DECREMENT',
                   id: this.props.eachKey
                 })
@@ -135,7 +128,7 @@ const TimerBoxCountDown = React.createClass({
               />
             <TimerBoxCountDownBtnReset
               onTimerBoxCountDownBtnResetClick={ () =>
-                store.dispatch({
+                this.prop.state.dispatch({
                   type: 'RESET',
                   id: this.props.eachKey
                 })
@@ -152,4 +145,10 @@ const TimerBoxCountDown = React.createClass({
       );
     }
   });
+  // grabs state property from the state object...
+  const mapStateToProps = (state) => ({ state });
+
+  const mapDispatchToProps = (dispatch) => {
+    return { actions: bindActionCreators(actionCreators, dispatch)}
+  };
   export default connect(mapStateToProps, mapDispatchToProps)(TimerBoxCountDown);

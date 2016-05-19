@@ -1,50 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { dispatch,  bindActionCreators } from 'redux';
+import {  bindActionCreators } from 'redux';
 import { connect  } from 'react-redux';
-import store from '../_Store';
 
+import * as actionCreators from '../actions/_actionCreators';
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
 
-import * as actions from '../actions/_actionCreators';
 
-// grabs state property from the state object...
-const mapStateToProps = (state) => ({ state });
 
-// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
-const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actions, dispatch) }
-};
 
 export const TimerBox = React.createClass({
-  componentDidMount: function() {
-    //$(ReactDOM.findDOMNode(this)).draggable();
-
-  },
-
-
   render: function() {
-
-    // remove props wrapper:this.props.action.removeTimer... -> action.removeTimer...
-    const {
-      eachTime,
-      eachKey,
-      eachTitle,
-      actions,
-      eachTicking,
-    } = this.props;
-
-
-    // passed down as a callback to CountDown
 
     return (
       <div className="timerBox">
         <div className="topBarContainer">
           <div className="topBarLeft">
             <TimerBoxBtnClose
-              onTimerBoxBtnCloseClick={ actions.removeTimer.bind(this, eachKey) }
+              onTimerBoxBtnCloseClick={ this.props.actions.removeTimer.bind(this, this.props.eachKey) }
               />
 
           </div>
@@ -56,24 +31,24 @@ export const TimerBox = React.createClass({
             <TimerBoxTitle
               onTimerBoxTitleSet={
                 (titleSetInput) => {
-                  store.dispatch({
+                  this.props.state.dispatch({
                     type: 'SET_TITLE',
                     text: titleSetInput.value,
-                    id: eachKey
+                    id: this.props.eachKey
                   });
                 }
               }
 
-              eachKey={ eachKey }
-              eachTitle={ eachTitle }
+              eachKey={ this.props.eachKey }
+              eachTitle={ this.props.eachTitle }
               />
           </div>
 
           <TimerBoxCountDown
 
-            eachKey={ eachKey }
-            eachTime={ eachTime }
-            eachTicking = { eachTicking }
+            eachKey={ this.props.eachKey }
+            eachTime={ this.props.eachTime }
+            eachTicking = { this.props.eachTicking }
 
             />
 
@@ -83,5 +58,13 @@ export const TimerBox = React.createClass({
     );
   }
 });
+// grabs state property from the state object...
+const mapStateToProps = (state) => ({ state });
+
+// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actionCreators, dispatch) }
+};
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimerBox);
