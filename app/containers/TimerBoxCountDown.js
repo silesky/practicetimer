@@ -9,7 +9,7 @@ import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
 import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
 
 import * as actionCreators from '../actions/_actionCreators';
-
+import store from '../_Store';
 
 
 
@@ -19,13 +19,13 @@ const TimerBoxCountDown = React.createClass({
 
     const startTicking = (id) => {
       console.log('startTicking()');
-      this.props.state.dispatch({
+      store.dispatch({
         type: 'SET_TICKING_TRUE',
-        id
+        id,
       });
       // count down, myInt
       this.myInt = setInterval(
-        () => this.props.state.dispatch({
+        () => store.dispatch({
           type: 'DECREMENT',
           id  }),
           1000);
@@ -59,7 +59,7 @@ const TimerBoxCountDown = React.createClass({
           // basically does the same thing as a while loop since it's called multiple times
             if (this.props.eachTime < 1 && this.props.eachTicking) {
               console.log('ifZero: if statement passed (time should be less than 1, current timer should be ticking)');
-            this.props.state.dispatch({
+              store.dispatch({
                       type: 'SET_TICKING_FALSE',
                       id: this.props.eachKey,
                     });
@@ -89,12 +89,12 @@ const TimerBoxCountDown = React.createClass({
                 label="stuff"
                 type="button"
                 onClick={ () => {
-                  this.props.state.dispatch({
-                    type: 'SET_TIME',
-                    time: this.timeSetInput.value,
-                    id: nextTimerId++,
-                  });
-                }}>OK</button>
+                  store.dispatch({
+                      type: 'SET_TIME',
+                      time: this.timeSetInput.value,
+                      id: nextTimerId++,
+                    });
+                  }}>OK</button>
                 <TimerBoxCountDownBtnPausePlay
                   onTimerBoxCountDownBtnPausePlayClick={ () => {
                     startTicking(this.props.eachKey);
@@ -114,13 +114,13 @@ const TimerBoxCountDown = React.createClass({
 
             <TimerBoxCountDownBtnIncrementDecrement
               onTimerBoxCountDownBtnIncrementClick={ () =>
-                this.prop.state.dispatch({
+                store.dispatch({
                   type: 'INCREMENT',
                   id: this.props.eachKey
                 })
               }
               onTimerBoxCountDownBtnDecrementClick={ () =>
-                this.prop.state.dispatch({
+                store.dispatch({
                   type: 'DECREMENT',
                   id: this.props.eachKey
                 })
@@ -128,7 +128,7 @@ const TimerBoxCountDown = React.createClass({
               />
             <TimerBoxCountDownBtnReset
               onTimerBoxCountDownBtnResetClick={ () =>
-                this.prop.state.dispatch({
+                store.dispatch({
                   type: 'RESET',
                   id: this.props.eachKey
                 })

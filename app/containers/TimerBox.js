@@ -7,7 +7,7 @@ import * as actionCreators from '../actions/_actionCreators';
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
-
+import store from '../_Store';
 
 
 
@@ -31,7 +31,7 @@ export const TimerBox = React.createClass({
             <TimerBoxTitle
               onTimerBoxTitleSet={
                 (titleSetInput) => {
-                  this.props.state.dispatch({
+                  store.dispatch({
                     type: 'SET_TITLE',
                     text: titleSetInput.value,
                     id: this.props.eachKey
