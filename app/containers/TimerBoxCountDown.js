@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect  } from 'react-redux';
 
-import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
+//import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
 import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
 import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
+
 
 import * as actionCreators from '../actions/_actionCreators';
 import store from '../_Store';
@@ -14,7 +15,21 @@ import store from '../_Store';
 
 
 const TimerBoxCountDown = React.createClass({
-
+  componentDidMount: function() {
+            console.log("ifZero()");
+            // basically does the same thing as a while loop since it's called multiple times
+              if (this.props.eachTime < 1 && this.props.eachTicking) {
+                console.log('ifZero: if statement passed (time should be less than 1, current timer should be ticking)');
+                store.dispatch({
+                        type: 'SET_TICKING_FALSE',
+                        id: this.props.eachKey,
+                      });
+              clearInterval(this.myInt);
+              const _nextId = getNextId(store.getState(), this.props.eachKey);
+              console.log('next ID: ' + _nextId);
+              startTicking(_nextId);
+            }
+          },
   render: function() {
 
     const startTicking = (id) => {
@@ -54,23 +69,6 @@ const TimerBoxCountDown = React.createClass({
           return nextId;
         };
 
-        const ifZero = () => {
-          console.log("ifZero()");
-          // basically does the same thing as a while loop since it's called multiple times
-            if (this.props.eachTime < 1 && this.props.eachTicking) {
-              console.log('ifZero: if statement passed (time should be less than 1, current timer should be ticking)');
-              store.dispatch({
-                      type: 'SET_TICKING_FALSE',
-                      id: this.props.eachKey,
-                    });
-            clearInterval(this.myInt);
-            const _nextId = getNextId(store.getState(), this.props.eachKey);
-            console.log('next ID: ' + _nextId);
-            startTicking(_nextId);
-
-          }
-        };
-
 
 
 
@@ -95,22 +93,7 @@ const TimerBoxCountDown = React.createClass({
                       id: nextTimerId++,
                     });
                   }}>OK</button>
-                <TimerBoxCountDownBtnPausePlay
-                  onTimerBoxCountDownBtnPausePlayClick={ () => {
-                    startTicking(this.props.eachKey);
-                  }
-                }
-
-                onTimerBoxCountDownZero={ ()=> {
-
-
-                  store.subscribe(ifZero);
-
-
-                }
-              }
-
-              />
+                
 
             <TimerBoxCountDownBtnIncrementDecrement
               onTimerBoxCountDownBtnIncrementClick={ () =>
