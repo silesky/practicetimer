@@ -32,25 +32,6 @@ const TimerBoxCountDown = React.createClass({
           },
   render: function() {
 
-    const startTicking = (id) => {
-      console.log('startTicking()');
-      store.dispatch({
-        type: 'SET_TICKING_TRUE',
-        id,
-      });
-      // count down, myInt
-      this.myInt = setInterval(
-        () => store.dispatch({
-          type: 'DECREMENT',
-          id  }),
-          1000);
-          console.log('my interval is: ' + this.myInt);
-        };
-        const stopTicking = (id) => {
-          console.log('stopTicking()');
-
-
-        };
         const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {
           const _getCurrentValueFromStateArr = () => {
             return stateArr.find((el) => el.id === currentId);
@@ -93,7 +74,7 @@ const TimerBoxCountDown = React.createClass({
                       id: nextTimerId++,
                     });
                   }}>OK</button>
-                
+
 
             <TimerBoxCountDownBtnIncrementDecrement
               onTimerBoxCountDownBtnIncrementClick={ () =>

@@ -33,18 +33,19 @@ export function setTickingFalse(id) {
 }
 
 export function addTimer() {
-  let _addTimerAct = () => ({ type: 'ADD_TIMER' })
+  let _addTimer = () => ({ type: 'ADD_TIMER' })
 // thunk intercepts the action and adds a new dispatch function
-  return function(dispatch) {
+  return (dispatch) => {
     dispatch(test);
-    dispatch(_addTimerAct());
+    dispatch(_addTimer());
   };
 }
-
-export function startTickingThunk() {
-
-// thunk intercepts the action and adds a new dispatch function
-  return function(dispatch) {
-    dispatch(test);
-  };
-}
+const increment = (id) => ({ type: 'INCREMENT', id });
+const decrement = (id) => ({ type: 'DECREMENT', id });
+export function startTicking(id) {
+    return (dispatch) => {
+      window.myInt = setInterval(() => dispatch(decrement(id)), 1000);
+      dispatch(setTickingTrue());
+      dispatch(test);
+    };
+  }

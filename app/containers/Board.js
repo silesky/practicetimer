@@ -19,17 +19,17 @@ const Board = React.createClass({
     return(
       <div className="board">
         <BoardCountDownTotal />
-        <BoardBtnControls onBoardBtnPausePlayClick={ () => { this.props.actions.startTicking(this.props.state); } }
+        <BoardBtnControls onBoardBtnPausePlayClick={ () => { this.props.actions.startTicking(1); } }
 />
       {
         this.props.state.map((el) => {
           return (
             <TimerBox
-            eachKey={el.id}
-            eachTime={el.time}
-            eachTitle={el.title}
-            eachTicking={el.ticking}
-            />
+              eachKey={ el.id }
+              eachTime={ el.time }
+              eachTitle={ el.title }
+              eachTicking={ el.ticking }
+              />
           );
         })
       }
