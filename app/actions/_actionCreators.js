@@ -1,7 +1,8 @@
 // TimerBox
-export function log(text) {
-  console.log(text);
+export function test() {
+  console.log('clicked!')
 }
+
 
 export function removeTimer(id) {
   return {
@@ -10,18 +11,7 @@ export function removeTimer(id) {
   }
 }
 
-export function addTimer() {
-  return {
-    type: 'ADD_TIMER',
-  };
-}
-export function addTimerThunk(state) {
-// thunk intercepts the action and adds a new dispatch function
-  return function(dispatch) {
-    dispatch(addTimer());
-    dispatch(log(state));
-  };
-}
+
 
 // TimerBoxCountDown
 
@@ -40,4 +30,21 @@ export function setTickingFalse(id) {
     type: 'SET_TICKING_FALSE',
     id
   }
+}
+
+export function addTimer() {
+  let _addTimerAct = () => ({ type: 'ADD_TIMER' })
+// thunk intercepts the action and adds a new dispatch function
+  return function(dispatch) {
+    dispatch(test);
+    dispatch(_addTimerAct());
+  };
+}
+
+export function startTickingThunk() {
+
+// thunk intercepts the action and adds a new dispatch function
+  return function(dispatch) {
+    dispatch(test);
+  };
 }

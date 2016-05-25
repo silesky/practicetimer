@@ -19,7 +19,7 @@ const Board = React.createClass({
     return(
       <div className="board">
         <BoardCountDownTotal />
-        <BoardBtnControls onBoardBtnPausePlayClick={ () => { startTicking(this.props.eachKey); } }
+        <BoardBtnControls onBoardBtnPausePlayClick={ () => { this.props.actions.startTicking(this.props.state); } }
 />
       {
         this.props.state.map((el) => {
@@ -37,7 +37,7 @@ const Board = React.createClass({
       <BoardBtnAdd
         onBoardBtnAddClick={ () => {
            /* dont need dispatch function anymore bc of mapDispatchToProps, mapStateToProps */
-           this.props.actions.addTimerThunk(this.props.state);
+           this.props.actions.addTimer(this.props.state);
         }  }
         />
         </div>
