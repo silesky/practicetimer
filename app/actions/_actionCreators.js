@@ -1,52 +1,15 @@
 // TimerBox
-export function test() {
-  console.log('clicked!')
-}
+const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
+const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
 
-
-export function removeTimer(id) {
-  return {
-    type: 'REMOVE_TIMER',
-    id
-  }
-}
-
-
-
-// TimerBoxCountDown
-
-export function setTickingTrue(id) {
-  console.log('actionCreator.setTickingTrue() called...you should see reducer->SET_TICKING_TRUE ');
-  console.log(id);
-  return {
-    type: 'SET_TICKING_TRUE',
-    id
-  }
-}
-
-export function setTickingFalse(id) {
-  console.log('actionCreator->setTickingFalse called...you should see reducer -> SET_TICKING_FALSE');
-  return {
-    type: 'SET_TICKING_FALSE',
-    id
-  }
-}
-
-export function addTimer() {
-  let _addTimer = () => ({ type: 'ADD_TIMER' })
-// thunk intercepts the action and adds a new dispatch function
-  return (dispatch) => {
-    dispatch(test);
-    dispatch(_addTimer());
-  };
-}
+export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
+export const addTimer = () =>  ({ type: 'ADD_TIMER' });
 export const reset = (id) => ({ type: 'RESET', id });
 export const increment = (id) => ({ type: 'INCREMENT', id });
 export const decrement = (id) => ({ type: 'DECREMENT', id });
-export function startTicking(id) {
+export const startTicking = (id) => {
     return (dispatch) => {
       window.myInt = setInterval(() => dispatch(decrement(id)), 1000);
-      dispatch(setTickingTrue());
-      dispatch(test);
+      dispatch(_setTickingTrue(id));
     };
-  }
+  };
