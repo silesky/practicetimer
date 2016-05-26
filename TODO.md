@@ -1,2 +1,2 @@
 #Todo
-. clear interval on zero
+. make increment and decrement

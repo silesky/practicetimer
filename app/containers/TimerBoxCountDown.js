@@ -20,19 +20,17 @@ const TimerBoxCountDown = React.createClass({
         return (
           <div>
             <div className="TimerBoxCountDown_container">
-              <input ref={node => {this.timeSetInput = node; }}
-                type="number"
-                placeholder="new time" />
-              <button
-                label="stuff"
-                type="button"
+              <input type="number" placeholder="new time"
+                ref={ node => {this.timeSetInput = node; }}
+                />
+              <button label="stuff" 
                 onClick={ () => {
                   store.dispatch({
-                      type: 'SET_TIME',
-                      time: this.timeSetInput.value,
-                      id: nextTimerId++,
-                    });
-                  }}>OK</button>
+                    type: 'SET_TIME',
+                    time: this.timeSetInput.value,
+                    id: nextTimerId++,
+                  });
+                } }>OK</button>
 
 
             <TimerBoxCountDownBtnIncrementDecrement
