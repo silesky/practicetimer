@@ -76,6 +76,10 @@ const reducer = function(state = initialState, action) {
       case 'REMOVE_TIMER':
       return util.getState_removeElByIndex(util.getCurrentIndex());
 
+      case 'RESET':
+      console.log('reducer: reset called');
+      return state;
+
       default:
       return state;
     }

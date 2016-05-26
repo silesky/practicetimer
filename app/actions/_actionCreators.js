@@ -40,8 +40,9 @@ export function addTimer() {
     dispatch(_addTimer());
   };
 }
-const increment = (id) => ({ type: 'INCREMENT', id });
-const decrement = (id) => ({ type: 'DECREMENT', id });
+export const reset = (id) => ({ type: 'RESET', id });
+export const increment = (id) => ({ type: 'INCREMENT', id });
+export const decrement = (id) => ({ type: 'DECREMENT', id });
 export function startTicking(id) {
     return (dispatch) => {
       window.myInt = setInterval(() => dispatch(decrement(id)), 1000);
