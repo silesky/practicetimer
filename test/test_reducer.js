@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { assert } from 'Chai';
+import { assert } from 'chai';
 import React from 'react';
 import redux from 'redux';
 import store from '../app/_Store.js';

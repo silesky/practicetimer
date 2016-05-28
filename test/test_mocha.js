@@ -1,4 +1,4 @@
-import { assert } from 'Chai';
+import { assert } from 'chai';
 import React from 'react';
 import redux from 'redux';
 

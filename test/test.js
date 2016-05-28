@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { assert } from 'Chai';
+import { assert } from 'chai';
 
 import test_mocha from './test_mocha'
 import test_reducer from './test_reducer';

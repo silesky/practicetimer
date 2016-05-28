@@ -1,8 +1,8 @@
-import { assert } from 'Chai';
+import { assert } from 'chai';
 import React from 'react';
 import ReactTestUtils from 'react-addons-test-utils';
 import store from '../app/_Store';
-// only named export is imported, which means the plain component 
+// only named export is imported, which means the plain component
 import { TimerBox } from '../app/containers/TimerBox';
 import { Provider } from 'react-redux';
 // removeTimer, addTimer, setTickingTrue, setTickingFalse
