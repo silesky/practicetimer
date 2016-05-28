@@ -17,6 +17,7 @@ export const startTicking = (id) => {
   };
   export const pauseTimer = (id) => {
     return (dispatch) => {
+        clearInterval(window.myInt);
         dispatch(_setTickingFalse(id));
       };
     };
