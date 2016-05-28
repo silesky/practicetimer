@@ -2,6 +2,8 @@
 const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
 const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
 
+
+
 export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
 export const addTimer = () =>  ({ type: 'ADD_TIMER' });
 export const reset = (id) => ({ type: 'RESET', id });
@@ -13,3 +15,8 @@ export const startTicking = (id) => {
       dispatch(_setTickingTrue(id));
     };
   };
+  export const pauseTimer = (id) => {
+    return (dispatch) => {
+        dispatch(_setTickingFalse(id));
+      };
+    };

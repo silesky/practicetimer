@@ -2,8 +2,10 @@
 .BoardBtnControls {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+    
+
 }
-.BoardBtnPausePlay {
+.BoardBtnControls i {
     margin-left: 2px;
     display: inline;
     cursor: pointer;

@@ -1,21 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const BoardBtnControls = ({ onBoardBtnPausePlayClick}) => {
+const BoardBtnControls = ({ onBoardBtnPlayClick, onBoardBtnPauseClick }) => {
     return (
-
     <div className="BoardBtnControls">
-
-        <div className="BoardBtnPausePlay"
-              onClick={() => {
-                              console.log('onBoardBtnPausePlayClick');
-                  onBoardBtnPausePlayClick();
-
-                  }
-              } >
-            <i className="fa fa-play-circle-o fa-2x"></i>
-      </div>
-
+          <i className="fa fa-play-circle-o fa-2x" onClick={ () => onBoardBtnPlayClick() } ></i>
+          <i className="fa fa-pause-circle-o fa-2x"  onClick={ () => onBoardBtnPauseClick() } ></i>
     </div>
     );
   };
