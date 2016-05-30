@@ -1,5 +1,7 @@
 ## Todo
 - [x] make increment and decrement
-- [ ] fix one-at-a-time behavior
-  - refactor actionCreators
-- [ ] fix interval
+- [x] fix one-at-a-time behavior
+  -[x] refactor actionCreators
+- [x] fix interval
+- Redo number picker:
+- [cool example]( http://wangzuo.github.io/input-moment/)

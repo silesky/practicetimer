@@ -36,14 +36,22 @@ const reducer = function(state = initialState, action) {
       },
     };
     switch (action.type) {
+
+      case 'RESET':
+      console.log('reducer: reset called');
+      return state;
+
+      case 'SET_TIME':
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.time = action.time;
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+
       case 'SET_TICKING_TRUE':
-      console.log('SET_TICKING_TRUE');
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.ticking = true;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
 
       case 'SET_TICKING_FALSE':
-      console.log('SET_TICKING_FALSE');
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.ticking = false;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
@@ -55,11 +63,9 @@ const reducer = function(state = initialState, action) {
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       // at the moment that add_timer is instantiated, the state only has two timers
       case 'ADD_TIMER':
-      console.log(util.getNextId());
       return [...state, { id: util.getNextId(), ticking: false, time: 1, title: 'new timer' }];
 
       case 'INCREMENT':
-      console.log('INCREMENT');
       _index = util.getCurrentIndex();
       _objEl = util.getCurrentObjEl();
       _objEl.time = _objEl.time + 1;
@@ -67,7 +73,6 @@ const reducer = function(state = initialState, action) {
 
 
       case 'DECREMENT':
-      console.log('DECREMENT');
       _index = util.getCurrentIndex();
       _objEl = util.getCurrentObjEl();
       _objEl.time = _objEl.time - 1;
@@ -76,9 +81,6 @@ const reducer = function(state = initialState, action) {
       case 'REMOVE_TIMER':
       return util.getState_removeElByIndex(util.getCurrentIndex());
 
-      case 'RESET':
-      console.log('reducer: reset called');
-      return state;
 
       default:
       return state;
