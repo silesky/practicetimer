@@ -28,17 +28,17 @@ const TimerBoxCountDown = React.createClass({
                   store.dispatch({
                     type: 'SET_TIME',
                     time: this.timeSetInput.value,
-                    id: this.props.key
+                    id: this.props.eachKey
                   });
                 } }>OK</button>
 
 
             <TimerBoxCountDownBtnIncrementDecrement
-              onTimerBoxCountDownBtnIncrementClick={ () => this.props.actions.increment(this.props.key) }
-              onTimerBoxCountDownBtnDecrementClick={ () => this.props.actions.decrement(this.props.key) }
+              onTimerBoxCountDownBtnIncrementClick={ () => this.props.actions.increment(this.props.eachKey) }
+              onTimerBoxCountDownBtnDecrementClick={ () => this.props.actions.decrement(this.props.eachKey) }
               />
             <TimerBoxCountDownBtnReset
-              onTimerBoxCountDownBtnResetClick={ () => this.props.actions.reset(this.props.key) }
+              onTimerBoxCountDownBtnResetClick={ () => this.props.actions.reset(this.props.eachKey) }
               />
           </div>
 

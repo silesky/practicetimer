@@ -27,7 +27,7 @@ const Board = React.createClass({
         this.props.state.map((el) => {
           return (
             <TimerBox
-              key={ el.id }
+              eachKey={ el.id }
               eachTime={ el.time }
               eachTitle={ el.title }
               eachTicking={ el.ticking }
