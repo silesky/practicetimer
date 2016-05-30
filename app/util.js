@@ -7,7 +7,7 @@ export const nextInLine = (state, currentId) => {
   return nextId;
 }
 /*
-export const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {
+export const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.key) => {
   const _getCurrentValueFromStateArr = () => {
     return stateArr.find((el) => el.id === currentId);
   };

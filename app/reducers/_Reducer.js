@@ -71,7 +71,6 @@ const reducer = function(state = initialState, action) {
       _objEl.time = _objEl.time + 1;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
 
-
       case 'DECREMENT':
       _index = util.getCurrentIndex();
       _objEl = util.getCurrentObjEl();
@@ -80,7 +79,6 @@ const reducer = function(state = initialState, action) {
 
       case 'REMOVE_TIMER':
       return util.getState_removeElByIndex(util.getCurrentIndex());
-
 
       default:
       return state;

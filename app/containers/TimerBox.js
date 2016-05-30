@@ -19,7 +19,7 @@ export const TimerBox = React.createClass({
         <div className="topBarContainer">
           <div className="topBarLeft">
             <TimerBoxBtnClose
-              onTimerBoxBtnCloseClick={ this.props.actions.removeTimer.bind(this, this.props.eachKey) }
+              onTimerBoxBtnCloseClick={ this.props.actions.removeTimer.bind(this, this.props.key) }
               />
 
           </div>
@@ -34,19 +34,19 @@ export const TimerBox = React.createClass({
                   store.dispatch({
                     type: 'SET_TITLE',
                     text: titleSetInput.value,
-                    id: this.props.eachKey
+                    id: this.props.key
                   });
                 }
               }
 
-              eachKey={ this.props.eachKey }
+              key={ this.props.key }
               eachTitle={ this.props.eachTitle }
               />
           </div>
 
           <TimerBoxCountDown
 
-            eachKey={ this.props.eachKey }
+            key={ this.props.key }
             eachTime={ this.props.eachTime }
             eachTicking = { this.props.eachTicking }
 
