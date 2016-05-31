@@ -17,6 +17,7 @@ module.exports = function() {
   });
   describe('set ticking false:', function() {
     it('store.getState()[0].ticking should return false after action: SET_TICKING_FALSE is dispatched.', function() {
+      store.dispatch({ type: 'SET_TICKING_TRUE', id: 1 })
       store.dispatch({ type: 'SET_TICKING_FALSE', id: 1 });
       assert.equal(store.getState()[0].ticking, false);
     });
