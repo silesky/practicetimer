@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "webpack && mocha --require ./test/setupJsdom.js --recursive ./dist/test.js",
-    "devpack": "webpack --progress --colors --watch --devtool source-map"
+    "test:watch":  "npm run test -- -w",
+    "devpack": "live-server . & webpack --progress --colors --watch --devtool source-map"
   },
   "repository": {
     "type": "git",
