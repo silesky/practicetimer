@@ -14,7 +14,6 @@ export const startTicking = (id) => {
       const objectWithMatchingId = () => !!getState().find((el) => el.id === id);
       // checking if object exusts...
       if (objectWithMatchingId()) {
-        console.log(objectWithMatchingId());
         dispatch(_setTickingTrue(id));
         window.myInt = setInterval(() => {
         let currentTime = getState().find((el) => el.id === id).time;
