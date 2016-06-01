@@ -15,7 +15,7 @@ import redux from 'redux';
 import Board from './containers/Board';
 import store from './_Store';
 import { Provider } from 'react-redux';
-
+console.log('app loaded.');
   const renderRoot = () => {
     ReactDOM.render(
       <Provider store={store}>
