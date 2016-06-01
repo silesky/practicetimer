@@ -10,9 +10,12 @@ export const reset = (id) => ({ type: 'RESET', id });
 export const increment = (id) => ({ type: 'INCREMENT', id });
 export const decrement = (id) => ({ type: 'DECREMENT', id });
 export const startTicking = (id) => {
+
+
     return (dispatch, getState) => {
-      const objectWithMatchingId = () => !!getState().find((el) => el.id === id);
-      // checking if object exusts...
+      const objectWithMatchingId = () => getState().find((el) => el.id === id);
+      console.log(getState());
+        // checking if object exusts...
       if (objectWithMatchingId()) {
         dispatch(_setTickingTrue(id));
         window.myInt = setInterval(() => {
