@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "webpack && mocha --require ./test/setupJsdom.js --recursive ./dist/test.js",
-    "devpack": "webpack-dev-server --debug --hot --devtool source-map --output-pathinfo --watch --colors --progress"
+    "devpack": "webpack --debug --hot --devtool source-map --output-pathinfo --watch --colors --progress"
   },
   "repository": {
     "type": "git",
@@ -37,8 +37,7 @@
     "mocha-loader": "^0.7.1",
     "react-addons-test-utils": "^0.14.8",
     "redux-thunk": "^2.1.0",
-    "webpack": "^1.12.13",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.12.13"
   },
   "directories": {
     "test": "test"
