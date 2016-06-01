@@ -4,7 +4,7 @@
   "description": "trello-style timer chaining",
   "main": "app.js",
   "scripts": {
-    "test": "webpack && mocha --require ./test/setupJsdom.js --recursive ./dist/test.js --watch",
+    "test": "webpack && mocha --require ./test/setupJsdom.js --recursive ./dist/test.js",
     "devpack": "webpack-dev-server --debug --hot --devtool source-map --output-pathinfo --watch --colors --progress"
   },
   "repository": {
