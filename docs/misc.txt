@@ -8,4 +8,5 @@ testing:
   - wait 1 sec
   - then store.getState().[1].time < 1
 
-  
+
+"webpack && mocha --require ./test/setupJsdom.js --recursive ./dist/test.js",
