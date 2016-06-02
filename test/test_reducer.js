@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { assert } from 'chai';
 import React from 'react';
 import redux from 'redux';
@@ -21,7 +20,7 @@ module.exports = function() {
         store.dispatch({ type: 'SET_TICKING_TRUE', id: 1 })
         store.dispatch({ type: 'SET_TICKING_FALSE', id: 1 });
         assert.equal(store.getState()[0].ticking, false);
-      });
+      })
     });
     describe('setTime()...', function() {
       it('should set current timer object\'s *time* property to 666...', function() {
@@ -30,6 +29,7 @@ module.exports = function() {
       });
     });
     describe('startTicking()...', function() {
+       this.timeout(5000);
       beforeEach(function() {
         store.dispatch({ type: 'SET_TIME', time: 3, id: 1 })
         store.dispatch(actionCreators.startTicking(1));
@@ -37,24 +37,16 @@ module.exports = function() {
       afterEach(function() {
         clearInterval(window.myInt);
       })
-      it('should set current timer object\'s *ticking* property to the argument value', function() {
+      it('should set current timer object\'s *ticking* property to true', function() {
         assert.equal(store.getState()[0].ticking, true);
       });
-      it('should decrement current timer object\'s *time* property...', function() {
-        setTimeout('', 3000);
-        assert.isBelow(store.getState()[0].time, 2);
+      it('should decrement current timer object\'s *time* property every second', function(done) {
+          const myAssertion = () => {
+            assert.isBelow(store.getState()[0].time, 3);
+            done();
+          }
+          setTimeout(myAssertion, 2000);
       });
     });
   });
 }
-//http://stackoverflow.com/questions/11235815/is-there-a-way-to-get-chai-working-with-asynchronous-mocha-tests
-//window.expect = chai.expect;
-// describe('my test', function() {
-//   it( 'should do something', function (done) {
-//     setTimeout( function () {
-//       check( done, function() {
-//         expect(true).to.equal(false);
-//       } )
-//     }, 100);
-//   }
-// }
