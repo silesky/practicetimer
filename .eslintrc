@@ -31,11 +31,13 @@
   "parser": "babel-eslint",
   "plugins": [
     "babel",
-    "react"
+    "react",
+    "mocha"
   ],
   "rules": {
 
     /*Possible Errors */
+    "mocha/no-exclusive-tests": 2,
     "comma-dangle": [1, "always-multiline"],
     "no-cond-assign": [1, "except-parens"],
     "no-console": 0,
