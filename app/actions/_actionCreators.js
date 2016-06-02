@@ -14,7 +14,6 @@ export const startTicking = (id) => {
 
     return (dispatch, getState) => {
       const objectWithMatchingId = () => getState().find((el) => el.id === id);
-      console.log(getState());
         // checking if object exusts...
       if (objectWithMatchingId()) {
         dispatch(_setTickingTrue(id));
