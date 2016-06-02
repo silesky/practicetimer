@@ -12,12 +12,12 @@ export const decrement = (id) => ({ type: 'DECREMENT', id });
 export const startTicking = (id) => {
 
 
-    return (dispatch, getState) => {
-      const objectWithMatchingId = () => getState().find((el) => el.id === id);
-        // checking if object exusts...
-      if (objectWithMatchingId()) {
-        dispatch(_setTickingTrue(id));
-        window.myInt = setInterval(() => {
+  return (dispatch, getState) => {
+    const objectWithMatchingId = () => getState().find((el) => el.id === id);
+    // checking if object exusts...
+    if (objectWithMatchingId()) {
+      dispatch(_setTickingTrue(id));
+      window.myInt = setInterval(() => {
         let currentTime = getState().find((el) => el.id === id).time;
         /* based on the current id, find the current time. as long as current time is
         more than zero, keep counting down. */
@@ -31,9 +31,9 @@ export const startTicking = (id) => {
       }, 1000);
     }
     // ^ called every 1 second
-    };
-
   };
+
+};
   export const pauseTimer = (id) => {
     return (dispatch) => {
         clearInterval(window.myInt);
