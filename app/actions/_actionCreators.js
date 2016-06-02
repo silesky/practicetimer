@@ -1,8 +1,8 @@
 // given the current ticking timer ID and state, grab the next ID
 import { nextInLine } from '../util.js';
 
-const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
-const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
+export const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
+export const setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
 
 export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
 export const addTimer = () =>  ({ type: 'ADD_TIMER' });
@@ -37,6 +37,6 @@ export const startTicking = (id) => {
   export const pauseTimer = (id) => {
     return (dispatch) => {
         clearInterval(window.myInt);
-        dispatch(_setTickingFalse(id));
+        dispatch(setTickingFalse(id));
       };
     };
