@@ -26,7 +26,6 @@ export const startTicking = (id) => {
         } else {
           clearInterval(window.myInt);
           dispatch(startTicking(nextInLine(getState(), id)));
-          console.log('Times up. Next timer should start...');
         }
       }, 1000);
     }
