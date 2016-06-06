@@ -45,11 +45,11 @@ module.exports = function() {
       });
     });
     describe('startTicking()...', function() {
-      // max time for test suite is 5 seconds.
+      // max time for test suite is 20 seconds.
       // Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
-      this.timeout(5000);
+      this.timeout(20000);
       beforeEach(function() {
-        store.dispatch({ type: 'SET_TIME', time: 3, id: 1 });
+        store.dispatch({ type: 'SET_TIME', time: 2, id: 1 });
         store.dispatch(actionCreators.startTicking(1));
       })
       afterEach(function() {
@@ -63,42 +63,47 @@ module.exports = function() {
         // timer property has been set to 3. waits two seconds, then checks if time has gone down at all.
         const _checkIfTimeIsBelow3 = () => {
           let firstAndonlyTimer = store.getState()[0].time;
-          expect(firstAndonlyTimer).to.be.below(3);
+          expect(firstAndonlyTimer).to.be.below(2);
+
           done();
         }
         setTimeout(_checkIfTimeIsBelow3, 2000);
       });
     });
-      describe('startTicking()...advanced', function() {
+      describe('startTicking(): domino behavior', function() {
         // max time is 20 seconds. without this line, error.
         this.timeout(20000);
 
 
-        it('should cascade one deep', function(done) {
+        it('after the first timer is done ticking, the second timer should start', function(done) {
+          // create new timer (tid-2) and set it
+          store.dispatch(actionCreators.addTimer()); store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
+
+          // first domino start
           store.dispatch(actionCreators.startTicking(1));
-          // create new timer (tid-2)
-          store.dispatch(actionCreators.addTimer());
-          // set tid-2 to two seconds
-          store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
-           // start chain
-          //  check if tid-2 has changed from it's og time of 2 after 5 secs
+
+          //  after 6000ms from starting the first timer, check if second has started.
           let _checkIfTimeIsBelow2 = () => {
              let secondTimer = store.getState()[1].time;
              expect(secondTimer).to.be.below(2);
+
              done();
            }
+
            // total time should be 2 + 2 = 4. 6 seconds is plenty.
           setTimeout(_checkIfTimeIsBelow2, 6000);
         })
-        it('should cascade two deep', function(done) {
+        it('after the second timer is done ticking, the third timer should start', function(done) {
           store.dispatch(actionCreators.addTimer());
           store.dispatch({ type: 'SET_TIME', time: 2, id: 3});
           let _checkIfTimeIsBelow2 = () => {
-             let thirdTimer = store.getState()[1].time;
+             let thirdTimer = store.getState()[2].time;
              expect(thirdTimer).to.be.below(2);
+
              done();
            }
           setTimeout(_checkIfTimeIsBelow2, 6000);
+
         })
       });
   });
