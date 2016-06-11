@@ -12,10 +12,14 @@ import store from '../_Store';
 
 
 export const TimerBox = React.createClass({
+  componentWillUnmount: function() {
+    console.log('component unmounted...');
+    ReactDOM.findDOMNode(this.refs.timerBox).className = 'remove';
+  },
   render: function() {
 
     return (
-      <div className="timerBox">
+      <div ref="timerBox" className="timerBox">
         <div className="topBarContainer">
           <div className="topBarLeft">
             <TimerBoxBtnClose
