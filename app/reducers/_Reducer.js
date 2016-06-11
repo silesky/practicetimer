@@ -4,12 +4,14 @@ const reducer = function(state = initialState, action) {
     let _index;
     let _objEl;
     let _individualTimerObjEl;
-    // copy the state array
-    const stateCopyArr = state.slice(0);
 
-
+    // set local storage with state the reducer is called
+    localStorage.setItem('time', '1, 2, 3');
+    let item = localStorage.getItem('time');
+    console.log('localStorage:' + item);
     const util = {
-      getState_replaceElByIndex: (index, el) => {
+
+    getState_replaceElByIndex: (index, el) => {
         return [
           ...state.slice(0, index),
           state[index] =  el,
