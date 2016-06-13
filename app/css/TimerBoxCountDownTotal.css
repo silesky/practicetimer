@@ -7,11 +7,12 @@
   top: 70%;
   left: 20%;
   right: 20%;
-
+  display: flex;
+  justify-content: center;
 }
-
+.TimerBoxCountDownTotal_container div {
+  margin: 0 2%;
+}
 .TimerBoxCountDownTotal_text {
   font-size: 2em;
-  text-align: center;
-  margin: auto;
 }

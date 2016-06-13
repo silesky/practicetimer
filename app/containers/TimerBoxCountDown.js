@@ -33,18 +33,18 @@ const TimerBoxCountDown = React.createClass({
                 } }>OK</button>
 
 
-            <TimerBoxCountDownBtnIncrementDecrement
-              onTimerBoxCountDownBtnIncrementClick={ () => this.props.actions.increment(this.props.eachKey) }
-              onTimerBoxCountDownBtnDecrementClick={ () => this.props.actions.decrement(this.props.eachKey) }
-              />
+
 
           </div>
-
-          <TimerBoxCountDownTotal
-            eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
-            />
-
-
+          <div className="TimerBoxCountDownTotal_container">
+            <TimerBoxCountDownTotal
+              eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
+              />
+              <TimerBoxCountDownBtnIncrementDecrement
+                onTimerBoxCountDownBtnIncrementClick={ () => this.props.actions.increment(this.props.eachKey) }
+                onTimerBoxCountDownBtnDecrementClick={ () => this.props.actions.decrement(this.props.eachKey) }
+                />
+            </div>
         </div>
       );
     }

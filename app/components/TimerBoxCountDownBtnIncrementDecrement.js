@@ -15,7 +15,7 @@ const TimerBoxCountDownBtnIncrementDecrement =
           }
         }
         >
-        [up]
+        <i className="fa fa-toggle-up fa-2x"></i>
       </div>
 
       <div
@@ -26,7 +26,7 @@ const TimerBoxCountDownBtnIncrementDecrement =
         }
       }
       >
-      [dn]
+        <i className="fa fa-toggle-down fa-2x"></i>
     </div>
 
 
