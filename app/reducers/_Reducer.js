@@ -1,4 +1,4 @@
-  const initialState = [{ id: 1, time: 3, title: 'shop', ticking: false }];
+  const initialState = [{ id: 1, time: 3, title: 'Title', ticking: false }];
 
 const reducer = function(state = initialState, action) {
     let _index;
@@ -65,7 +65,7 @@ const reducer = function(state = initialState, action) {
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       // at the moment that add_timer is instantiated, the state only has two timers
       case 'ADD_TIMER':
-      return [...state, { id: util.getNextId(), ticking: false, time: 1, title: 'new timer' }];
+      return [...state, { id: util.getNextId(), ticking: false, time: 1, title: '' }];
 
       case 'INCREMENT':
       _index = util.getCurrentIndex();

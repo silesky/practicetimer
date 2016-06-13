@@ -25,11 +25,9 @@ body {
 
 .btnComp {
   font-size: 2em;
-  border: 3px dotted grey;
-  text-align: center;
-  vertical-align: middle;
-  background-color: yellow;
-  color: black;
+  border: 3px solid white;
+  border-radius: 5px;
+
 }
 
 .btn {

@@ -7,16 +7,17 @@ const TimerBoxTitle = ({onTimerBoxTitleSet, eachTitle }) => {
 	return (
 
 		<div className="titleContainer">
-			<input size='10' type="text"
+			<div className="title">
+				{eachTitle}
+			</div>
+			<input size='10' type="text" placeholder="Title"
 				ref={
 					node => {titleSetInput = node;}
 				}
 				onChange={() => {
 					onTimerBoxTitleSet(titleSetInput);
 				}} />
-				<div>
-					{eachTitle}
-				</div>
+
 			</div>
 		);
 	};

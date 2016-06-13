@@ -6,8 +6,9 @@ const BoardBtnAdd = ({ onBoardBtnAddClick }) => {
     onClick={() => {
       console.log('boardbtnadd');
       onBoardBtnAddClick(); } }
-      className="btnComp BoardTimerBoxBtnAdd" >
-      [+]
+      className="BoardTimerBoxBtnAdd" >
+      <i className="fa fa-plus-square fa-5x" aria-hidden="true"></i>
+
     </div>
   );
 };

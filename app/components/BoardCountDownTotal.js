@@ -6,7 +6,7 @@ var BoardCountDownTotal = React.createClass({
     return (
       <div className="BoardCountDownTotalContainer">
         <div className="BoardCountDownTotalNum">
-          40
+          10 seconds left...
         </div>
       </div>
     );
