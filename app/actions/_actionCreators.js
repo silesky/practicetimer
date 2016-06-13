@@ -9,9 +9,9 @@ export const addTimer = () =>  ({ type: 'ADD_TIMER' });
 export const reset = (id) => ({ type: 'RESET', id });
 export const increment = (id) => ({ type: 'INCREMENT', id });
 export const decrement = (id) => ({ type: 'DECREMENT', id });
+export const setTitle = (text, id) => ({ type: 'SET_TITLE', text, id });
+
 export const startTicking = (id) => {
-
-
   return (dispatch, getState) => {
     const objectWithMatchingId = () => getState().find((el) => el.id === id);
     // checking if object exusts...

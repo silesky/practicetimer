@@ -4,25 +4,6 @@ body {
   font-family: Helvetica;
 }
 
-.topBarContainer {
- display: flex;
- flex-direction: row;
-}
-
-
-.topBarLeft {
- position: absolute;
- left: 1%;
- margin: 1%;
-}
-
-.topBarRight {
-  position: absolute;
-  right: 1%;
-  margin: 1%;
-}
-
-
 .btnComp {
   font-size: 2em;
   border: 3px solid white;
@@ -32,11 +13,7 @@ body {
 
 .btn {
   cursor: pointer;
-
 }
-
-
-
 
 .setTimerUpDnContainer {
   font-size: 0.5em;

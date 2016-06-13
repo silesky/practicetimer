@@ -7,8 +7,6 @@ import * as actionCreators from '../actions/_actionCreators';
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
-import store from '../_Store';
-
 
 
 export const TimerBox = React.createClass({
@@ -20,44 +18,27 @@ export const TimerBox = React.createClass({
 
     return (
       <div ref="timerBox" className="timerBox">
-        <div className="topBarContainer">
-          <div className="topBarLeft">
             <TimerBoxBtnClose
-              onTimerBoxBtnCloseClick={ this.props.actions.removeTimer.bind(this, this.props.eachKey) }
+              onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
               />
-
-          </div>
-          <div className="topBarRight">
-
-          </div>
-          <div className="titleContainer">
-
             <TimerBoxTitle
-              onTimerBoxTitleSet={
-                (titleSetInput) => {
-                  store.dispatch({
-                    type: 'SET_TITLE',
-                    text: titleSetInput.value,
-                    id: this.props.eachKey
-                  });
+              onTimerBoxTitleSet={ (titleSetInput) => {
+                let text = titleSetInput.value;
+                this.props.actions.setTitle(text, this.props.eachKey);
                 }
               }
-
               eachKey={ this.props.eachKey }
               eachTitle={ this.props.eachTitle }
-              />
-          </div>
+            />
 
           <TimerBoxCountDown
-
             eachKey={ this.props.eachKey }
             eachTime={ this.props.eachTime }
             eachTicking = { this.props.eachTicking }
-
             />
 
-        </div>
       </div>
+
 
     );
   }

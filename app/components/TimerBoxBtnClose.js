@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 
 const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
   return (
+  <div className="topBarLeft">
     <div
       className="TimerBoxBtnClose"
       onClick={() => {
@@ -11,6 +12,7 @@ const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
       <i className="fa fa-minus-circle fa-2x"></i>
 
     </div>
+  </div>
 
 
   );
