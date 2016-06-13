@@ -6,7 +6,7 @@ import { connect  } from 'react-redux';
 
 // import TimerBoxCountDownBtnPausePlay from '../components/TimerBoxCountDownBtnPausePlay';
 import TimerBoxCountDownBtnIncrementDecrement from '../components/TimerBoxCountDownBtnIncrementDecrement';
-import TimerBoxCountDownBtnReset from '../components/TimerBoxCountDownBtnReset';
+
 import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
 
 
@@ -37,9 +37,7 @@ const TimerBoxCountDown = React.createClass({
               onTimerBoxCountDownBtnIncrementClick={ () => this.props.actions.increment(this.props.eachKey) }
               onTimerBoxCountDownBtnDecrementClick={ () => this.props.actions.decrement(this.props.eachKey) }
               />
-            <TimerBoxCountDownBtnReset
-              onTimerBoxCountDownBtnResetClick={ () => this.props.actions.reset(this.props.eachKey) }
-              />
+
           </div>
 
           <TimerBoxCountDownTotal

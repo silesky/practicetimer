@@ -7,7 +7,7 @@ import * as actionCreators from '../actions/_actionCreators';
 import TimerBoxTitle from '../components/TimerBoxTitle';
 import TimerBoxCountDown from './TimerBoxCountDown';
 import TimerBoxBtnClose from '../components/TimerBoxBtnClose';
-
+import TimerBoxBtnReset from '../components/TimerBoxBtnReset';
 
 export const TimerBox = React.createClass({
   componentWillUnmount: function() {
@@ -21,6 +21,9 @@ export const TimerBox = React.createClass({
             <TimerBoxBtnClose
               onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
               />
+              <TimerBoxBtnReset
+                onTimerBoxBtnResetClick={ () => this.props.actions.reset(this.props.eachKey) }
+                />
             <TimerBoxTitle
               onTimerBoxTitleSet={ (titleSetInput) => {
                 let text = titleSetInput.value;
