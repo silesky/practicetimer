@@ -30,6 +30,6 @@ store.subscribe(renderRoot);
 renderRoot(); // initial render method (chapter 19)
 
 // without bind, I get error 'expected listener to be a function'
-store.subscribe(storeStateInLS.bind(this, store.getState()));
+store.subscribe(() => storeStateInLS(store.getState()));
 // I want to be able to populate the state a la
 console.log(getStateFromLS());
