@@ -16,7 +16,7 @@ import store from '../_Store';
 
 
 const TimerBoxCountDown = React.createClass({
-  render: function() {
+  render() {
         return (
           <div>
             <div className="TimerBoxCountDown_container">

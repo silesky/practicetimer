@@ -15,7 +15,7 @@ import * as actionCreators from '../actions/_actionCreators';
 
 /* all this board does is increment the timer */
 const Board = React.createClass({
-  render: function() {
+  render() {
     return(
       <div className="board">
         <BoardCountDownTotal />

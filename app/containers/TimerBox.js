@@ -14,8 +14,7 @@ export const TimerBox = React.createClass({
     console.log('component unmounted...');
     ReactDOM.findDOMNode(this.refs.timerBox).className = 'remove';
   },
-  render: function() {
-
+  render() {
     return (
       <div ref="timerBox" className="timerBox">
             <TimerBoxBtnClose
