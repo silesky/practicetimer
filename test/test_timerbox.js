@@ -5,7 +5,7 @@ import store from '../app/_Store';
 // only named export is imported, which means the plain component
 import { TimerBox } from '../app/containers/TimerBox';
 import { Provider } from 'react-redux';
-// removeTimer, addTimer, _setTickingTrue, setTickingFalse
+// removeTimer, addTimer, _setTickingTrue, _setTickingFalse
 import * as actions from '../app/actions/_actionCreators';
 // neccessary for enzyme;
 import jsdom from 'jsdom';

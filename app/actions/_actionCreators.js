@@ -2,7 +2,7 @@
 import { nextInLine } from '../util.js';
 
 export const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
-export const setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
+export const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
 
 export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
 export const addTimer = () =>  ({ type: 'ADD_TIMER' });
@@ -36,6 +36,6 @@ export const startTicking = (id) => {
   export const pauseTimer = (id) => {
     return (dispatch) => {
         clearInterval(window.myInt);
-        dispatch(setTickingFalse(id));
+        dispatch(_setTickingFalse(id));
       };
     };

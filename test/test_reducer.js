@@ -22,10 +22,10 @@ module.exports = function() {
           expect(store.getState()[0].ticking).to.be.true;
       });
     });
-    describe('setTickingFalse()...', function() {
+    describe('_setTickingFalse()...', function() {
       it('store.getState()[0].ticking should return false after action: SET_TICKING_FALSE is dispatched.', function() {
         store.dispatch(actionCreators._setTickingTrue(1));
-        store.dispatch(actionCreators.setTickingFalse(1));
+        store.dispatch(actionCreators._setTickingFalse(1));
         expect(store.getState()[0].ticking).to.be.false;
       })
     });
