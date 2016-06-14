@@ -1,10 +1,8 @@
-// nextInLine - given the current ticking timer ID and state, grab the next ID
-// storeStateInLS -
-import { nextInLine, storeStateInLS, getStateFromLS }  from '../util.js';
+// given the current ticking timer ID and state, grab the next ID
+import { nextInLine } from '../util.js';
 
 export const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
 export const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
-
 export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
 export const addTimer = () =>  ({ type: 'ADD_TIMER' });
 export const reset = (id) => ({ type: 'RESET', id });
@@ -20,8 +18,6 @@ export const startTicking = (id) => {
       dispatch(_setTickingTrue(id));
       window.myInt = setInterval(() => {
         let currentTime = getState().find((el) => el.id === id).time;
-        storeStateInLS(getState());
-        console.log(getStateFromLS());
         /* based on the current id, find the current time. as long as current time is
         more than zero, keep counting down. */
         if (currentTime > 0 && objectWithMatchingId()) {

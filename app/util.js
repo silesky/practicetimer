@@ -17,8 +17,9 @@ export const storeStateInLS = (obj) => {
 };
 
 export const getStateFromLS = () => {
-  const stateString = localStorage.getItem('storedState');
-  return JSON.parse(stateString);
+  const string = localStorage.getItem('storedState');
+  const stateObj = JSON.parse(string);
+  return stateObj;
 };
 /*
 export const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {

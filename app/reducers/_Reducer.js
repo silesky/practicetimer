@@ -5,10 +5,6 @@ const reducer = function(state = initialState, action) {
     let _objEl;
     let _individualTimerObjEl;
 
-    // set local storage with state the reducer is called
-    //localStorage.setItem('time', '1, 2, 3');
-    //let item = localStorage.getItem('time');
-    //console.log('localStorage:' + item);
     const util = {
 
     getState_replaceElByIndex: (index, el) => {
