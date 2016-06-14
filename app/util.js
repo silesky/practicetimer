@@ -6,6 +6,20 @@ export const nextInLine = (state, currentId) => {
   const nextId = idArr[currentIndex + 1];
   return nextId;
 }
+
+
+export const storeStateInLS = (obj) => {
+  if (typeof obj === 'object' || 'array') {
+    // convert to string bc stupid localstorage only supports plain string
+    const objString = JSON.stringify(obj);
+    localStorage.setItem('storedState', objString);
+  }
+};
+
+export const getStateFromLS = () => {
+  const stateString = localStorage.getItem('storedState');
+  return JSON.parse(stateString);
+};
 /*
 export const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {
   const _getCurrentValueFromStateArr = () => {
