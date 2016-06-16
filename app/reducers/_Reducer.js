@@ -41,7 +41,10 @@ const reducer = function(state = initialState, action) {
 
       case 'SET_TIME':
       _individualTimerObjEl = util.getCurrentObjEl();
-      _individualTimerObjEl.time = action.time;
+      // otherwise input will get parsed as string 
+      let int = parseInt(action.time, 10);
+      _individualTimerObjEl.time = int;
+
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
 
       case 'SET_TICKING_TRUE':
