@@ -1,4 +1,4 @@
-  const initialState = [{ id: 1, time: 3, title: 'Title', ticking: false }];
+const initialState = [{ id: 1, time: 3, title: 'Title', ticking: false }];
 
 const reducer = function(state = initialState, action) {
     let _index;
@@ -41,7 +41,7 @@ const reducer = function(state = initialState, action) {
 
       case 'SET_TIME':
       _individualTimerObjEl = util.getCurrentObjEl();
-      // otherwise input will get parsed as string 
+      // otherwise input will get parsed as string
       let int = parseInt(action.time, 10);
       _individualTimerObjEl.time = int;
 
