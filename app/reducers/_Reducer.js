@@ -1,4 +1,7 @@
-const initialState = [{ id: 1, time: 3, title: 'Title', ticking: false }];
+/*  grab the stored state object from LocalStorage, use it to hydrate the state (so timer
+    timer settings will persist on page load). */
+import { getStateFromLS } from '../util';
+const initialState = getStateFromLS();
 
 const reducer = function(state = initialState, action) {
     let _index;
