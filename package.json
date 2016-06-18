@@ -6,7 +6,7 @@
   "scripts": {
     "test": "webpack && mocha --require ./test/setupJsdom.js --recursive ./app/dist/test.js",
     "test:watch": "npm run test -- -w",
-    "devpack": "live-server . | webpack --progress --colors --watch --devtool source-map &"
+    "devpack": "webpack --progress --colors --watch --devtool source-map & live-server ."
   },
   "repository": {
     "type": "git",
@@ -40,12 +40,13 @@
     "eslint-plugin-react": "^5.1.1",
     "jsdom": "^9.1.0",
     "jsdom-global": "^2.0.0",
-    "live-server": "^0.9.2",
     "mocha": "^2.4.5",
     "mocha-loader": "^0.7.1",
     "react-addons-test-utils": "^0.14.8",
     "redux-thunk": "^2.1.0",
-    "webpack": "^1.12.13"
+    "webpack": "^1.12.13",
+    "eslint": "~2.13.0",
+    "eslint-plugin-babel": "~3.2.0"
   },
   "directories": {
     "test": "test"

@@ -8,6 +8,8 @@
 -  ```webpack``` (to compile dependencies to dist/app.js)
 
 # optional
+
   - ```npm test```
   - ``` npm run test:watch```
-  - ```npm run devpack```
+  - ``` npm install live-server -g```
+    - ```npm run devpack```
