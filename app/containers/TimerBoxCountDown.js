@@ -19,11 +19,21 @@ const TimerBoxCountDown = React.createClass({
   render() {
         return (
           <div>
-            <div className="TimerBoxCountDown_container">
-              <input type="number" min="0" placeholder="secs"
+
+          <div className="TimerBoxCountDownSet">
+            <div className="TimerBoxCountDownSet-container">
+              <div className="hours">
+                <input type="number" placeholder="hours" min="0" max="59" />
+              </div>
+              <div className="minutes"> 
+                <input type="number" placeholder="min" min="0" max="59" size="25" />
+              </div>
+              <div className="seconds">
+                <input type="number" placeholder="sec" min="0" size="30"
                 ref={ node => {this.timeSetInput = node; }}
                 />
-              <button label="stuff"
+              </div>
+              <button className="button-ok" label="stuff"
                 onClick={ () => {
                   store.dispatch({
                     type: 'SET_TIME',
@@ -31,11 +41,10 @@ const TimerBoxCountDown = React.createClass({
                     id: this.props.eachKey
                   });
                 } }>OK</button>
+            </div>
+              
+        </div>
 
-
-
-
-          </div>
           <div className="TimerBoxCountDownTotal_container">
             <TimerBoxCountDownTotal
               eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }

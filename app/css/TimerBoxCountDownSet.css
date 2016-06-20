@@ -1,0 +1,27 @@
+.TimerBoxCountDownSet {
+	position: absolute;
+	top: 45%;
+	width: 100%
+ 
+}
+.TimerBoxCountDownSet input[type="number"] {
+	width: 45px
+}
+.TimerBoxCountDownSet-container {
+	display: flex;
+	justify-content: center;
+
+}
+.hours {
+}
+.minutes {
+
+}
+.seconds {
+
+}
+
+.TimerBoxCountDownSet button {
+		margin-left: 2%;
+		
+}

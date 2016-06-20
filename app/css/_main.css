@@ -22,11 +22,6 @@ body {
 .countDownBtnReset {
 }
 
-input[type="number"] {
-  font-size: 0.5em;
-  width: 25%;
-  text-align: center;
-}
 
 .board {
   width: 100vw;
