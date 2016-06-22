@@ -23,15 +23,20 @@ const TimerBoxCountDown = React.createClass({
           <div className="TimerBoxCountDownSet">
             <div className="TimerBoxCountDownSet-container">
               <div className="hours">
-                <input type="number" placeholder="hours" min="0" max="59" />
+                <input type="number" placeholder="0" min="0" max="24" 
+                />
+                h
               </div>
               <div className="minutes"> 
-                <input type="number" placeholder="min" min="0" max="59" size="25" />
+                <input type="number" placeholder="0" min="0" max="59" 
+                 />
+                 m
               </div>
               <div className="seconds">
-                <input type="number" placeholder="sec" min="0" size="30"
+                <input type="number" placeholder="0" min="0" max="59"
                 ref={ node => {this.timeSetInput = node; }}
                 />
+                s
               </div>
               <button className="button-ok" label="stuff"
                 onClick={ () => {
