@@ -5,8 +5,7 @@ export const nextInLine = (state, currentId) => {
   const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
   const nextId = idArr[currentIndex + 1];
   return nextId;
-}
-
+};
 
 export const storeStateInLS = (obj) => {
   if (typeof obj === 'object' || 'array') {
@@ -21,6 +20,29 @@ export const getStateFromLS = () => {
   const stateObj = JSON.parse(string);
   return stateObj;
 };
+
+//
+export const secondsToMinutesAndHours = (seconds) => {
+  let displayString;
+  let secondsAsInt = Math.round(seconds);
+  if (secondsAsInt > 0) {
+      // converts to minutes...
+      let minutes = Math.floor(secondsAsInt / 60);
+    // ...with remaning seconds (e.g 1:05)
+    let remainingSecs = secondsAsInt - minutes * 60;
+    // if remaining seconds is under 10, add a 0
+    let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
+    displayString = minutes + ':' + secsWithLeadingZeros;
+  } 
+  else if(secondsAsInt <= 0) {
+    displayString = 'end';
+  } 
+  else { 
+    displayString = secondsAsInt;
+  }    
+  return displayString;
+};   
+
 /*
 export const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {
   const _getCurrentValueFromStateArr = () => {

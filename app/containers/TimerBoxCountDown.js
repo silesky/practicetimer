@@ -12,11 +12,13 @@ import TimerBoxCountDownTotal from '../components/TimerBoxCountDownTotal';
 
 import * as actionCreators from '../actions/_actionCreators';
 import store from '../_Store';
-
+import { secondsToMinutesAndHours } from '../util';
 
 
 const TimerBoxCountDown = React.createClass({
+
   render() {
+     
         return (
           <div>
 
@@ -43,7 +45,7 @@ const TimerBoxCountDown = React.createClass({
                   store.dispatch({
                     type: 'SET_TIME',
                     time: this.timeSetInput.value,
-                    id: this.props.eachKey
+                    id: this.props.eachKey,
                   });
                 } }>OK</button>
             </div>
@@ -52,7 +54,9 @@ const TimerBoxCountDown = React.createClass({
 
           <div className="TimerBoxCountDownTotal_container">
             <TimerBoxCountDownTotal
-              eachTime={ this.props.eachTime > 0 ? this.props.eachTime : 'end' }
+                /* e.g 112 -> 1:42 */
+              minutesHoursDisplayString={ secondsToMinutesAndHours(this.props.eachTime) }
+
               />
               <TimerBoxCountDownBtnIncrementDecrement
                 onTimerBoxCountDownBtnIncrementClick={ () => this.props.actions.increment(this.props.eachKey) }
@@ -61,12 +65,12 @@ const TimerBoxCountDown = React.createClass({
             </div>
         </div>
       );
-    }
+    },
   });
   // grabs state property from the state object...
   const mapStateToProps = (state) => ({ state });
 
   const mapDispatchToProps = (dispatch) => {
-    return { actions: bindActionCreators(actionCreators, dispatch)}
+    return { actions: bindActionCreators(actionCreators, dispatch)};
   };
   export default connect(mapStateToProps, mapDispatchToProps)(TimerBoxCountDown);

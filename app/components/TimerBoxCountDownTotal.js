@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
-const TimerBoxCountDownTotal = ({ eachTime }) => {
+const TimerBoxCountDownTotal = ({ minutesHoursDisplayString }) => {
   return (
-      <div className="TimerBoxCountDownTotal_text">{ eachTime } </div>
-  );
-};
+    <div className="TimerBoxCountDownTotal_text">{ minutesHoursDisplayString }</div>
+      );
+   };
 
-export default TimerBoxCountDownTotal;
+    export default TimerBoxCountDownTotal;
