@@ -6,20 +6,14 @@ import reducer from './reducers/_Reducer';
 // applyMiddleware - the function that helps you make your replacement for createStore;
 // thunk function -  a function that wraps some behavior for execution (e.g. logger)... it's
 // let store = applyMiddleware(thunk)(createStore)(reducer);
-let store = createStore(reducer, applyMiddleware(thunk));
-
-
-
-// I want to be able to populate the state a la
-store.subscribe(() => storeStateInLS(store.getState()));
-// without anon function, I get error 'expected listener to be a function'
-store.subscribe(()=> console.log(getStateFromLS())); // add to initialState
-
-
 /*  e.g. let createStoreMW = applyMiddleware(logger, crashReporter)(createStore);
 *   todoApp = combineReducers(reducers)
 *   let store= createStoreMW(todoApp)
 */
-// if dispatch recieves an action object, redux thunk will do nothing,
+
+let store = createStore(reducer, applyMiddleware(thunk));
+
+// without anon function, I get error 'expected listener to be a function'
+store.subscribe(() => storeStateInLS(store.getState()));
 
 export default store;

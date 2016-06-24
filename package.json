@@ -4,9 +4,9 @@
   "description": "trello-style timer chaining",
   "main": "app.js",
   "scripts": {
-    "test": "webpack && mocha --require ./test/setupJsdom.js --recursive ./app/dist/test.js",
+    "test": "webpack && mocha --require mock-local-storage --require ./test/setupJsdom.js --recursive ./app/dist/test.js",
     "test:watch": "npm run test -- -w",
-    "devpack": "webpack --progress --colors --watch --devtool source-map & live-server ."
+    "devpack": "webpack --progress --colors --watch --devtool source-map &"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,9 @@
     "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
     "enzyme": "^2.3.0",
+    "eslint": "~2.13.0",
     "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-babel": "~3.2.0",
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.3",
     "eslint-plugin-mocha": "^2.2.0",
@@ -42,11 +44,9 @@
     "jsdom-global": "^2.0.0",
     "mocha": "^2.4.5",
     "mocha-loader": "^0.7.1",
+    "mock-local-storage": "^1.0.2",
     "react-addons-test-utils": "^0.14.8",
-    "redux-thunk": "^2.1.0",
-    "webpack": "^1.12.13",
-    "eslint": "~2.13.0",
-    "eslint-plugin-babel": "~3.2.0"
+    "webpack": "^1.12.13"
   },
   "directories": {
     "test": "test"
