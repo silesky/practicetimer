@@ -26,25 +26,35 @@ const TimerBoxCountDown = React.createClass({
             <div className="TimerBoxCountDownSet-container">
               <div className="hours">
                 <input type="number" placeholder="0" min="0" max="24" 
+                ref={ node => {this.inputHours = node; }}
                 />
                 h
               </div>
               <div className="minutes"> 
                 <input type="number" placeholder="0" min="0" max="59" 
+                ref={ node => {this.inputMinutes = node; }}
                  />
                  m
               </div>
               <div className="seconds">
                 <input type="number" placeholder="0" min="0" max="59"
-                ref={ node => {this.timeSetInput = node; }}
+                ref={ node => {this.inputSeconds = node; }}
                 />
                 s
               </div>
               <button className="button-ok" label="stuff"
-                onClick={ () => {
+                onClick={ () => {  
+                /* Math.round also casts the input to an integer */ 
+                 let hours = Math.round(this.inputHours.value);
+                 let mins = Math.round(this.inputMinutes.value);
+                 let secs = Math.round(this.inputSeconds.value);
+                 let secsFromHours = (hours ? hours : 0) * 3600;
+                 let secsFromMins = (mins ? mins : 0) * 60;
+                 let secsFromSecs = secs ? secs : 0;
+                 let totalTimeInSeconds = secsFromHours + secsFromMins + secsFromSecs; 
                   store.dispatch({
                     type: 'SET_TIME',
-                    time: this.timeSetInput.value,
+                    time: totalTimeInSeconds,
                     id: this.props.eachKey,
                   });
                 } }>OK</button>
