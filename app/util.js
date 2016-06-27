@@ -28,29 +28,23 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   totalSeconds = Math.round(totalSeconds);
   let totalHours = Math.floor(totalSeconds / 3600);
   let totalMinutes = Math.floor(totalSeconds / 60);
-    // hours view: if time is over an hour
+        // ...with remaning minutes (e.g 1:05:00...)
+  let remainingMins = totalMinutes - ((totalHours * 3600) / 60);
+  let remainingSecs = totalSeconds - totalMinutes * 60;
+   // if remaining mins/seconds is under 10, add a 0
+  let minsWithLeadingZeros = (remainingMins < 10) ? ('0' + remainingMins) : remainingMins;
+  let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
+    // 1hr+ 
     if (totalSeconds >= 3600) {
-      // ...with remaning minutes (e.g 1:05:00...)
-      let remainingMins = totalMinutes - ((totalHours * 3600) / 60);
-      let remainingSecs = totalSeconds - totalMinutes * 60;
-      // if remaining mins/seconds is under 10, add a 0
-      let minsWithLeadingZeros = (remainingMins < 10) ? ('0' + remainingMins) : remainingMins;
-      let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
       displayString = totalHours + ':' + minsWithLeadingZeros + ':' + secsWithLeadingZeros;
       } 
-    // minutes view: if time is within an hour
+    // from 0-60min
     else if (totalSeconds < 3600 && totalSeconds > 0) {
-     let minutes = Math.floor(totalSeconds / 60);
-     let remainingSecs = totalSeconds - minutes * 60;
-     let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
-     displayString = minutes + ':' + secsWithLeadingZeros;
+     displayString = remainingMins + ':' + secsWithLeadingZeros;
    } 
   // if timer is done
     else if(totalSeconds <= 0) {
       displayString = 'end';
     } 
-    else { 
-      displayString = totalSeconds;
-    }    
   return displayString;
 };   
