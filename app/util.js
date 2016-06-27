@@ -21,46 +21,36 @@ export const getStateFromLS = () => {
   return stateObj;
 };
 
-//
-export const secondsToMinutesAndHours = (seconds) => {
+// used in TimerBoxCountDown
+export const secondsToMinutesAndHours = (totalSeconds) => {
   let displayString;
-  let secondsAsInt = Math.round(seconds);
-  if (secondsAsInt > 0) {
-      // converts to minutes...
-      let minutes = Math.floor(secondsAsInt / 60);
-    // ...with remaning seconds (e.g 1:05)
-    let remainingSecs = secondsAsInt - minutes * 60;
-    // if remaining seconds is under 10, add a 0
-    let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
-    displayString = minutes + ':' + secsWithLeadingZeros;
-  } 
-  else if(secondsAsInt <= 0) {
-    displayString = 'end';
-  } 
-  else { 
-    displayString = secondsAsInt;
-  }    
+  // Math.round also casts the argument to an integer.
+  totalSeconds = Math.round(totalSeconds);
+  let totalHours = Math.floor(totalSeconds / 3600);
+  let totalMinutes = Math.floor(totalSeconds / 60);
+    // hours view: if time is over an hour
+    if (totalSeconds >= 3600) {
+      // ...with remaning minutes (e.g 1:05:00...)
+      let remainingMins = totalMinutes - ((totalHours * 3600) / 60);
+      let remainingSecs = totalSeconds - totalMinutes * 60;
+      // if remaining mins/seconds is under 10, add a 0
+      let minsWithLeadingZeros = (remainingMins < 10) ? ('0' + remainingMins) : remainingMins;
+      let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
+      displayString = totalHours + ':' + minsWithLeadingZeros + ':' + secsWithLeadingZeros;
+      } 
+    // minutes view: if time is within an hour
+    else if (totalSeconds < 3600 && totalSeconds > 0) {
+     let minutes = Math.floor(totalSeconds / 60);
+     let remainingSecs = totalSeconds - minutes * 60;
+     let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
+     displayString = minutes + ':' + secsWithLeadingZeros;
+   } 
+  // if timer is done
+    else if(totalSeconds <= 0) {
+      displayString = 'end';
+    } 
+    else { 
+      displayString = totalSeconds;
+    }    
   return displayString;
 };   
-
-/*
-export const getNextId = (stateArr = this.props.state.getState(), currentId = this.props.eachKey) => {
-  const _getCurrentValueFromStateArr = () => {
-    return stateArr.find((el) => el.id === currentId);
-  };
-  const _getNextIdFromCurrentValue = (currentValue) => {
-    let index = stateArr.indexOf(currentValue);
-    if (index >= 0 && index < stateArr.length - 1) {
-      const nextItem = stateArr[index + 1];
-      return nextItem.id;
-    } else {
-      return 0;
-    }
-  }
-  return _getNextIdFromCurrentValue(_getCurrentValueFromStateArr());
-};
-
-- set ticking false
--  clear interval
-- get nextID
-*/
