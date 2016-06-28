@@ -24,6 +24,7 @@ export const startTicking = (id) => {
           dispatch(decrement(id));
         } else {
           clearInterval(window.myInt);
+          dispatch(_setTickingFalse(id));
           dispatch(startTicking(nextInLine(getState(), id)));
         }
       }, 1000);

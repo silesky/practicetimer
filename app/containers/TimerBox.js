@@ -16,7 +16,7 @@ export const TimerBox = React.createClass({
   },
   render() {
     return (
-      <div ref="timerBox" className="timerBox">
+      <div ref="timerBox" className={ (this.props.eachTicking) ? 'timerBox ticking' : 'timerBox'} >
             <TimerBoxBtnClose
               onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
               />
