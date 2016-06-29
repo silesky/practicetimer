@@ -75,7 +75,7 @@ const reducer = function(state = initialState, action) {
       case 'INCREMENT':
       _index = util.getCurrentIndex();
       _objEl = util.getCurrentObjEl();
-      _objEl.time = _objEl.time + 1;
+      _objEl.time = _objEl.time + 60;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
 
 
