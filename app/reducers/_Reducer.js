@@ -4,13 +4,13 @@ import { getStateFromLS } from '../util';
 let stateFromLS = getStateFromLS();
 /*  if there's nothing in localStorage, be sure to
     set a default initialState or we'll get a state.map is undefined error. */
-let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 10, title: '', ticking: false }];
+let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 5, title: '', ticking: false, startTime: 5 }];
 
 const reducer = function(state = initialState, action) {
     let _index;
     let _objEl;
     let _individualTimerObjEl;
-
+    console.log(state);
     const util = {
 
     getState_replaceElByIndex: (index, el) => {
@@ -41,9 +41,25 @@ const reducer = function(state = initialState, action) {
     };
     switch (action.type) {
 
+      // save the start time of all of the timers...(except for the one )
+      case 'SAVE_START_TIMES':
+      let stateWithSavedStartTimes = state.map((el) => { 
+      // if the timer is paused, don't overwrite the start time
+          el.startTime = !el.ticking ? el.time : el.startTime; 
+          return el; 
+        });
+   
+      return stateWithSavedStartTimes;
       case 'RESET':
-      console.log('reducer: reset called');
-      return state;
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.time = _individualTimerObjEl.startTime;
+       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+      case 'RESET_ALL':
+       let stateWithAllTimesReset = state.map((el) => { 
+          el.time = el.startTime; 
+          return el; 
+        });
+      return stateWithAllTimesReset;
 
       case 'SET_TIME':
       _individualTimerObjEl = util.getCurrentObjEl();
@@ -70,7 +86,7 @@ const reducer = function(state = initialState, action) {
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       // at the moment that add_timer is instantiated, the state only has two timers
       case 'ADD_TIMER':
-      return [...state, { id: util.getNextId(), ticking: false, time: 1, title: '' }];
+      return [...state, { id: util.getNextId(), ticking: false, time: 5, title: '', startTime: 5 }];
 
       case 'INCREMENT':
       _index = util.getCurrentIndex();
