@@ -74,24 +74,27 @@ module.exports = function() {
         // max time is 20 seconds. without this line, error.
         this.timeout(20000);
         before(function() {
+          store.dispatch(actionCreators.addTimer()); 
+          store.dispatch(actionCreators.addTimer()); 
+          store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
+          store.dispatch({ type: 'SET_TIME', time: 2, id: 3});
           let firstStartTime = store.getState()[0].startTime;
           let secondStartTime = store.getState()[1].startTime;
+          store.dispatch(actionCreators.startTicking(1));
         });
 
 
         it('after the first timer is done ticking, the second timer should start', function(done) {
           // create new timer (tid-2) and set it
-          store.dispatch(actionCreators.addTimer()); 
-          store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
+        
 
           // first domino start
-          store.dispatch(actionCreators.startTicking(1));
+        
 
           //  after 6000ms from starting the first timer, check if second has started.
           let _checkIfTimeIsBelow2 = () => {
              let secondTimer = store.getState()[1].time;
              expect(secondTimer).to.be.below(2);
-
              done();
            };
 
@@ -100,7 +103,7 @@ module.exports = function() {
         });
         it('after the second timer is done ticking, the third timer should start', function(done) {
           store.dispatch(actionCreators.addTimer());
-          store.dispatch({ type: 'SET_TIME', time: 2, id: 3});
+   
           let _checkIfTimeIsBelow2 = () => {
              let thirdTimer = store.getState()[2].time;
              expect(thirdTimer).to.be.below(2);
