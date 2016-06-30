@@ -11,7 +11,17 @@ import reducer from './reducers/_Reducer';
 *   let store= createStoreMW(todoApp)
 */
 
-let store = createStore(reducer, applyMiddleware(thunk));
+const compose = ((a, b) => (c) => a(b(c)));
+
+const configureStore = () => {
+    const store = createStore(reducer, compose(
+      applyMiddleware(thunk),
+      window.devToolsExtension ? window.devToolsExtension() : f => f
+    ));
+    return store;
+  };
+
+const store = configureStore();
 
 // without anon function, I get error 'expected listener to be a function'
 store.subscribe(() => storeStateInLS(store.getState()));
