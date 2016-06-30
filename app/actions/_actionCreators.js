@@ -6,6 +6,7 @@ export const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
 export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
 export const addTimer = () =>  ({ type: 'ADD_TIMER' });
 export const reset = (id) => ({ type: 'RESET', id });
+export const resetAll = () => ({ type: 'RESET'});
 export const increment = (id) => ({ type: 'INCREMENT', id });
 export const decrement = (id) => ({ type: 'DECREMENT', id });
 export const setTitle = (text, id) => ({ type: 'SET_TITLE', text, id });
@@ -30,7 +31,7 @@ export const startTicking = (id) => {
           dispatch(_setTickingFalse(id));
           dispatch(startTicking(nextInLine(getState(), id)));
         }
-      }, 1000);
+      }, 300);
     }
     // ^ called every 1 second
   };

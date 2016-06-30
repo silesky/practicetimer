@@ -10,7 +10,6 @@ const reducer = function(state = initialState, action) {
     let _index;
     let _objEl;
     let _individualTimerObjEl;
-    console.log(state);
     const util = {
 
     getState_replaceElByIndex: (index, el) => {

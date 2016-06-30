@@ -27,7 +27,7 @@ module.exports = function() {
         store.dispatch(actionCreators._setTickingTrue(1));
         store.dispatch(actionCreators._setTickingFalse(1));
         expect(store.getState()[0].ticking).to.be.false;
-      })
+      });
     });
     describe('setTime()...', function() {
       it('should set current timer object\'s *time* property to 666...', function() {
@@ -51,7 +51,7 @@ module.exports = function() {
       beforeEach(function() {
         store.dispatch({ type: 'SET_TIME', time: 2, id: 1 });
         store.dispatch(actionCreators.startTicking(1));
-      })
+      });
       afterEach(function() {
         // if clearInterval goes inside the it block, it will clear prematurly
         clearInterval(window.myInt);
@@ -66,18 +66,23 @@ module.exports = function() {
           expect(firstAndonlyTimer).to.be.below(2);
 
           done();
-        }
+        };
         setTimeout(_checkIfTimeIsBelow3, 2000);
       });
     });
       describe('startTicking(): domino behavior', function() {
         // max time is 20 seconds. without this line, error.
         this.timeout(20000);
+        before(function() {
+          let firstStartTime = store.getState()[0].startTime;
+          let secondStartTime = store.getState()[1].startTime;
+        });
 
 
         it('after the first timer is done ticking, the second timer should start', function(done) {
           // create new timer (tid-2) and set it
-          store.dispatch(actionCreators.addTimer()); store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
+          store.dispatch(actionCreators.addTimer()); 
+          store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
 
           // first domino start
           store.dispatch(actionCreators.startTicking(1));
@@ -88,11 +93,11 @@ module.exports = function() {
              expect(secondTimer).to.be.below(2);
 
              done();
-           }
+           };
 
            // total time should be 2 + 2 = 4. 6 seconds is plenty.
-          setTimeout(_checkIfTimeIsBelow2, 6000);
-        })
+          setTimeout(_checkIfTimeIsBelow2, 3000);
+        });
         it('after the second timer is done ticking, the third timer should start', function(done) {
           store.dispatch(actionCreators.addTimer());
           store.dispatch({ type: 'SET_TIME', time: 2, id: 3});
@@ -101,10 +106,14 @@ module.exports = function() {
              expect(thirdTimer).to.be.below(2);
 
              done();
-           }
-          setTimeout(_checkIfTimeIsBelow2, 6000);
+           };
+          setTimeout(_checkIfTimeIsBelow2, 3000);
 
-        })
+        });
+          it('reset should work', function() {
+
+            expect(1).to.equal(1);
+        });
       });
   });
 };

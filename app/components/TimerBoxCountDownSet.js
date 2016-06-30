@@ -2,7 +2,6 @@
 import React, { PropTypes } from 'react'
 
 const TimerBoxCountDownSet = ({state, onTimerBoxCountDownSet}) => {
-  console.log(state);
   return (
     <div>
     <input type="number" min="0" placeholder="secs"
@@ -12,7 +11,6 @@ const TimerBoxCountDownSet = ({state, onTimerBoxCountDownSet}) => {
               />
             <button label="stuff" onClick={ () => {
               onTimerBoxCountDownSet();
-                console.log('sup');
               } }>OK</button>
               </div>
   )
