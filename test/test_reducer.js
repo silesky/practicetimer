@@ -73,13 +73,16 @@ module.exports = function() {
       describe('startTicking(): domino behavior', function() {
         // max time is 20 seconds. without this line, error.
         this.timeout(20000);
+        // this stuff happens 1st
+        store.dispatch(actionCreators.addTimer()); 
+        store.dispatch(actionCreators.addTimer()); 
+        store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
+        store.dispatch({ type: 'SET_TIME', time: 2, id: 3});
+        let firstStartTime = store.getState()[0].startTime;
+        let secondStartTime = store.getState()[1].startTime;
+        // this happens next
         before(function() {
-          store.dispatch(actionCreators.addTimer()); 
-          store.dispatch(actionCreators.addTimer()); 
-          store.dispatch({ type: 'SET_TIME', time: 2, id: 2});
-          store.dispatch({ type: 'SET_TIME', time: 2, id: 3});
-          let firstStartTime = store.getState()[0].startTime;
-          let secondStartTime = store.getState()[1].startTime;
+      
           store.dispatch(actionCreators.startTicking(1));
         });
 
@@ -115,7 +118,7 @@ module.exports = function() {
         });
           it('reset should work', function() {
 
-            expect(1).to.equal(1);
+            expect(store.getState()[0].time).to.equal(firstStartTime);
         });
       });
   });

@@ -47,4 +47,6 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
       displayString = 'end';
     } 
   return displayString;
-};   
+}; 
+
+export const isEmpty = (array) => (array === undefined || array.length == 0);

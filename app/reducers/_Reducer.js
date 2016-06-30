@@ -1,6 +1,6 @@
 /*  grab the stored state object from LocalStorage, use it to hydrate the state (so timer
     timer settings will persist on page load). */
-import { getStateFromLS } from '../util';
+import { getStateFromLS, isEmpty } from '../util';
 let stateFromLS = getStateFromLS();
 /*  if there's nothing in localStorage, be sure to
     set a default initialState or we'll get a state.map is undefined error. */
@@ -32,14 +32,26 @@ const reducer = function(state = initialState, action) {
         return foundIndex;
       },
       getCurrentObjEl: () => {
-         return state.find((el) => el.id == action.id);
+         return state.find((el) => el.id === action.id);
        },
       getNextId: () => {
-        return Math.max(...state.map(el => el['id'])) + 1;
+        let nextId;
+        let idArr = state.map(el => el.id);
+        if (isEmpty(idArr)) {
+          nextId = 1;
+        } 
+        else {
+          /* TIL Math.max of an empty array returns negative infinity, which is passes the null check */
+          nextId = Math.max(...idArr) + 1;
+        }
+        return nextId;
       },
     };
     switch (action.type) {
-
+      case 'CLEAR':
+      return [{ id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
+      case 'ADD_TIMER':
+      return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
       // save the start time of all of the timers...(except for the one )
       case 'SAVE_START_TIMES':
       let stateWithSavedStartTimes = state.map((el) => { 
@@ -84,8 +96,7 @@ const reducer = function(state = initialState, action) {
       _individualTimerObjEl.title = action.text;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       // at the moment that add_timer is instantiated, the state only has two timers
-      case 'ADD_TIMER':
-      return [...state, { id: util.getNextId(), ticking: false, time: 5, title: '', startTime: 5 }];
+
 
       case 'INCREMENT':
       _index = util.getCurrentIndex();
@@ -102,7 +113,6 @@ const reducer = function(state = initialState, action) {
 
       case 'REMOVE_TIMER':
       return util.getState_removeElByIndex(util.getCurrentIndex());
-
 
       default:
       return state;
