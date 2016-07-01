@@ -43,15 +43,12 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   return displayString;
 };
 
-export const isEmpty = (array) => (array === undefined || array.length == 0);
+export const isEmpty = (thing) => (!thing || !thing.length);
 
 
 export const getTickingId = (state) => {
-  const tickingObj = state.find((el) => el.ticking);
-  let id = tickingObj.id;
-  if (!isEmpty(id)) {
-    id = tickingObj['id'];
-  }
+  let item = state.find((el) => el.ticking).id;
+  let id = !isEmpty(item) ? item : false;
   return id;
 }; // grab the nextId given the current state. current
 export const nextInLine = (state, currentId) => {
