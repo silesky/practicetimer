@@ -15,10 +15,16 @@ import { nextInLine, getTickingId } from '../util';
 
 /* all this board does is increment the timer */
 const Board = React.createClass({
+  getTotal: function() {
+    let times = this.props.state.map(el => el.time);
+    let totalSecs = times.reduce((p, n) => p + n);
+    let mins = Math.round(totalSecs / 60);
+    return mins;
+  },
   render() {
     return(
       <div className="board">
-        <BoardCountDownTotal />
+        <BoardCountDownTotal total={this.getTotal()}/>
         <BoardBtnControls
           onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
           onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }

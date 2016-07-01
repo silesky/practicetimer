@@ -1,17 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-var BoardCountDownTotal = React.createClass({
-  render: function() {
+const BoardCountDownTotal = ({total}) => {
     return (
       <div className="BoardCountDownTotalContainer">
         <div className="BoardCountDownTotalNum">
-          10 seconds left...
+         {total} minutes remaining...
         </div>
       </div>
     );
-  }
+};
 
-});
-
-module.exports = BoardCountDownTotal;
+export default BoardCountDownTotal;
