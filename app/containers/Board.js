@@ -22,6 +22,7 @@ const Board = React.createClass({
         <BoardBtnControls
           onBoardBtnPlayClick={ () => { this.props.actions.startTicking(1); } }
           onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(1); } }
+          onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
         />
       {
         this.props.state.map((el) => {
@@ -50,7 +51,7 @@ const Board = React.createClass({
 
   const mapStateToProps = (state) => ({ state });
   const mapDispatchToProps = (dispatch) => {
-    return { actions: bindActionCreators(actionCreators, dispatch) }
+    return { actions: bindActionCreators(actionCreators, dispatch) };
   };
  export default connect(mapStateToProps, mapDispatchToProps)(Board);
   /* drum roll */

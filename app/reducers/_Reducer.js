@@ -1,16 +1,15 @@
 /*  grab the stored state object from LocalStorage, use it to hydrate the state (so timer
     timer settings will persist on page load). */
-import { getStateFromLS } from '../util';
+import { getStateFromLS, isEmpty } from '../util';
 let stateFromLS = getStateFromLS();
 /*  if there's nothing in localStorage, be sure to
     set a default initialState or we'll get a state.map is undefined error. */
-let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 10, title: '', ticking: false }];
+let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 5, title: '', ticking: false, startTime: 5 }];
 
 const reducer = function(state = initialState, action) {
     let _index;
     let _objEl;
     let _individualTimerObjEl;
-
     const util = {
 
     getState_replaceElByIndex: (index, el) => {
@@ -33,17 +32,45 @@ const reducer = function(state = initialState, action) {
         return foundIndex;
       },
       getCurrentObjEl: () => {
-         return state.find((el) => el.id == action.id);
+         return state.find((el) => el.id === action.id);
        },
       getNextId: () => {
-        return Math.max(...state.map(el => el['id'])) + 1;
+        let nextId;
+        let idArr = state.map(el => el.id);
+        if (isEmpty(idArr)) {
+          nextId = 1;
+        } 
+        else {
+          /* TIL Math.max of an empty array returns negative infinity, which is passes the null check */
+          nextId = Math.max(...idArr) + 1;
+        }
+        return nextId;
       },
     };
     switch (action.type) {
-
+      case 'CLEAR':
+      return [{ id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
+      case 'ADD_TIMER':
+      return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
+      // save the start time of all of the timers...(except for the one )
+      case 'SAVE_START_TIMES':
+      let stateWithSavedStartTimes = state.map((el) => { 
+      // if the timer is paused, don't overwrite the start time
+          el.startTime = !el.ticking ? el.time : el.startTime; 
+          return el; 
+        });
+   
+      return stateWithSavedStartTimes;
       case 'RESET':
-      console.log('reducer: reset called');
-      return state;
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.time = _individualTimerObjEl.startTime;
+       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+      case 'RESET_ALL':
+       let stateWithAllTimesReset = state.map((el) => { 
+          el.time = el.startTime; 
+          return el; 
+        });
+      return stateWithAllTimesReset;
 
       case 'SET_TIME':
       _individualTimerObjEl = util.getCurrentObjEl();
@@ -69,13 +96,12 @@ const reducer = function(state = initialState, action) {
       _individualTimerObjEl.title = action.text;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       // at the moment that add_timer is instantiated, the state only has two timers
-      case 'ADD_TIMER':
-      return [...state, { id: util.getNextId(), ticking: false, time: 1, title: '' }];
+
 
       case 'INCREMENT':
       _index = util.getCurrentIndex();
       _objEl = util.getCurrentObjEl();
-      _objEl.time = _objEl.time + 1;
+      _objEl.time = _objEl.time + 60;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _objEl);
 
 
@@ -87,7 +113,6 @@ const reducer = function(state = initialState, action) {
 
       case 'REMOVE_TIMER':
       return util.getState_removeElByIndex(util.getCurrentIndex());
-
 
       default:
       return state;

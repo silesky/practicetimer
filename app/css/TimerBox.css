@@ -1,9 +1,15 @@
 .timerBox {
-  background-color: green;
+  background-color: darkgreen;
   height: 250px;
   position: relative;
   width: 250px;
   border-radius: 20px;
   border: 3px solid;
   margin: 1% 0 0 1%;
+}
+
+.ticking {
+  transition: background-color 0.3s ease;
+  background-color: green; 
+  border: 3px solid yellow;
 }

@@ -36,15 +36,17 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
     // 1hr+ 
     if (totalSeconds >= 3600) {
-      displayString = totalHours + ':' + minsWithLeadingZeros + ':' + secsWithLeadingZeros;
+      displayString = `${totalHours}:${minsWithLeadingZeros}:${secsWithLeadingZeros}`;
       } 
     // from 0-60min
     else if (totalSeconds < 3600 && totalSeconds > 0) {
-     displayString = remainingMins + ':' + secsWithLeadingZeros;
+     displayString = `${remainingMins}:${secsWithLeadingZeros}`;
    } 
   // if timer is done
     else if(totalSeconds <= 0) {
       displayString = 'end';
     } 
   return displayString;
-};   
+}; 
+
+export const isEmpty = (array) => (array === undefined || array.length == 0);
