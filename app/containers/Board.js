@@ -28,7 +28,7 @@ const Board = React.createClass({
         this.props.state.map((el) => {
           return (
             <TimerBox
-            /* added redundant/unused key prop so react devtools would stop complaining about a missing key */
+            /* added redundant key prop so react devtools would stop complaining */
               key={ el.id }
               eachKey={ el.id }
               eachTime={ el.time }

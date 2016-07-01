@@ -17,13 +17,13 @@ import store from './_Store';
 import { Provider } from 'react-redux';
 // get stuff from local storage
 console.log('app loaded.');
-  const renderRoot = () => {
-    ReactDOM.render(
-      <Provider store={store}>
+const renderRoot = () => {
+  ReactDOM.render(
+    <Provider store={store}>
         <Board />
       </Provider>,
-      document.getElementById('timer')
-        );
+    document.getElementById('timer')
+  );
 };
 store.subscribe(renderRoot);
 renderRoot(); // initial render method (chapter 19)

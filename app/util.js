@@ -22,26 +22,26 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   totalSeconds = Math.round(totalSeconds);
   let totalHours = Math.floor(totalSeconds / 3600);
   let totalMinutes = Math.floor(totalSeconds / 60);
-        // ...with remaning minutes (e.g 1:05:00...)
+  // ...with remaning minutes (e.g 1:05:00...)
   let remainingMins = totalMinutes - ((totalHours * 3600) / 60);
   let remainingSecs = totalSeconds - totalMinutes * 60;
-   // if remaining mins/seconds is under 10, add a 0
+  // if remaining mins/seconds is under 10, add a 0
   let minsWithLeadingZeros = (remainingMins < 10) ? ('0' + remainingMins) : remainingMins;
   let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
-    // 1hr+ 
-    if (totalSeconds >= 3600) {
-      displayString = `${totalHours}:${minsWithLeadingZeros}:${secsWithLeadingZeros}`;
-      } 
-    // from 0-60min
-    else if (totalSeconds < 3600 && totalSeconds > 0) {
-     displayString = `${remainingMins}:${secsWithLeadingZeros}`;
-   } 
+  // 1hr+ 
+  if (totalSeconds >= 3600) {
+    displayString = `${totalHours}:${minsWithLeadingZeros}:${secsWithLeadingZeros}`;
+  }
+  // from 0-60min
+  else if (totalSeconds < 3600 && totalSeconds > 0) {
+    displayString = `${remainingMins}:${secsWithLeadingZeros}`;
+  }
   // if timer is done
-    else if(totalSeconds <= 0) {
-      displayString = 'end';
-    } 
+  else if (totalSeconds <= 0) {
+    displayString = 'end';
+  }
   return displayString;
-}; 
+};
 
 export const isEmpty = (array) => (array === undefined || array.length == 0);
 
@@ -49,20 +49,19 @@ export const isEmpty = (array) => (array === undefined || array.length == 0);
 export const getTickingId = (state) => {
   const tickingObj = state.find((el) => el.ticking);
   let id = tickingObj.id;
-  if (!isEmpty(id))  {
-     id = tickingObj['id'];
- }
- return id;
+  if (!isEmpty(id)) {
+    id = tickingObj['id'];
+  }
+  return id;
 }; // grab the nextId given the current state. current
 export const nextInLine = (state, currentId) => {
   let nextId;
   const idArr = state.map((el) => el.id); // [1, 4, 6]
   if (isEmpty(idArr)) {
     nextId = 1;
-  } 
-  else {
-      const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
-      nextId = idArr[currentIndex + 1];
+  } else {
+    const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
+    nextId = idArr[currentIndex + 1];
   }
   return nextId;
 };
