@@ -8,7 +8,7 @@ import BoardCountDownTotal from '../components/BoardCountDownTotal';
 import BoardBtnAdd from '../components/BoardBtnAdd';
 import BoardBtnControls from '../components/BoardBtnControls';
 import * as actionCreators from '../actions/_actionCreators';
-
+import { nextInLine, getTickingId } from '../util';
 
 
 // remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
@@ -20,14 +20,16 @@ const Board = React.createClass({
       <div className="board">
         <BoardCountDownTotal />
         <BoardBtnControls
-          onBoardBtnPlayClick={ () => { this.props.actions.startTicking(1); } }
-          onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(1); } }
+          onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
+          onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }
           onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
         />
       {
         this.props.state.map((el) => {
           return (
             <TimerBox
+            /* added redundant/unused key prop so react devtools would stop complaining about a missing key */
+              key={ el.id }
               eachKey={ el.id }
               eachTime={ el.time }
               eachTitle={ el.title }

@@ -1,11 +1,5 @@
 
 // given the state and the current id, grab the next id;
-export const nextInLine = (state, currentId) => {
-  const idArr = state.map((el) => el.id); // [1, 4, 6]
-  const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
-  const nextId = idArr[currentIndex + 1];
-  return nextId;
-};
 
 export const storeStateInLS = (obj) => {
   if (typeof obj === 'object' || 'array') {
@@ -50,3 +44,25 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
 }; 
 
 export const isEmpty = (array) => (array === undefined || array.length == 0);
+
+
+export const getTickingId = (state) => {
+  const tickingObj = state.find((el) => el.ticking);
+  let id = tickingObj.id;
+  if (!isEmpty(id))  {
+     id = tickingObj['id'];
+ }
+ return id;
+}; // grab the nextId given the current state. current
+export const nextInLine = (state, currentId) => {
+  let nextId;
+  const idArr = state.map((el) => el.id); // [1, 4, 6]
+  if (isEmpty(idArr)) {
+    nextId = 1;
+  } 
+  else {
+      const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
+      nextId = idArr[currentIndex + 1];
+  }
+  return nextId;
+};
