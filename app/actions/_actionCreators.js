@@ -6,11 +6,18 @@ export const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
 export const removeTimer = (id) => ({ type: 'REMOVE_TIMER', id });
 export const addTimer = () =>  ({ type: 'ADD_TIMER' });
 export const reset = (id) => ({ type: 'RESET', id });
-export const resetAll = () => ({ type: 'RESET_ALL'});
+
 export const increment = (id) => ({ type: 'INCREMENT', id });
 export const decrement = (id) => ({ type: 'DECREMENT', id });
 export const setTitle = (text, id) => ({ type: 'SET_TITLE', text, id });
 export const pauseTimer = () => clearInterval(window.myInt);
+// pause and reset all
+export const resetAll = () =>  {
+  return (dispatch) => {
+    clearInterval(window.myInt);
+    dispatch({ type: 'RESET_ALL'});
+  };
+};
 export const startTicking = (id) => {
   return (dispatch, getState) => {
     const objectWithMatchingId = () => getState().find((el) => el.id === id);

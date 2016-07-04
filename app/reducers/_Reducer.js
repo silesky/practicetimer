@@ -54,12 +54,15 @@ const reducer = function(state = initialState, action) {
       return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
       // save the start time of all of the timers...(except for the one )
       case 'SAVE_START_TIMES':
-      let stateWithSavedStartTimes = state.map((el) => { 
+      let stateWithSavedStartTimes = state.map((el) => {
       // if the timer is paused, don't overwrite the start time
-          el.startTime = !el.ticking ? el.time : el.startTime; 
-          return el; 
-        });
-   
+      // if timer has finished, don't overwrite the start time   
+      // not using ternary bc it's hard to debug in devtools.
+      if (!el.ticking && el.time !== 0) {
+        el.startTime = el.time;
+      }  
+      return el; 
+      });
       return stateWithSavedStartTimes;
       case 'RESET':
       _individualTimerObjEl = util.getCurrentObjEl();
