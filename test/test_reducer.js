@@ -116,8 +116,8 @@ module.exports = function() {
           setTimeout(_checkIfTimeIsBelow2, 3000);
 
         });
-          it('reset should work', function() {
-
+          it('reset_all should reset the times, even if the time is manually set', function() {
+            store.dispatch(actionCreators.resetAll());
             expect(store.getState()[0].time).to.equal(firstStartTime);
         });
       });
