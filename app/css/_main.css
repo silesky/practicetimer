@@ -1,3 +1,6 @@
+ html {
+  font-size: 66.7%;
+}
 body {
   background-color: #2c2c2c;
   color: white;
@@ -5,7 +8,7 @@ body {
 }
 
 .btnComp {
-  font-size: 2em;
+  font-size: 4rem;
   border: 3px solid white;
   border-radius: 5px;
 
@@ -16,15 +19,23 @@ body {
 }
 
 .setTimerUpDnContainer {
-  font-size: 0.5em;
+  font-size: 2.5rem;
 }
 
 .countDownBtnReset {
 }
 
-
 .board {
-  width: 100vw;
-  height: 100vh;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+.timerBox {
+  display: flex;
+  flex-direction: column;
+  height: 45rem;
+  width: 80%;
+  justify-content: space-around;
+}
+
+/* devices in portrait mode */

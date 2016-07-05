@@ -1,13 +1,9 @@
 .TimerBoxCountDownSet {
-	position: absolute;
-	top: 45%;
-	width: 100%
- 
+
 }
 .TimerBoxCountDownSet-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .TimerBoxCountDownSet-container div {
@@ -16,30 +12,36 @@
 	  flex-direction: column;
 	  text-align: center;
    	  margin: 0 1%;
+   	  font-size: 5rem;
+ 
 }
 
 
-.hours {
+.TimerBoxCountDownSet-container input {
+	height: 10rem;
+	font-size: 7rem;
 }
+ .TimerBoxCountDownSet-container button {
+ 	height: 7rem;
+ 	border: 1px solid white;
+ 	width: 20%;
+ }
 
 
-.hours > input[type="number"] {
-	width: 3em; /* 2 digits wide s*/
-}
 
-.minutes > input[type="number"] {
-	width: 3em; /* 2 digits wide */
-}
-.minutes {
 
-}
-.seconds {
+// .hours > input[type="number"] {
 
-}
+// }
 
-.seconds > input[type="number"] {
-	width: 3em; /* 2 digits wide */
-}
+// .minutes > input[type="number"] {
+
+// }
+
+// .seconds > input[type="number"] {
+
+// }
+
 .TimerBoxCountDownSet button {
 		margin-left: 2%;
 		
