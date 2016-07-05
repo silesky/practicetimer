@@ -1,7 +1,5 @@
 
 .TimerBoxCountDownTotal_container{
-  border: 3px solid white;
-  border-radius: 0.5em;
   padding: 1%;
   display: flex;
   justify-content: center;
@@ -10,5 +8,5 @@
   margin: 0 2%;
 }
 .TimerBoxCountDownTotal_text {
-  font-size: 10em;
+  font-size: 10rem;
 }
