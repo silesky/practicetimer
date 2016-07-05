@@ -4,7 +4,7 @@ const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
   return (
   <div className="topBarLeft">
     <div
-      className="TimerBoxBtnClose"
+      className="TimerBoxBtnClose btn"
       onClick={() => {
         console.log('close');
         onTimerBoxBtnCloseClick();
