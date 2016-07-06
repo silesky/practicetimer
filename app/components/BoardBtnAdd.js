@@ -7,13 +7,11 @@ const BoardBtnAdd = ({ onBoardBtnAddClick }) => {
       console.log('boardbtnadd');
       onBoardBtnAddClick(); } }
       className="" >
-      <a href="#!" className="waves-effect waves-circle waves-light btn-floating secondary-content">
+      <button className="mdl-button mdl-js-button  mdl-js-ripple-effect mdl-button--fab mdl-button--colored">
         <i className="material-icons">add</i>
-      </a>
-
-
-    </div>
-  );
+      </button>
+      </div>
+      );
 };
 
 export default BoardBtnAdd;
