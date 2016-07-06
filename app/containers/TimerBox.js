@@ -22,6 +22,7 @@ export const TimerBox = React.createClass({
               onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
               />
         </div>
+        <div className="appBody">
             <TimerBoxTitle
               onTimerBoxTitleSet={ (titleSetInput) => {
                 let text = titleSetInput.value;
@@ -37,7 +38,7 @@ export const TimerBox = React.createClass({
             eachTime={ this.props.eachTime }
             eachTicking = { this.props.eachTicking }
             />
-
+         </div> 
       </div>
 
 
