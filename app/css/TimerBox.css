@@ -23,3 +23,13 @@ https://codepen.io/sdthornton/pen/wBZdXq */
   transition: background-color 0.3s ease;
   border: 3px solid red;
 }
+
+.topBar {
+  /* should be blue, should be about 15% of the total height
+    
+  */
+  height: 15%;
+  background-color: blue;
+  display: flex;
+  justify-content: flex-end;
+}

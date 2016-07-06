@@ -17,9 +17,11 @@ export const TimerBox = React.createClass({
     return (
 
       <div ref="timerBox" className={ `shadow timerBox ${(this.props.eachTicking) ? 'ticking' : ''}` } >
+        <div className="topBar">
             <TimerBoxBtnClose
               onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
               />
+        </div>
             <TimerBoxTitle
               onTimerBoxTitleSet={ (titleSetInput) => {
                 let text = titleSetInput.value;
