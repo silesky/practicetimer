@@ -7,7 +7,10 @@ const BoardBtnAdd = ({ onBoardBtnAddClick }) => {
       console.log('boardbtnadd');
       onBoardBtnAddClick(); } }
       className="" >
-      <i className="fa fa-plus-square fa-5x" aria-hidden="true"></i>
+      <a href="#!" className="waves-effect waves-circle waves-light btn-floating secondary-content">
+        <i className="material-icons">add</i>
+      </a>
+
 
     </div>
   );
