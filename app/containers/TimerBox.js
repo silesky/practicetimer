@@ -31,7 +31,7 @@ export const TimerBox = React.createClass({
               eachKey={ this.props.eachKey }
               eachTitle={ this.props.eachTitle }
             />
-
+            
           <TimerBoxCountDown
             eachKey={ this.props.eachKey }
             eachTime={ this.props.eachTime }

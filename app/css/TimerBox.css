@@ -25,11 +25,13 @@ https://codepen.io/sdthornton/pen/wBZdXq */
 }
 
 .topBar {
+  color: #fff;
   /* should be blue, should be about 15% of the total height
     
   */
-  height: 15%;
+  height: 50px;
   background-color: blue;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }

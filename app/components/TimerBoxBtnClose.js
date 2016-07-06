@@ -2,15 +2,16 @@ import React, { PropTypes } from 'react';
 
 const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
   return (
-  <div className="">
+  <div className="close-btn">
     <div
       className=""
       onClick={() => {
         console.log('close');
         onTimerBoxBtnCloseClick();
       } }>
-      <i className="fa fa-minus-circle fa-2x"></i>
-
+      <button className="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+         <i className="fa fa-minus-circle fa-1x"></i>
+      </button>
     </div>
   </div>
 

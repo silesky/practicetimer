@@ -1,6 +1,8 @@
-.TimerBoxBtnClose {
-  cursor: pointer;
-  position: absolute;
-  left: 1%;
-  margin: 1%;
+.close-btn i {
+
+}
+
+.close-btn {
+	margin-right: 1%;
+	vertical-align: middle;
 }
