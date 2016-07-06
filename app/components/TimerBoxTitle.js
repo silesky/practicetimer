@@ -6,11 +6,11 @@ const TimerBoxTitle = ({onTimerBoxTitleSet, eachTitle }) => {
 	var titleSetInput;
 	return (
 
-		<div className="">
+		<div className="mdl-textfield mdl-js-textfield">
 			<div className="">
 				{eachTitle}
 			</div>
-			<input size='10' type="text" placeholder="Title"
+			<input className="mdl-textfield__input" size='10' type="text" placeholder="Title"
 				ref={
 					node => {titleSetInput = node;}
 				}
