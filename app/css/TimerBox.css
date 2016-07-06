@@ -1,12 +1,25 @@
-/* mdl-ified */
-.timerBox {
-  border-radius: 20px;
-  border: 3px solid;
-  margin: 1% 0 0 1%;
+/* mdl-ified 
+https://codepen.io/sdthornton/pen/wBZdXq */
+
+.shadow {
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
+
+.shadow:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.timerBox {
+  background: #fff;
+  border-radius: 2px;
+  height: 30rem;
+  margin: 1rem;
+  width: 50%;
+}
+
 
 .ticking {
   transition: background-color 0.3s ease;
-  background-color: green; 
-  border: 3px solid yellow;
+  border: 3px solid red;
 }
