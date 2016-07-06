@@ -16,9 +16,15 @@ import { nextInLine, getTickingId } from '../util';
 /* all this board does is increment the timer */
 const Board = React.createClass({
   getTotal: function() {
+    let mins;
     let times = this.props.state.map(el => el.time);
-    let totalSecs = times.reduce((p, n) => p + n);
-    let mins = Math.round(totalSecs / 60);
+    // w/o needs to check if array is empty reduce of empty array with no initial value
+     if (typeof times !== 'undefined' && times.length > 0) {
+      let totalSecs = times.reduce((p, n) => p + n);
+      mins = Math.round(totalSecs / 60); 
+    } else {
+      mins = 0;
+    } 
     return mins;
   },
   render() {
