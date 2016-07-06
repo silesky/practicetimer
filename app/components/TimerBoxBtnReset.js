@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const TimerBoxBtnReset = ({  onTimerBoxBtnResetClick }) => {
   return (
     <div
-      className="btn TimerBoxBtnReset"
+      className=""
       onClick={() => {
         console.log('onTimerBoxBtnResetClick');
         onTimerBoxBtnResetClick();

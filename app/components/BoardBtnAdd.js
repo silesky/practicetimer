@@ -6,7 +6,7 @@ const BoardBtnAdd = ({ onBoardBtnAddClick }) => {
     onClick={() => {
       console.log('boardbtnadd');
       onBoardBtnAddClick(); } }
-      className="BoardTimerBoxBtnAdd btn" >
+      className="" >
       <i className="fa fa-plus-square fa-5x" aria-hidden="true"></i>
 
     </div>

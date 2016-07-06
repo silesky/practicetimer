@@ -2,7 +2,7 @@ import React from 'react';
 
 const TimerBoxCountDownTotal = ({ minutesHoursDisplayString }) => {
   return (
-    <div className="TimerBoxCountDownTotal_text">{ minutesHoursDisplayString }</div>
+    <div className="">{ minutesHoursDisplayString }</div>
       );
    };
 

@@ -4,7 +4,7 @@ const TimerBoxCountDownBtnPausePlay = ({  onTimerBoxCountDownBtnPausePlayClick, 
 
   return (
     <div
-      className="btn"
+      className=""
       onClick={() => {
         onTimerBoxCountDownBtnPausePlayClick();
         onTimerBoxCountDownZero();

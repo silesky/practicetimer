@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 
 const TimerBoxBtnClose = ({ onTimerBoxBtnCloseClick }) => {
   return (
-  <div className="topBarLeft">
+  <div className="">
     <div
-      className="TimerBoxBtnClose btn"
+      className=""
       onClick={() => {
         console.log('close');
         onTimerBoxBtnCloseClick();
