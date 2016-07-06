@@ -5,7 +5,7 @@ const TimerBoxCountDownBtnIncrementDecrement =
 ({  onTimerBoxCountDownBtnIncrementClick,
   onTimerBoxCountDownBtnDecrementClick }) => {
     return (
-      <div className="">
+      <div className="TimerBoxCountDownBtnIncrementDecrement">
 
 
         <div

@@ -1,12 +1,13 @@
-
-.TimerBoxCountDownTotal_container{
-  padding: 1%;
-  display: flex;
-  justify-content: center;
+.TimerBoxCountDown-Container {
+	display: flex;
+	position: absolute;
+	top: 55%;
+	left: 25%;
+	align-items: center;	
 }
-.TimerBoxCountDownTotal_container div {
-  margin: 0 2%;
+.TimerBoxCountDownTotal-Container {
+  	margin: 0 1%;
 }
-.TimerBoxCountDownTotal_text {
-  font-size: 10rem;
+.TimerBoxCountDownTotal-Text  {
+  font-size: 3rem;
 }

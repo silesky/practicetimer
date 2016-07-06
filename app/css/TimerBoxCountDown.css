@@ -1,0 +1,11 @@
+.timerBoxCountDownSet {
+	top: 25%;
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+
+}
+.TimerBoxCountDownSet div {
+	margin: 0 1%;
+
+}

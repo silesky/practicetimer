@@ -15,7 +15,7 @@ https://codepen.io/sdthornton/pen/wBZdXq */
   border-radius: 2px;
   height: 30rem;
   margin: 1rem;
-  width: 50%;
+  width: 90%;
 }
 
 
@@ -34,11 +34,11 @@ https://codepen.io/sdthornton/pen/wBZdXq */
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
 }
 
 .appBody {
   margin: 10px 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+
 }

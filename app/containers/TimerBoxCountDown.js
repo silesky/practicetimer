@@ -20,10 +20,8 @@ const TimerBoxCountDown = React.createClass({
   render() {
      
         return (
-          <div>
-
-          <div /* className="TimerBoxCountDownSet" */>
-            <div className="mdl-textfield mdl-js-textfield"/* className="TimerBoxCountDownSet-container */>
+          <div className="timerBoxCountDown">
+            <div className="timerBoxCountDownSet"/* className="TimerBoxCountDownSet-container */>
               <div /* className="hours" */>
 
                 <input className="mdl-textfield__input" type="number" placeholder="0" min="0" max="24" 
@@ -59,11 +57,9 @@ const TimerBoxCountDown = React.createClass({
                     id: this.props.eachKey,
                   });
                 } }>OK</button>
-            </div>
-              
-        </div>
-
-          <div /* className="TimerBoxCountDownTotal_container" */>
+ 
+          </div>
+          <div className="TimerBoxCountDown-Container" >
             <TimerBoxCountDownTotal
                 /* e.g 112 -> 1:42 */
               minutesHoursDisplayString={ secondsToMinutesAndHours(this.props.eachTime) }
