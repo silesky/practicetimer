@@ -2,8 +2,8 @@
 	top: 25%;
 	position: absolute;
 	display: flex;
-	justify-content: space-between;
-
+	justify-content: space-around;
+	width: 100%;
 }
 .TimerBoxCountDownSet div {
 	margin: 0 1%;
