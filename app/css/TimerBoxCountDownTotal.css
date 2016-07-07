@@ -3,11 +3,12 @@
 	position: absolute;
 	top: 55%;
 	left: 25%;
-	align-items: center;	
+	align-items: center;
 }
 .TimerBoxCountDownTotal-Container {
   	margin: 0 1%;
 }
 .TimerBoxCountDownTotal-Text  {
-  font-size: 3rem;
+  font-size: 5rem;
+  font-family: 'Inconsolata', serif;
 }
