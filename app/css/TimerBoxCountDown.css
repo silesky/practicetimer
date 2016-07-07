@@ -1,9 +1,9 @@
 .timerBoxCountDownSet {
-	top: 25%;
-	position: absolute;
+	align-self:flex-start;
 	display: flex;
 	justify-content: space-around;
 	width: 100%;
+	margin: 5px 0 1%;
 }
 .timerBoxCountDownSet span {
 	font-size: 1.25rem;
