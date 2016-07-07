@@ -25,6 +25,7 @@ https://codepen.io/sdthornton/pen/wBZdXq */
 }
 
 .topBar {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
   color: #fff;
   /* should be blue, should be about 15% of the total height
     

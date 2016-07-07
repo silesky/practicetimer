@@ -38,7 +38,7 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   }
   // if timer is done
   else if (totalSeconds <= 0) {
-    displayString = 'end';
+    displayString = '0:00';
   }
   return displayString;
 };
