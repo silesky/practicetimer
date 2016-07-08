@@ -3,6 +3,10 @@ html {
   font-size: 66.7%;
 }
 
+.board {
+  margin-top: 50px;	
+}
+
 
 @media (min-width: 1070px) {
   .timerBox {

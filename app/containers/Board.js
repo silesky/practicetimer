@@ -30,7 +30,7 @@ const Board = React.createClass({
   render() {
     return(
       <div className="board">
-        <div className="BoardBtnControls-Container">
+        <div className="BoardBtnControls-Container mdl-shadow--4dp">
           <BoardCountDownTotal total={this.getTotal()}/>
           <BoardBtnControls
             onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
