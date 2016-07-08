@@ -2,7 +2,7 @@
 .BoardBtnControls-Container {
     position: fixed;
     top: 0%; 
-    background-color: gold;
+    background-color: rgba(59, 31, 56, 0.91);
     z-index: 999;
     width: 100%;
     display: flex;
@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 .BoardBtnControls-Container i:hover {
-  color: #ff4081;
+  color: white;
 }
 
 .BoardBtnControls {
