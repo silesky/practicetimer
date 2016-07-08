@@ -1,16 +1,25 @@
 
-.BoardBtnControls {
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-    padding: 1% 0;
-
-
+.BoardBtnControls-Container {
+    position: fixed;
+    top: 0%; 
+    background-color: gold;
+    z-index: 999;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 40px;
 }
-.BoardBtnControls i {
-    margin: 1%;
+.BoardBtnControls-Container i {
+    color: #ff4081;
+    margin-right: 10%;
+    margin-left: 10px;
     display: inline;
     cursor: pointer;
 }
-.BoardBtnControls i:hover {
-  color: gold;
+.BoardBtnControls-Container i:hover {
+  color: #ff4081;
+}
+
+.BoardBtnControls {
+
 }

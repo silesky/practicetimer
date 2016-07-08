@@ -1,14 +1,5 @@
-.BoardCountDownTotalContainer {
-    background-color: grey;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.BoardCountDownTotalNum {
-  color: white;
-  font-size: 2em;
-  
-
-
-
+.BoardCountDownTotal-Container {
+	color: white;
+	margin: 0 5%;
+	flex-grow: 1;
 }

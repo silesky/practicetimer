@@ -19,7 +19,7 @@ const Board = React.createClass({
     let mins;
     let times = this.props.state.map(el => el.time);
     // w/o needs to check if array is empty reduce of empty array with no initial value
-     if (typeof times !== 'undefined' && times.length > 0) {
+    if (typeof times !== 'undefined' && times.length > 0) {
       let totalSecs = times.reduce((p, n) => p + n);
       mins = Math.round(totalSecs / 60); 
     } else {
@@ -30,42 +30,43 @@ const Board = React.createClass({
   render() {
     return(
       <div className="board">
-        <BoardCountDownTotal total={this.getTotal()}/>
-        <BoardBtnControls
-          onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
-          onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }
-          onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
-        />
-      {
-        this.props.state.map((el) => {
-          return (
-            <TimerBox
-            /* added redundant key prop so react devtools would stop complaining */
+        <div className="BoardBtnControls-Container">
+          <BoardCountDownTotal total={this.getTotal()}/>
+          <BoardBtnControls
+            onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
+            onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }
+            onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
+          />
+        </div>
+        {
+          this.props.state.map((el) => {
+            return (
+              <TimerBox
+              /* added redundant key prop so react devtools would stop complaining */
               key={ el.id }
               eachKey={ el.id }
               eachTime={ el.time }
               eachTitle={ el.title }
               eachTicking={ el.ticking }
               />
-          );
-        })
-      }
-
-      <BoardBtnAdd
+              );
+          })
+        }
+        <BoardBtnAdd
         onBoardBtnAddClick={ () => {
-           /* dont need dispatch function anymore bc of mapDispatchToProps, mapStateToProps */
-           this.props.actions.addTimer(this.props.state);
-        }  }
-        />
-        </div>
-      );
-    },
-  });
+         /* dont need dispatch function anymore bc of mapDispatchToProps, mapStateToProps */
+         this.props.actions.addTimer(this.props.state);
+       }  }
+       />
+     </div>
+     );
+  },
+});
 
 
-  const mapStateToProps = (state) => ({ state });
-  const mapDispatchToProps = (dispatch) => {
-    return { actions: bindActionCreators(actionCreators, dispatch) };
-  };
- export default connect(mapStateToProps, mapDispatchToProps)(Board);
-  /* drum roll */
+const mapStateToProps = (state) => ({ state });
+const mapDispatchToProps = (dispatch) => {
+  return { actions: bindActionCreators(actionCreators, dispatch) };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
+/* drum roll */
