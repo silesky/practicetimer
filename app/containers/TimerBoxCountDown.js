@@ -41,7 +41,7 @@ const TimerBoxCountDown = React.createClass({
                 />
                 s
               </div>
-              <button /* className="button-ok"*/ label="stuff"
+              <button className="ok-button mdl-button mdl-js-button mdl-button--raised"
                 onClick={ () => {  
                 /* Math.round also casts the input to an integer */ 
                  let hours = Math.round(this.inputHours.value);
@@ -56,7 +56,7 @@ const TimerBoxCountDown = React.createClass({
                     time: totalTimeInSeconds,
                     id: this.props.eachKey,
                   });
-                } }>OK</button>
+                } }>Set</button>
  
           </div>
           <div className="TimerBoxCountDown-Container" >
