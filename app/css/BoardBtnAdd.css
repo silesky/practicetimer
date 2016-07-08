@@ -1,10 +1,11 @@
 .BoardBtnAdd {
   position: fixed;
-  top: 83%;
-  left: 80%;
+  top: 80%;
+  left: 74%;
 }
 
 .BoardBtnAdd button {
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
 }
+
