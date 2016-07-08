@@ -13,10 +13,13 @@
 }
 
 .timerBoxCountDownSet input.mdl-textfield__input {
-		font-size: 3rem;
-		text-align: center;
+	font-size: 3rem;
+	text-align: center;
 }
 .TimerBoxCountDownSet div {
 	margin: 0 1%;
 
+}
+.ok-button {
+	align-self: center;
 }
