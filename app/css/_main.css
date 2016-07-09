@@ -4,18 +4,18 @@ html {
 }
 
 .board {
-  padding-top: 15%;	
+  padding-top: 19%;
 }
 
 
 @media (min-width: 1070px) {
   .timerBox {
-    margin: 0 1%;
+    margin: 1%;
     max-width: 700px;
 }
-  .board {
+  .board span {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }		
 

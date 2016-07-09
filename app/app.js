@@ -22,7 +22,7 @@ const renderRoot = () => {
     <Provider store={store}>
         <Board />
       </Provider>,
-    document.getElementById('timer')
+    document.getElementById('rootEl')
   );
 };
 store.subscribe(renderRoot);

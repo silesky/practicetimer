@@ -27,16 +27,19 @@ const Board = React.createClass({
   },
   render() {
     return(
-      <div className="board">
-        <div className="BoardBtnControls-Container mdl-shadow--4dp">
-          <BoardCountDownTotal total={this.getTotal()}/>
-          <BoardBtnControls
-            onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
-            onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }
-            onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
-          />
-        </div>
-        <ReactCSSTransitionGroup transitionName="timerbox" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+        <div>
+        <header>
+          <div className="BoardBtnControls-Container mdl-shadow--4dp">
+            <BoardCountDownTotal total={this.getTotal()}/>
+            <BoardBtnControls
+              onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
+              onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }
+              onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
+            />
+          </div>
+        </header>
+        <div className="board">
+        <ReactCSSTransitionGroup className="timer-container" transitionName="timerbox" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
         {
           this.props.state.map((el) => {
             return (
@@ -58,6 +61,7 @@ const Board = React.createClass({
          this.props.actions.addTimer(this.props.state);
        }  }
        />
+     </div>
      </div>
      );
   },
