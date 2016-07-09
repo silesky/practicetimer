@@ -1,14 +1,10 @@
-.titleContainer {
-  color: white;
-  font-size: 5rem;
-  font-family: arial;
-  width: 100%;
-  text-align: center;
-}
-.titleContainer input {
-	width: 75%;
-	height: 3rem;
+/* in TimerBox */
+.TimerBoxTitle-container {
+ 	flex-grow: 1;
 }
 
-.titleComp {
+
+/* Title Size */
+input.TimerBoxTitle-input {
+  font-size: 3rem;
 }

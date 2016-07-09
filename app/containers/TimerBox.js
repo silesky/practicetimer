@@ -18,12 +18,7 @@ export const TimerBox = React.createClass({
 
       <div ref="timerBox" className={ `shadow timerBox ${(this.props.eachTicking) ? 'ticking' : ''}` } >
         <div className="topBar">
-            <TimerBoxBtnClose
-              onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
-              />
-        </div>
-        <div className="appBody">
-            <TimerBoxTitle
+                       <TimerBoxTitle
               onTimerBoxTitleSet={ (titleSetInput) => {
                 let text = titleSetInput.value;
                 this.props.actions.setTitle(text, this.props.eachKey);
@@ -32,6 +27,13 @@ export const TimerBox = React.createClass({
               eachKey={ this.props.eachKey }
               eachTitle={ this.props.eachTitle }
             />
+            <TimerBoxBtnClose
+              onTimerBoxBtnCloseClick={ () => this.props.actions.removeTimer(this.props.eachKey) }
+              />
+
+
+        </div>
+        <div className="appBody">
             
           <TimerBoxCountDown
             eachKey={ this.props.eachKey }
@@ -43,7 +45,7 @@ export const TimerBox = React.createClass({
 
 
     );
-  }
+  },
 });
 // grabs state property from the state object...
 const mapStateToProps = (state) => ({ state });
