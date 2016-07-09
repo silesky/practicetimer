@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import TimerBox from './TimerBox';
 import BoardCountDownTotal from '../components/BoardCountDownTotal';
@@ -11,9 +12,6 @@ import * as actionCreators from '../actions/_actionCreators';
 import { nextInLine, getTickingId } from '../util';
 
 
-// remove dispatch wrapper: store.dispatch({ this.props.action.removeTimer }) -> this.props.action.removeTimer...
-
-/* all this board does is increment the timer */
 const Board = React.createClass({
   getTotal: function() {
     let mins;
@@ -38,6 +36,7 @@ const Board = React.createClass({
             onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
           />
         </div>
+        <ReactCSSTransitionGroup transitionName="timerbox" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
         {
           this.props.state.map((el) => {
             return (
@@ -52,6 +51,7 @@ const Board = React.createClass({
               );
           })
         }
+        </ReactCSSTransitionGroup>
         <BoardBtnAdd
         onBoardBtnAddClick={ () => {
          /* dont need dispatch function anymore bc of mapDispatchToProps, mapStateToProps */
