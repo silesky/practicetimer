@@ -4,7 +4,7 @@ const BoardCountDownTotal = ({total}) => {
     return (
       <div className="BoardCountDownTotal-Container">
         <div className="BoardCountDownTotal-text">
-         {total} minutes remaining...
+         {total}
         </div>
       </div>
     );

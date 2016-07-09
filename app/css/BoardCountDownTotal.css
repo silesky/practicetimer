@@ -2,4 +2,9 @@
 	color: white;
 	margin: 0 5%;
 	flex-grow: 1;
+	font-size: 4em;
+}
+.BoardCountDownTotal-text {
+	font-family: Inconsolata;
+	text-shadow: 2px 2px #ff4081;
 }

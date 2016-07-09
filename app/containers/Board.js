@@ -9,21 +9,20 @@ import BoardCountDownTotal from '../components/BoardCountDownTotal';
 import BoardBtnAdd from '../components/BoardBtnAdd';
 import BoardBtnControls from '../components/BoardBtnControls';
 import * as actionCreators from '../actions/_actionCreators';
-import { nextInLine, getTickingId } from '../util';
-
+import { nextInLine, getTickingId, secondsToMinutesAndHours } from '../util';
 
 const Board = React.createClass({
   getTotal: function() {
-    let mins;
+    let displayString;
     let times = this.props.state.map(el => el.time);
     // w/o needs to check if array is empty reduce of empty array with no initial value
     if (typeof times !== 'undefined' && times.length > 0) {
       let totalSecs = times.reduce((p, n) => p + n);
-      mins = Math.round(totalSecs / 60); 
+      displayString = secondsToMinutesAndHours(totalSecs);
     } else {
-      mins = 0;
-    } 
-    return mins;
+      displayString = '0:00';
+    }   
+    return displayString;
   },
   render() {
     return(
