@@ -4,22 +4,29 @@
 	justify-content: space-around;
 	width: 100%;
 	margin: 5px 0 1%;
+	font-size:  18px;
 }
 .timerBoxCountDownSet span {
-	font-size: 1.25rem;
+	font-size: 1.5em;
 	display: flex;
 	justify-content: center;
+	margin-top: 3%;
 
 }
 
 .timerBoxCountDownSet input.mdl-textfield__input {
-	font-size: 3rem;
+	font-size: 3em;
+	width: 1.5em;
 	text-align: center;
 }
 .TimerBoxCountDownSet div {
 	margin: 0 1%;
 
 }
-.ok-button {
+button.ok-button {
 	align-self: center;
+	font-size: 1.5em;
+	height: 1.5em;
+	min-width: 3em;
+	margin: 0 1%;
 }

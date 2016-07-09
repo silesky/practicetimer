@@ -4,10 +4,11 @@
     top: 0%;
     background-color: rgba(59, 31, 56, 0.91);
     z-index: 999;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     align-items: center;
     height: 10%;
+    right: 1%;
 }
 .BoardBtnControls-Container i {
     color: #ff4081;

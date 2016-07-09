@@ -4,6 +4,10 @@
   right: 10%;
 }
 
+.BoardBtnAdd i.material-icons {
+  font-size: 2em;
+  left: 44%;
+ }
 .BoardBtnAdd button {
   width: 15rem;
   height: 15rem;

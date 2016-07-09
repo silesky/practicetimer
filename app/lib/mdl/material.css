@@ -606,9 +606,10 @@ html {
 * Remove body margin so layout containers don't cause extra overflow.
 */
 body {
-  width: 100%;
+  /* width: 100%; */
   min-height: 100%;
-  margin: 0; }
+  margin: 0;
+  }
 
 /*
  * Main display reset for IE support.
