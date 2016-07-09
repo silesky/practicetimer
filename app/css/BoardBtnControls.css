@@ -1,13 +1,13 @@
 
 .BoardBtnControls-Container {
     position: fixed;
-    top: 0%; 
+    top: 0%;
     background-color: rgba(59, 31, 56, 0.91);
     z-index: 999;
     width: 100%;
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 10%;
 }
 .BoardBtnControls-Container i {
     color: #ff4081;
@@ -21,5 +21,6 @@
 }
 
 .BoardBtnControls {
+    font-size: 2rem;
 
 }
