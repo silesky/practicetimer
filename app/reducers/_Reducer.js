@@ -4,7 +4,7 @@ import { getStateFromLS, isEmpty } from '../util';
 let stateFromLS = getStateFromLS();
 /*  if there's nothing in localStorage, be sure to
     set a default initialState or we'll get a state.map is undefined error. */
-let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 5, title: '', ticking: false, startTime: 5, paused: true }];
+let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 5, title: '', ticking: false, startTime: 5, pause: true }];
 
 const reducer = function(state = initialState, action) {
     let _index;
@@ -49,9 +49,9 @@ const reducer = function(state = initialState, action) {
     };
     switch (action.type) {
       case 'CLEAR':
-      return [{ id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5, paused: true }];
+      return [{ id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5, pause: true }];
       case 'ADD_TIMER':
-      return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5, paused: true }];
+      return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5, pause: true }];
       // save the start time of all of the timers...(except for the one )
       case 'SAVE_START_TIMES':
       let stateWithSavedStartTimes = state.map((el) => {
@@ -87,7 +87,7 @@ const reducer = function(state = initialState, action) {
 
       case 'TOGGLE_PAUSEPLAY':
       _individualTimerObjEl = util.getCurrentObjEl();
-      _individualTimerObjEl.paused = !_individualTimerObjEl.paused;
+      _individualTimerObjEl.pause = !_individualTimerObjEl.pause;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
       
       case 'SET_TICKING_TRUE':
@@ -99,6 +99,18 @@ const reducer = function(state = initialState, action) {
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.ticking = false;
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+
+
+      case 'SET_PAUSE_TRUE':
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.pause = true;
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+
+      case 'SET_PAUSE_FALSE':
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.pause = false;
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+
 
       case 'SET_TITLE':
       _individualTimerObjEl = util.getCurrentObjEl();
