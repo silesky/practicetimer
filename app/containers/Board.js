@@ -9,7 +9,7 @@ import BoardCountDownTotal from '../components/BoardCountDownTotal';
 import BoardBtnAdd from '../components/BoardBtnAdd';
 import BoardBtnControls from '../components/BoardBtnControls';
 import * as actionCreators from '../actions/_actionCreators';
-import { nextInLine, getTickingId, secondsToMinutesAndHours } from '../util';
+import { nextInLine, findIdWhereTrue, secondsToMinutesAndHours } from '../util';
 
 const Board = React.createClass({
   getTotal: function() {
@@ -24,13 +24,19 @@ const Board = React.createClass({
     }     
     return displayString;
   },
+
+// if there is an id, it means that paused is true somewhere, so isPaused evals to true.
+  isItPaused: function() {
+    return !!findIdWhereTrue(this.props.state, 'pause');
+  },
   render() {
+;
     return(
         <div>
         <header>
           <div className="BoardBtnControls-Container mdl-shadow--4dp">
             <BoardCountDownTotal total={this.getTotal()}/>
-            <BoardBtnControls
+            <BoardBtnControls className={ this.isItPaused() ? 'paused' : 'notpaused' }
               onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
               onBoardBtnPauseClick={ () => { this.props.actions.pausePlay(); } }
               onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }

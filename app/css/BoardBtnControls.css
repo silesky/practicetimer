@@ -10,18 +10,41 @@
     height: 10%;
     right: 1%;
 }
+/* made padding in pixels bc in percents, the playpause animation makes the buttons twitch */
 .BoardBtnControls-Container i {
     color: #ff4081;
-    margin-right: 10%;
-    margin-left: 10px;
     display: inline;
     cursor: pointer;
+    padding-left: 5px;
+    padding-right: 20px;
 }
 .BoardBtnControls-Container i:hover {
   color: white;
+
 }
 
 .BoardBtnControls {
     font-size: 2em;
 
+}
+
+/* if paused, the pause button should not display */
+.pauseBtnCtrl.paused {
+    display:none; !important
+    opacity:0;
+    transition:opacity 0.5s linear;
+}
+
+
+/* if paused, the play button should display */
+
+.playBtnCtrl.paused {
+    display: initial;
+    opacity: 1;
+}
+
+.playBtnCtrl.notpaused {
+    display:none; !important
+    opacity:0;
+    transition:opacity 0.5s linear;
 }

@@ -48,6 +48,7 @@ export const startTicking = (id) => {
         } 
         else {
           clearInterval(window.myInt);
+          dispatch(_setPauseTrue(id));
           dispatch(_setTickingFalse(id));
           dispatch(startTicking(nextInLine(getState(), id)));
         }
