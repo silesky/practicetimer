@@ -45,6 +45,11 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
 
 export const isEmpty = (thing) => (!thing || !thing.length);
 
+export const findIdWhereTrue = (state, prop) => {
+    let item = state.find((el) => el[prop]).id;
+    let id = item ? item : false;
+    return id;
+};
 
 export const getTickingId = (state) => {
   let item = state.find((el) => el.ticking).id;

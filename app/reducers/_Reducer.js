@@ -4,7 +4,7 @@ import { getStateFromLS, isEmpty } from '../util';
 let stateFromLS = getStateFromLS();
 /*  if there's nothing in localStorage, be sure to
     set a default initialState or we'll get a state.map is undefined error. */
-let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 5, title: '', ticking: false, startTime: 5 }];
+let initialState = (stateFromLS) ?  stateFromLS : [{ id: 1, time: 5, title: '', ticking: false, startTime: 5, paused: true }];
 
 const reducer = function(state = initialState, action) {
     let _index;
@@ -49,9 +49,9 @@ const reducer = function(state = initialState, action) {
     };
     switch (action.type) {
       case 'CLEAR':
-      return [{ id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
+      return [{ id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5, paused: true }];
       case 'ADD_TIMER':
-      return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5 }];
+      return [...state, { id: util.getNextId(), time: 5, title: '', ticking: false, startTime: 5, paused: true }];
       // save the start time of all of the timers...(except for the one )
       case 'SAVE_START_TIMES':
       let stateWithSavedStartTimes = state.map((el) => {
@@ -64,6 +64,8 @@ const reducer = function(state = initialState, action) {
       return el; 
       });
       return stateWithSavedStartTimes;
+
+
       case 'RESET':
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.time = _individualTimerObjEl.startTime;
@@ -83,6 +85,11 @@ const reducer = function(state = initialState, action) {
 
       return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
 
+      case 'TOGGLE_PAUSEPLAY':
+      _individualTimerObjEl = util.getCurrentObjEl();
+      _individualTimerObjEl.paused = !_individualTimerObjEl.paused;
+      return util.getState_replaceElByIndex(util.getCurrentIndex(), _individualTimerObjEl);
+      
       case 'SET_TICKING_TRUE':
       _individualTimerObjEl = util.getCurrentObjEl();
       _individualTimerObjEl.ticking = true;

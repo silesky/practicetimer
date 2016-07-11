@@ -21,7 +21,7 @@ const Board = React.createClass({
       displayString = secondsToMinutesAndHours(totalSecs);
     } else {
       displayString = '0:00';
-    }   
+    }     
     return displayString;
   },
   render() {
@@ -32,7 +32,7 @@ const Board = React.createClass({
             <BoardCountDownTotal total={this.getTotal()}/>
             <BoardBtnControls
               onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
-              onBoardBtnPauseClick={ () => { this.props.actions.pauseTimer(getTickingId(this.props.state)); } }
+              onBoardBtnPauseClick={ () => { this.props.actions.pausePlay(); } }
               onBoardBtnResetClick={ () => { this.props.actions.resetAll(); } }
             />
           </div>

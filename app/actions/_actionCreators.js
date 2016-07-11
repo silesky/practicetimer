@@ -1,5 +1,5 @@
 // given the current ticking timer ID and state, grab the next ID
-import { nextInLine } from '../util.js';
+import { nextInLine, findIdWhereTrue } from '../util.js';
 export const _saveStartTimes = () => ({ type: 'SAVE_START_TIMES' });
 export const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
 export const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
@@ -10,7 +10,16 @@ export const reset = (id) => ({ type: 'RESET', id });
 export const increment = (id) => ({ type: 'INCREMENT', id });
 export const decrement = (id) => ({ type: 'DECREMENT', id });
 export const setTitle = (text, id) => ({ type: 'SET_TITLE', text, id });
-export const pauseTimer = () => clearInterval(window.myInt);
+export const pausePlay = () => {
+  
+  return (dispatch, getState) => {
+    clearInterval(window.myInt);  
+    dispatch({ 
+      type: 'TOGGLE_PAUSEPLAY',
+      id: findIdWhereTrue(getState(), 'ticking'),
+    });
+  };
+};
 // pause and reset all
 export const resetAll = () =>  {
   return (dispatch) => {
