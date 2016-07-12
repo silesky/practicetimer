@@ -153,7 +153,7 @@
     "comma-style": [1, "last"],
     "computed-property-spacing": 0,
     "consistent-this": 0,
-    "eol-last": 1,
+    "eol-last": 0,
     "func-names": 0,
     "func-style": 0,
     "indent": 0,
