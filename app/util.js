@@ -51,14 +51,10 @@ export const findIdWhereTrue = (state, prop) => {
     return id;
 };
 
-// checks the state  
+// expect all timers to have a paused value of true
 export const everythingIsPaused = (state) => {
-  // get paused array
-   let pauseArr = state.map((el) => el.pause);
-  let failArr = pauseArr.filter((el) =>!el);
-  // if the failArr has anything in it i.e. if paused timers exist, return false
-  let answer = !failArr ||  !failArr.length;
-  return answer;
+  let arr = state.map((el) => el.pause).filter((el) =>!el);
+  return !arr.length; // if array has things, return false
 };
 
 
@@ -72,7 +68,8 @@ export const nextInLine = (state, currentId) => {
   const idArr = state.map((el) => el.id); // [1, 4, 6]
   if (isEmpty(idArr)) {
     nextId = 1;
-  } else {
+  } 
+  else {
     const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
     nextId = idArr[currentIndex + 1];
   }
