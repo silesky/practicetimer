@@ -57,8 +57,7 @@ export const everythingIsPaused = (state) => {
    let pauseArr = state.map((el) => el.pause);
   let failArr = pauseArr.filter((el) =>!el);
   // if the failArr has anything in it i.e. if paused timers exist, return false
-  let answer = !failArr ||  !failArr.length;
-  return answer;
+  return !failArr.length;
 };
 
 
