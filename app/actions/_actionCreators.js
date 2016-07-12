@@ -1,5 +1,5 @@
 // given the current ticking timer ID and state, grab the next ID
-import { nextInLine, findIdWhereTrue } from '../util.js';
+import { nextInLine, findIdWhereTrue, isEmpty } from '../util.js';
 export const _saveStartTimes = () => ({ type: 'SAVE_START_TIMES' });
 export const _setTickingTrue = (id) => ({ type: 'SET_TICKING_TRUE', id });
 export const _setTickingFalse = (id) => ({ type: 'SET_TICKING_FALSE', id });
@@ -30,14 +30,32 @@ export const resetAll = () =>  {
   };
 };
 export const startTicking = (id) => {
-  return (dispatch, getState) => {
+  return (dispatch, getState) => { 
     const objectWithMatchingId = () => getState().find((el) => el.id === id);
+      let somethingIsTicking = !!findIdWhereTrue(getState(), 'ticking');
+      let somethingIsPaused = !!findIdWhereTrue(getState(), 'pause');
+      var everythingIsPaused = (state = getState()) => {
+        // get paused array
+        var pauseArr = state.map((el) => el.pause);
+        // if you find a timer 
+        var failArr = pauseArr.filter((el) =>!el);
+        console.log(getState());
+        var answer = !failArr ||  !failArr.length;
+        return answer;
+  };
+
+console.log(getState());
+
+  var isEverythingPaused = everythingIsPaused(getState());
+  console.log(isEverythingPaused);
     // checking if object exusts... it only starts the timer if there are timers on the board.
-    if (objectWithMatchingId()) {
+    if (objectWithMatchingId() && everythingIsPaused()) {
+   debugger; 
       // if nothing is ticking, save the startTime (so I can later hit reset)...
       dispatch(_saveStartTimes());
       dispatch(_setTickingTrue(id));
-      dispatch(_setPauseFalse(id));
+      dispatch(_setPauseFalse(id)); 
+
       window.myInt = setInterval(() => {
         let currentTime = getState().find((el) => el.id === id).time;
         /* based on the current id, find the current time. as long as current time is
@@ -49,6 +67,7 @@ export const startTicking = (id) => {
         else {
           clearInterval(window.myInt);
           dispatch(_setTickingFalse(id));
+          dispatch(_setPauseTrue(id)); 
           dispatch(startTicking(nextInLine(getState(), id)));
         }
       }, 300);
