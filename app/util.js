@@ -46,14 +46,21 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
 export const isEmpty = (thing) => (!thing || !thing.length);
 
 export const findIdWhereTrue = (state, prop) => {
-    let id;
-    let foundTimerObj = state.find((el) => el[prop]);
-    // without this check, I get blah is undefined error
-    if (foundTimerObj) {
-      id = foundTimerObj.id ? foundTimerObj.id : false;
-    }
+    let timerObj = state.find((el) => el[prop] === true);
+    let id = timerObj ? timerObj.id : false;
     return id;
 };
+
+// checks the state  
+export const everythingIsPaused = (state) => {
+  // get paused array
+   let pauseArr = state.map((el) => el.pause);
+  let failArr = pauseArr.filter((el) =>!el);
+  // if the failArr has anything in it i.e. if paused timers exist, return false
+  let answer = !failArr ||  !failArr.length;
+  return answer;
+};
+
 
 export const getTickingId = (state) => {
   let item = state.find((el) => el.ticking).id;

@@ -29,22 +29,11 @@
 }
 
 /* if paused, the pause button should not display */
-.pauseBtnCtrl.paused {
-    display:none; !important
-    opacity:0;
-    transition:opacity 0.5s linear;
-}
+.pauseBtnCtrl.paused {}
 
 
 /* if paused, the play button should display */
 
-.playBtnCtrl.paused {
-    display: initial;
-    opacity: 1;
-}
+.playBtnCtrl.paused {}
 
-.playBtnCtrl.notpaused {
-    display:none; !important
-    opacity:0;
-    transition:opacity 0.5s linear;
-}
+.playBtnCtrl.notpaused {}
