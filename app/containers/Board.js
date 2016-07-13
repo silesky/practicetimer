@@ -34,8 +34,9 @@ const Board = React.createClass({
     return(
         <div>
         <header>
+         <BoardCountDownTotal total={this.getTotal()}/>
           <div className="BoardBtnControls-Container mdl-shadow--4dp">
-            <BoardCountDownTotal total={this.getTotal()}/>
+           
             <BoardBtnControls className={ this.isItPaused() ? 'paused' : 'notpaused' }
               onBoardBtnPlayClick={ () => { this.props.actions.startTicking(nextInLine(this.props.state)); } }
               onBoardBtnPauseClick={ () => { this.props.actions.pausePlay(); } }
