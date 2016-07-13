@@ -4,10 +4,10 @@
     top: 0%;
     background-color: rgba(59, 31, 56, 0.91);
     z-index: 999;
-    width: 50%;
+    width: 35em;
     display: flex;
     align-items: center;
-    height: 10%;
+    height: 15em;
     right: 1%;
 }
 /* made padding in pixels bc in percents, the playpause animation makes the buttons twitch */
