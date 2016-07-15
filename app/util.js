@@ -10,9 +10,16 @@ export const storeStateInLS = (obj) => {
 };
 
 export const getStateFromLS = () => {
+  let newState;
   const string = localStorage.getItem('storedState');
   const stateObj = JSON.parse(string);
-  return stateObj;
+  if (stateObj) {
+    newState = stateObj.map((el) => {
+    el.pause = true;
+    return el;
+  });
+  }
+  return newState;
 };
 
 // used in TimerBoxCountDown
