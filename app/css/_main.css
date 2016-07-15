@@ -5,9 +5,16 @@ html {
 }
 
 .board {
-  padding-top: 10%;
+  padding-top: 15em;
 }
 
+header {
+    position: fixed;
+    z-index: 999;
+    top: 0%;
+    width: 100%;
+    display: flex;
+}
 
 @media (min-width: 1070px) {
   .timerBox {

@@ -28,7 +28,7 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   // if remaining mins/seconds is under 10, add a 0
   let minsWithLeadingZeros = (remainingMins < 10) ? ('0' + remainingMins) : remainingMins;
   let secsWithLeadingZeros = (remainingSecs < 10) ? ('0' + remainingSecs) : remainingSecs;
-  // 1hr+ 
+  // 1hr+
   if (totalSeconds >= 3600) {
     displayString = `${totalHours}:${minsWithLeadingZeros}:${secsWithLeadingZeros}`;
   }
@@ -68,7 +68,7 @@ export const nextInLine = (state, currentId) => {
   const idArr = state.map((el) => el.id); // [1, 4, 6]
   if (isEmpty(idArr)) {
     nextId = 1;
-  } 
+  }
   else {
     const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
     nextId = idArr[currentIndex + 1];

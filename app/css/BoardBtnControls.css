@@ -1,22 +1,18 @@
 
 .BoardBtnControls-Container {
-    position: fixed;
-    top: 0%;
     background-color: rgba(59, 31, 56, 0.91);
-    z-index: 999;
-    width: 50%;
+    width: 35em;
     display: flex;
     align-items: center;
-    height: 10%;
-    right: 1%;
+    height: 15em;
+    justify-content: space-around;
 }
 /* made padding in pixels bc in percents, the playpause animation makes the buttons twitch */
 .BoardBtnControls-Container i {
     color: #ff4081;
     display: inline;
     cursor: pointer;
-    padding-left: 5px;
-    padding-right: 20px;
+    padding: 0 35px;
 }
 .BoardBtnControls-Container i:hover {
   color: white;
@@ -24,7 +20,7 @@
 }
 
 .BoardBtnControls {
-    font-size: 2em;
+    font-size: 4em;
 
 }
 
