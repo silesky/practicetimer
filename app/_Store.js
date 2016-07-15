@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
-import { storeStateInLS, getStateFromLS } from './util';
+// stores the state... hydration happens in _Reducer
+import { storeStateInLS } from './util';
 import thunk from 'redux-thunk';
 import reducer from './reducers/_Reducer';
 // middleware - the functions that intercept an action upon dispatch, before it reaches the reducer

@@ -53,7 +53,7 @@ export const startTicking = (id) => {
           dispatch(_setPauseTrue(id)); 
           dispatch(startTicking(nextInLine(getState(), id)));
         }
-      }, 300);
+      }, 1000);
     }
     // ^ called every 1 second
   };
