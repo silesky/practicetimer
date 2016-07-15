@@ -1,16 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import store from '../_Store';
 
 const TimerBoxTitle = ({onTimerBoxTitleSet, eachTitle }) => {
-	var titleSetInput;
+	let titleSetInput;
 	return (
 
-		<div className="titleContainer">
-			<div className="title">
+		<div className="TimerBoxTitle-container">
+			{/* <div className="TimerBoxTitle-text">
 				{eachTitle}
-			</div>
-			<input size='10' type="text" placeholder="Title"
+			</div> */}
+			<input className="TimerBoxTitle-input mdl-textfield__input" size='10' type="text" placeholder="Title"
 				ref={
 					node => {titleSetInput = node;}
 				}

@@ -1,18 +1,16 @@
+.TimerBoxCountDown-Container {
+  border-bottom: 1px solid rgba(0,0,0, 0.12);
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 5rem;
+  font-size: 5rem;
+  width: 90%;
+  margin: 1% auto;
+  text-align: center;
+  font-family: 'Inconsolata', serif;
+}
+.TimerBoxCountDownTotal-Container {
+  	margin: 30px 0 1%;
+}
+.TimerBoxCountDownTotal-Text  {
 
-.TimerBoxCountDownTotal_container{
-  border: 3px solid white;
-  border-radius: 0.5em;
-  padding: 1%;
-  position: absolute;
-  top: 70%;
-  left: 20%;
-  right: 20%;
-  display: flex;
-  justify-content: center;
-}
-.TimerBoxCountDownTotal_container div {
-  margin: 0 2%;
-}
-.TimerBoxCountDownTotal_text {
-  font-size: 2em;
 }

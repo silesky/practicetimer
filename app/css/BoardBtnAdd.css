@@ -1,14 +1,15 @@
-.BoardTimerBoxBtnAdd {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: flex-start;
+.BoardBtnAdd {
+  position: fixed;
+  top: 80%;
+  right: 10%;
+}
 
+.BoardBtnAdd i.material-icons {
+  font-size: 2em;
+  left: 44%;
+ }
+.BoardBtnAdd button {
+  width: 15rem;
+  height: 15rem;
 }
-.BoardTimerBoxBtnAdd i {
-  border: 3px;
-  border-radius: 5px;
-  vertical-align: middle;
-  margin-left: 1%;
-}
+

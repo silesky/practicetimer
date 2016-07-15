@@ -38,12 +38,24 @@ export const secondsToMinutesAndHours = (totalSeconds) => {
   }
   // if timer is done
   else if (totalSeconds <= 0) {
-    displayString = 'end';
+    displayString = '0:00';
   }
   return displayString;
 };
 
 export const isEmpty = (thing) => (!thing || !thing.length);
+
+export const findIdWhereTrue = (state, prop) => {
+    let timerObj = state.find((el) => el[prop] === true);
+    let id = timerObj ? timerObj.id : false;
+    return id;
+};
+
+// expect all timers to have a paused value of true
+export const everythingIsPaused = (state) => {
+  let arr = state.map((el) => el.pause).filter((el) =>!el);
+  return !arr.length; // if array has things, return false
+};
 
 
 export const getTickingId = (state) => {
@@ -56,7 +68,8 @@ export const nextInLine = (state, currentId) => {
   const idArr = state.map((el) => el.id); // [1, 4, 6]
   if (isEmpty(idArr)) {
     nextId = 1;
-  } else {
+  } 
+  else {
     const currentIndex = idArr.indexOf(currentId); // e.g. if 4 , then zero
     nextId = idArr[currentIndex + 1];
   }

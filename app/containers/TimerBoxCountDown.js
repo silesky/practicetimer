@@ -20,29 +20,28 @@ const TimerBoxCountDown = React.createClass({
   render() {
      
         return (
-          <div>
+          <div className="timerBoxCountDown">
+            <div className="timerBoxCountDownSet"/* className="TimerBoxCountDownSet-container */>
+              <div /* className="hours" */>
 
-          <div className="TimerBoxCountDownSet">
-            <div className="TimerBoxCountDownSet-container">
-              <div className="hours">
-                <input type="number" placeholder="0" min="0" max="24" 
+                <input className="mdl-textfield__input" type="number" placeholder="0" min="0" max="24" 
                 ref={ node => {this.inputHours = node; }}
                 />
                 h
               </div>
-              <div className="minutes"> 
-                <input type="number" placeholder="0" min="0" max="59" 
+              <div /* className="minutes" */> 
+                <input className="mdl-textfield__input" type="number"  placeholder="0" min="0" max="59" 
                 ref={ node => {this.inputMinutes = node; }}
                  />
                  m
               </div>
-              <div className="seconds">
-                <input type="number" placeholder="0" min="0" max="59"
+              <div /* className="seconds" */ >
+                <input className="mdl-textfield__input" type="number"  placeholder="0" min="0" max="59"
                 ref={ node => {this.inputSeconds = node; }}
                 />
                 s
               </div>
-              <button className="button-ok" label="stuff"
+              <button className="ok-button mdl-button mdl-js-button mdl-button--raised"
                 onClick={ () => {  
                 /* Math.round also casts the input to an integer */ 
                  let hours = Math.round(this.inputHours.value);
@@ -57,12 +56,10 @@ const TimerBoxCountDown = React.createClass({
                     time: totalTimeInSeconds,
                     id: this.props.eachKey,
                   });
-                } }>OK</button>
-            </div>
-              
-        </div>
-
-          <div className="TimerBoxCountDownTotal_container">
+                } }>Set</button>
+ 
+          </div>
+          <div className="TimerBoxCountDown-Container" >
             <TimerBoxCountDownTotal
                 /* e.g 112 -> 1:42 */
               minutesHoursDisplayString={ secondsToMinutesAndHours(this.props.eachTime) }

@@ -1,6 +1,3 @@
-.TimerBoxBtnClose {
-  cursor: pointer;
-  position: absolute;
-  left: 1%;
-  margin: 1%;
+.close-btn i {
 }
+

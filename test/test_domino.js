@@ -15,35 +15,7 @@ import * as actionCreators from '../app/actions/_actionCreators';
  */
 
 module.exports = function() {
-  describe('* * * reducer * * *', function() {
-    describe('_setTickingTrue()...', function() {
-      it('store.getState()[0].ticking should return true when action: SET_TICKING_TRUE is dispatched.', function() {
-          store.dispatch(actionCreators._setTickingTrue(1));
-          expect(store.getState()[0].ticking).to.be.true;
-      });
-    });
-    describe('_setTickingFalse()...', function() {
-      it('store.getState()[0].ticking should return false after action: SET_TICKING_FALSE is dispatched.', function() {
-        store.dispatch(actionCreators._setTickingTrue(1));
-        store.dispatch(actionCreators._setTickingFalse(1));
-        expect(store.getState()[0].ticking).to.be.false;
-      });
-    });
-    describe('setTime()...', function() {
-      it('should set current timer object\'s *time* property to 666...', function() {
-      const _setTime = (time, id) => store.dispatch({ type: 'SET_TIME', time, id});
-      _setTime(666, 1);
-        // store.dispatch({ type: 'SET_TIME', time: 666, id: 1 });
-        expect(store.getState()[0].time).to.equal(666);
-      });
-    });
-    describe('addTimer()...', function() {
-      it('it should add another timer object to the array..', function() {
-        store.dispatch(actionCreators.addTimer());
-				const _nextTimer = store.getState()[1];
-        expect(_nextTimer).to.exist;
-      });
-    });
+  describe('[ domino behavior - slow tests ]', function() {
     describe('startTicking()...', function() {
       // max time for test suite is 20 seconds.
       // Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
@@ -116,7 +88,7 @@ module.exports = function() {
           setTimeout(_checkIfTimeIsBelow2, 3000);
 
         });
-          it('reset_all should reset the times, even if the time is manually set', function() {
+          it('when cycle is done, reset_all should reset the times, even if the time is manually set', function() {
             store.dispatch(actionCreators.resetAll());
             expect(store.getState()[0].time).to.equal(firstStartTime);
         });

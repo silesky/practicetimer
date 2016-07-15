@@ -1,15 +1,10 @@
-.titleContainer {
-  color: white;
-  font-size: 1.5em;
-  font-family: arial;
-  position: absolute;
-  top: 15%;
-  width: 100%;
-  text-align: center;
+/* in TimerBox */
+.TimerBoxTitle-container {
+ 	flex-grow: 1;
 }
 
-.title {
-  top: 10%;
-}
-.titleComp {
+
+/* Title Size */
+input.TimerBoxTitle-input {
+  font-size: 3em;
 }

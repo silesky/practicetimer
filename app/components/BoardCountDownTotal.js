@@ -2,9 +2,9 @@ import React from 'react';
 
 const BoardCountDownTotal = ({total}) => {
     return (
-      <div className="BoardCountDownTotalContainer">
-        <div className="BoardCountDownTotalNum">
-         {total} minutes remaining...
+      <div className="BoardCountDownTotal-Container">
+        <div className="BoardCountDownTotal-text">
+         {total}
         </div>
       </div>
     );
