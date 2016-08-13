@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 // stores the state... hydration happens in _Reducer
 import { storeStateInLS } from './util';
+import FB from './firebaseconfig'; 
+
 import thunk from 'redux-thunk';
 import reducer from './reducers/_Reducer';
 
@@ -13,15 +15,8 @@ import reducer from './reducers/_Reducer';
 *   let store= createStoreMW(todoApp)
 */
 
-import FB from './firebaseconfig'; 
-	// firebase.database();
-	// practiceTimer.initializeApp();
- //   firebase.initializeApp(config);
-const FBref = FB.database().ref();
-FBref.on('value', function(snapshot) {
-	console.log(snapshot.val());
-});
-console.log(FBref);
+
+
 
 const compose = ((a, b) => (c) => a(b(c)));
 
@@ -34,8 +29,38 @@ const configureStore = () => {
   };
 
 const store = configureStore();
-
+	
 // without anon function, I get error 'expected listener to be a function'
 store.subscribe(() => storeStateInLS(store.getState()));
 
 export default store;
+
+
+const FBref = FB.database().ref();
+
+const getData = () => {
+	FBref.on('value', function(snapshot) {
+		console.log(snapshot.val());
+	});
+	console.log(FBref);
+};
+
+getData();
+
+
+const writeUserData = (obj) => {
+  FBref.set(obj);
+}
+
+writeUserData(store.getState());
+
+
+// function writeUserData(userId, name, email, imageUrl) {
+//   firebase.database().ref('users/' + userId).set({
+//     username: name,
+//     email: email,
+//     profile_picture : imageUrl
+//   });
+// }
+
+
