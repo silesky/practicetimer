@@ -3,6 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { storeStateInLS } from './util';
 import thunk from 'redux-thunk';
 import reducer from './reducers/_Reducer';
+
 // middleware - the functions that intercept an action upon dispatch, before it reaches the reducer
 // applyMiddleware - the function that helps you make your replacement for createStore;
 // thunk function -  a function that wraps some behavior for execution (e.g. logger)... it's
@@ -11,6 +12,16 @@ import reducer from './reducers/_Reducer';
 *   todoApp = combineReducers(reducers)
 *   let store= createStoreMW(todoApp)
 */
+
+import FB from './firebaseconfig'; 
+	// firebase.database();
+	// practiceTimer.initializeApp();
+ //   firebase.initializeApp(config);
+const FBref = FB.database().ref();
+FBref.on('value', function(snapshot) {
+	console.log(snapshot.val());
+});
+console.log(FBref);
 
 const compose = ((a, b) => (c) => a(b(c)));
 
