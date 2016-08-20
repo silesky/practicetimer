@@ -7,6 +7,7 @@
  
  </script>
   <meta charset="utf-8">
+  <meta name="google-signin-client_id" content="bad5ed2ea17fd2cc0b96640a0f25cd767aaa5a71.apps.googleusercontent.com">
   <title>Practice Timer</title>
    <script src="https://www.gstatic.com/firebasejs/3.0.2/firebase.js"></script>
    <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -26,10 +27,11 @@
 <body>
   <div id="rootEl"></div>
   <!-- root component  -->
-  <script src="dist/app.js" defer></script>
-    <div class="google">
-      <a href="#"><img src="lib/google_signin_buttons/web/2x/btn_google_signin_dark_normal_web@2x.png"></img></a>
+    <div class="google g-signin2" data-onsuccess="onSignIn">
+      <img src="lib/google_signin_buttons/web/2x/btn_google_signin_dark_normal_web@2x.png"></img>
     </div>
-  </div>
+  <script src="dist/app.js" defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </body>
 </html>
